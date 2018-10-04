@@ -56,7 +56,7 @@ const defaultFont = {
     lineHeight: '1.5em',
 };
 
-const primaryColor = '#9c27b0';
+const primaryColor = 'blue';
 const warningColor = '#ff9800';
 const dangerColor = '#f44336';
 const successColor = '#4caf50';
@@ -135,21 +135,21 @@ const appStyle = theme => ({
     wrapper: {
         position: 'relative',
         top: '0',
-      
+        
     },
     mainPanel: {
         overflow: 'auto',
         position: 'relative',
-        float: 'middle',
+        float: 'right',
         ...transition,
         maxHeight: '100%',
         width: '100%',
-       
-        
+    
+    
     },
     content: {
-        marginTop: '7px',
-        padding: '20px 15px',
+        marginTop: '70px',
+        padding: '30px 15px',
         minHeight: 'calc(100% - 123px)',
     },
     container,
@@ -187,7 +187,7 @@ const headerStyle = theme => ({
         OTransition: 'all 150ms ease 0s',
         MsTransition: 'all 150ms ease 0s',
         transition: 'all 150ms ease 0s',
-        minHeight: '0px',
+        minHeight: '50px',
         display: 'block',
     },
     container,
@@ -241,7 +241,7 @@ const headerStyle = theme => ({
 // #############################
 
 const headerLinksStyle = theme => ({
-   
+
 });
 
 // ##############################
@@ -589,19 +589,18 @@ const regularCardStyle = {
     greenCardHeader,
     redCardHeader,
     blueCardHeader,
-    purpleCardHeader,
+    //purpleCardHeader,
     cardTitle: {
-        color: '#FFFFFF',
-        marginTop: '0',
-        marginBottom: '5px',
+        color: 'lightblue',
         ...defaultFont,
-        fontSize: '1.125em',
+        fontSize: '2em',
     },
     cardSubtitle: {
         ...defaultFont,
         marginBottom: '0',
-        color: 'rgba(255, 255, 255, 0.62)',
+        color: 'lightblue',
         margin: '0 0 10px',
+        fontSize:'20px'
     },
     cardActions: {
         padding: '14px',
@@ -942,7 +941,7 @@ const customInputStyle = {
     underline: {
         '&:before': {
             backgroundColor: '#D2D2D2',
-            height: '1px !important',
+             height: '3px !important',
         }
     },
     inkbar: {
@@ -965,7 +964,8 @@ const customInputStyle = {
         color: '#AAAAAA',
         fontWeight: '400',
         fontSize: '14px',
-        lineHeight: '1.42857',
+        lineHeight: '1.42857em',
+        width:'300px'
     },
     labelRootError: {
         color: dangerColor
@@ -973,24 +973,30 @@ const customInputStyle = {
     labelRootSuccess: {
         color: successColor
     },
+    inputDisabled:{
+        inputDisabled:true,
+    },
+    
     feedback: {
         position: 'absolute',
         top: '18px',
         right: '0',
-        zIndex: '2',
+         zIndex: '2',
         display: 'block',
         width: '24px',
         height: '24px',
         textAlign: 'center',
         pointerEvents: 'none',
+    
     },
     marginTop: {
         marginTop: '16px',
     },
     formControl: {
         paddingBottom: '10px',
-        margin: '27px 0 0 0',
+        margin: '0px 0 0 0',
         position: 'relative',
+        
     }
 };
 
@@ -1087,7 +1093,7 @@ const tasksStyle = {
 const typographyStyle = {
     defaultFontStyle: {
         ...defaultFont,
-        fontSize : 'px',
+        fontSize : '14px',
     },
     defaultHeaderMargins: {
         marginTop: '20px',
@@ -1229,7 +1235,8 @@ module.exports = {
     typographyStyle,
     snackbarContentStyle,
     footerStyle,
-    headerStyle,  
+    headerStyle,
+    
     appStyle,
     headerLinksStyle,
 }

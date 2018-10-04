@@ -3,7 +3,7 @@ import { withStyles, Grid } from 'material-ui'
 
 const style = {
     grid: {
-        padding: "0 15px !important"
+        padding: "30px 15px !important"
     }
 }
 

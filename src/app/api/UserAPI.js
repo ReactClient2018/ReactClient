@@ -9,7 +9,7 @@ let UserAPI = {
             headers: {'Authorization': 'Basic ' + btoa('api-client:secret'), 'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' },
             body: `username=${username}&password=${password}&grant_type=password`
         };
-        return fetch('http://localhost:8080/multi-ds/oauth/token', requestOptions)
+        return fetch('http://192.168.110.12:8080/multi-ds/oauth/token', requestOptions)
             .then(response => {
                 if (!response.ok) {
                     console.log("Gotcha Error")
