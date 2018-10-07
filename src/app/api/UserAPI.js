@@ -48,6 +48,7 @@ let UserAPI = {
             return response;
         }).catch((error) =>{
             alert(error);
+
         
         }
         );

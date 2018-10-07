@@ -50,7 +50,7 @@ class Login extends React.Component {
         return (
             <div className={classes.wrapper}>
                 <AppHeader />
-                <div className={classes.mainPanel} ref="mainPanel">
+                <div className={classes.mainPanel} ref="mainPanel" style={{margin:'80px'}}>
                     <div className={classes.content}>
                         <div className={classes.container}>
 
