@@ -12,6 +12,7 @@ let UserAPI = {
             },
             body: `username=${username}&password=${password}&grant_type=password`
         };
+
         return fetch('http://localhost:8080/multi-ds/oauth/token', requestOptions).then(response => {
             if (!response.ok) {
                 console.log("Gotcha Error")
@@ -47,6 +48,7 @@ let UserAPI = {
             return response;
         }).catch((error) =>{
             alert(error);
+        
         }
         );
     }

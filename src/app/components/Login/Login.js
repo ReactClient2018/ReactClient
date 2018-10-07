@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux"
-import {LoginActionCreators} from "actions";
-import {Auth,History} from "utils"
+import { connect } from "react-redux"
+import { LoginActionCreators } from "actions";
+import { Auth, History } from "utils"
 import { appStyle } from 'variables';
 import {
     withStyles,
@@ -13,10 +13,19 @@ import {
 import {
     Grid
 } from 'material-ui';
-class Login extends React.Component{
+import AppHeader, { Footer } from '../../commons/AppHeader';
 
-    componentDidMount(){
-        if(Auth.isAuthenticated()){
+
+import logo from '../../assets/img/bank_img/bfi-logo.png';
+import bankLogo from "../../assets/img/bank_img/bfi-logo.png";
+// //import { Form, Input, Button, Icon, notification } from 'antd';
+// import { FieldGroup, FormControl, ControlLabel, HelpBlock, FormGroup, ButtonToolbar } from 'react-bootstrap';
+// const FormItem = Form.Item;
+class Login extends React.Component {
+
+
+    componentDidMount() {
+        if (Auth.isAuthenticated()) {
             History.push("/dashboard");
         }
     }
@@ -32,69 +41,81 @@ class Login extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-       this.props.onSubmitLogin(this.username.value+"!@#"+this.tenant.value, this.password.value);
-       localStorage.setItem("tenant",this.tenant.value)
+        this.props.onSubmitLogin(this.username.value + "!@#" + this.tenant.value, this.password.value);
     }
 
-    render(){
+    render() {
         const { classes, ...rest } = this.props;
-        return(
-                <div className={classes.wrapper}>
-                    <div className={classes.mainPanel} ref="mainPanel">
-                        <div className={classes.content}>
-                            <div className={classes.container}>
-                                <Grid container>
-                                    <ItemGrid xs={12} sm={12} md={2}>
-                                    </ItemGrid>
-                                    <ItemGrid xs={12} sm={12} md={6}>
-                                        <form onSubmit={this.handleSubmit.bind(this)}>
+        console.log(this.props);
+        return (
+            <div className={classes.wrapper}>
+                <AppHeader />
+                <div className={classes.mainPanel} ref="mainPanel">
+                    <div className={classes.content}>
+                        <div className={classes.container}>
+
+                            <Grid container>
+                                <ItemGrid xs={12} sm={12} md={3}>
+                                </ItemGrid>
+                                <ItemGrid xs={12} sm={12} md={6}>
+                                    <form onSubmit={this.handleSubmit.bind(this)}>
                                         <RegularCard
-                                            cardTitle="Login"
-                                            cardSubtitle="Provide username and password"
+
                                             content={
                                                 <div>
                                                     <Grid container>
                                                         <ItemGrid xs={12} sm={12} md={12}>
                                                             <CustomInput
+
                                                                 labelText="User Name"
                                                                 id="username"
-                                                                inputRef={(input) => {this.username = input}}
+                                                                inputRef={(input) => { this.username = input }}
                                                                 formControlProps={{
+
                                                                     fullWidth: true
                                                                 }}
-                                                                inputProps ={{
-                                                                    type:"text",
+
+                                                                disabled={{
+                                                                    inputDisabled: true
                                                                 }}
+                                                                inputProps={{
+                                                                    type: "text",
+
+
+                                                                }}
+
                                                             />
-                                                            </ItemGrid>
+                                                        </ItemGrid>
                                                     </Grid>
 
-                                                    <Grid container>
+                                                    <Grid container >
                                                         <ItemGrid xs={12} sm={12} md={12}>
                                                             <CustomInput
+
                                                                 labelText="Tenant"
                                                                 id="tenant"
-                                                                inputRef={(input) => {this.tenant = input}}
+                                                                inputRef={(input) => { this.tenant = input }}
                                                                 formControlProps={{
                                                                     fullWidth: true
                                                                 }}
-                                                                inputProps ={{
-                                                                    type:"tenant",
+                                                                inputProps={{
+                                                                    type: "tenant",
                                                                 }}
                                                             />
-                                                            </ItemGrid>
+                                                        </ItemGrid>
                                                     </Grid>
                                                     <Grid container>
                                                         <ItemGrid xs={12} sm={12} md={12}>
                                                             <CustomInput
+                                                                InputClassName={classes.TheInput}
                                                                 labelText="Password"
                                                                 id="password"
-                                                                inputRef={(input) => {this.password = input}}
+                                                                inputRef={(input) => { this.password = input }}
                                                                 formControlProps={{
                                                                     fullWidth: true
                                                                 }}
-                                                                inputProps ={{
-                                                                    type:"password",
+                                                                inputProps={{
+                                                                    type: "password",
                                                                 }}
                                                             />
                                                         </ItemGrid>
@@ -103,44 +124,46 @@ class Login extends React.Component{
                                                 </div>
                                             }
                                             footer={
-                                                <Button type="submit" color="primary">Login</Button>
+                                                <Button className={classes.button} color='primary' type="submit" color="primary">Login</Button>
                                             }
                                         />
-                                        </form>
-                                    </ItemGrid>
-                                    <ItemGrid xs={12} sm={12} md={4}>
-                                    </ItemGrid>
+                                    </form>
+                                </ItemGrid>
+                                <ItemGrid xs={12} sm={12} md={3}>
+                                </ItemGrid>
 
-                                </Grid>
-                            </div>
+                            </Grid>
+                            <Footer />
                         </div>
-
                     </div>
-                 </div>
+
+                </div>
+            </div>
         );
     }
 }
 
 Login.propTypes = {
-    alert:PropTypes.shape({
-        type:PropTypes.string,
-        message:PropTypes.string
+    alert: PropTypes.shape({
+        type: PropTypes.string,
+        message: PropTypes.string
     }),
-    onSubmitLogin:PropTypes.func.isRequired
+    onSubmitLogin: PropTypes.func.isRequired
 }
 const mapStateToProps = (state) => (
     {
-       alert: state.alert
+        alert: state.alert
     }
 );
 
 const mapDispatchToProps = (dispatch) => (
     {
         onSubmitLogin: (username, password) => dispatch(
-            LoginActionCreators.login(username,password)
+            LoginActionCreators.login(username, password)
         )
     }
 );
+
 
 Login = withStyles(appStyle, { withTheme: true })(Login);
 
