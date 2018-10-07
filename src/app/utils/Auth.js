@@ -23,8 +23,10 @@ let Auth = {
     },
     fetchToken(){
         let token = localStorage.getItem('access_token');
+        let tenant = localStorage.getItem('tenant');
         if (token) {
-            return { 'Authorization': 'Bearer ' + token,'Content-Type':'application/json' };
+            return { 'Authorization': 'Bearer ' + token,'Content-Type':'application/json' ,
+                     'X-TENANT-ID': tenant};
         } else {
             return {};
         }

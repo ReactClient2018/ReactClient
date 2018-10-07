@@ -138,7 +138,7 @@ const appStyle = theme => ({
       
     },
     mainPanel: {
-        overflow: 'auto',
+        overflow: 'scroll',
         position: 'relative',
         float: 'middle',
         ...transition,
@@ -148,8 +148,8 @@ const appStyle = theme => ({
         
     },
     content: {
-        marginTop: '7px',
-        padding: '20px 15px',
+        marginTop: '0px',
+        padding: '0px 15px',
         minHeight: 'calc(100% - 123px)',
     },
     container,

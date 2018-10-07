@@ -18,7 +18,7 @@ const adminRoutes = [
 
 const userRoutes = [
     { path: "/makerDashBoard", navbarName: "Admin Dashboard", icon: Dashboard, component: DashboardPage },
-    // { path: "/screeningRequest", navbarName: "Maker Dashboard", component: ScreeningRequestPage },
+    { path: "/screeningRequest",component: ScreeningRequestPage },
     { redirect: true, path: "/", to: "/makerDashBoard", navbarName: "Redirect" }
 ];
 
