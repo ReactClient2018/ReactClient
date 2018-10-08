@@ -78,6 +78,7 @@ class Login extends React.Component {
                                             value={this.state.username}
                                             placeholder="Username"
                                             onChange={this.handleChange}
+
                                         />
                                         <FormControl.Feedback />
                                         {/* <HelpBlock>Validation is based on string length.</HelpBlock> */}
