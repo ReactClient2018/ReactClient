@@ -150,8 +150,8 @@ const appStyle = theme => ({
     content: {
 
 
-        marginTop: '70px',
-        padding: '30px 15px',
+        marginTop: '0px',
+        padding: '0px 0px 0 0',
 
         minHeight: 'calc(100% - 123px)',
     },
