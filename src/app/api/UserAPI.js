@@ -13,7 +13,7 @@ let UserAPI = {
             body: `username=${username}&password=${password}&grant_type=password`
         };
 
-        return fetch('http://localhost:8080/multi-ds/oauth/token', requestOptions).then(response => {
+        return fetch('http://192.168.110.12:8080/multi-ds/oauth/token', requestOptions).then(response => {
             if (!response.ok) {
                 console.log("Gotcha Error")
                 return Promise.reject(response.statusText);
@@ -30,7 +30,7 @@ let UserAPI = {
         alert("for api");
         
         var state= {}
-        var url = 'http://localhost:8080/multi-ds/api/screening_n/create?access_token='+ localStorage.getItem('access_token');
+        var url = 'http://192.168.110.12:8080/multi-ds/api/screening_n/create?access_token='+ localStorage.getItem('access_token');
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type':'application/json' ,
