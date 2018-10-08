@@ -3,6 +3,7 @@ import {Auth} from "utils"
 let UserAPI = {
 
     login(username, password) {
+        console.log("the username and password is"+ username, password);
         const requestOptions = {
             // credentials: 'include',
             method: 'POST',
@@ -21,8 +22,13 @@ let UserAPI = {
             console.log("success");
             return response.json();
         }).then(user => {
+            console.log("The user is"+user);
             return user;
-        });
+        }).catch((error) =>{
+            alert(error);
+        
+        }
+        );
 
     },
 

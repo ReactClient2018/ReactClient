@@ -5,6 +5,7 @@ import ScreeningPrimaryRequest from "./ScreeningPrimaryRequest.jsx"
 
 
 class ScreeningNaturalRequest extends React.Component {
+
     
     render() {
         return (

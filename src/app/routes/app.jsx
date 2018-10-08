@@ -1,7 +1,8 @@
 import DashboardPage from "views/Dashboard/makerDashboard.jsx";
 import ScreeningRequestPage from "views/screeningnatural/ScreeningNaturalRequest.jsx";
 import TableList from "views/TableList/TableList.jsx";
-import {Authorization} from "utils"
+import {Authorization} from "utils";
+import ScreeningRelatedEntityPage from "views/screeningnatural/ScreeningRelatedEntity.jsx";
 
 import {
     Dashboard, Person, ContentPaste
@@ -19,6 +20,7 @@ const adminRoutes = [
 const userRoutes = [
     { path: "/makerDashBoard", navbarName: "Admin Dashboard", icon: Dashboard, component: DashboardPage },
     { path: "/screeningRequest",component: ScreeningRequestPage },
+    { path: "/screeningRelatedEntity",component: ScreeningRelatedEntityPage },
     { redirect: true, path: "/", to: "/makerDashBoard", navbarName: "Redirect" }
 ];
 

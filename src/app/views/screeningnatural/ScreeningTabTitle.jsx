@@ -30,12 +30,15 @@ class ScreeningPrimaryTab extends React.Component {
     handleRelatedPerson(){
         History.push("/screeningRelatedPersonPage");
     }
+    handleRelatedEntity(){
+        History.push("/screeningRelatedEntity");
+    }
     render() {
         return (
             <div>
                 <div class="x_content">
 
-                    <button onclick={this.handleRelatedPerson}
+                    <button onClick={this.handleRelatedPerson}
                         type='button'
                         class="btn btn-primary"
                         style={{
@@ -44,6 +47,16 @@ class ScreeningPrimaryTab extends React.Component {
                         id="screening-l-add-related-person">
                         <i class="fa fa-plus"></i>
                         Add related person
+                    </button>
+                    <button onClick={this.handleRelatedEntity}
+                        type='button'
+                        class="btn btn-primary"
+                        style={{
+                        margin: '10px'
+                    }}
+                        id="screening-l-add-related-entity">
+                        <i class="fa fa-plus"></i>
+                        Add related entity
                     </button>
                     <button
                         class="btn btn-primary"

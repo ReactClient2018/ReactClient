@@ -3,136 +3,123 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux"
 import { LoginActionCreators } from "actions";
 import { Auth, History } from "utils"
-import { appStyle } from 'variables';
-import {
-    withStyles,
-} from 'material-ui';
-import {
-    RegularCard, Button, CustomInput, ItemGrid
-} from 'components';
-import {
-    Grid
-} from 'material-ui';
 import AppHeader, { Footer } from '../../commons/AppHeader';
-
-
 import logo from '../../assets/img/bank_img/bfi-logo.png';
 import bankLogo from "../../assets/img/bank_img/bfi-logo.png";
-// //import { Form, Input, Button, Icon, notification } from 'antd';
-// import { FieldGroup, FormControl, ControlLabel, HelpBlock, FormGroup, ButtonToolbar } from 'react-bootstrap';
-// const FormItem = Form.Item;
-class Login extends React.Component {
+import { Form, Input, Button, Icon, notification } from 'antd';
+import { FieldGroup, FormControl, ControlLabel, HelpBlock, FormGroup, ButtonToolbar } from 'react-bootstrap';
+import './Login.css';
 
+const FormItem = Form.Item;
+
+
+class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: '',
+            tenant: ''
+        };
+    }
+
+
+    getValidationState() {
+        const length = this.state.password.length;
+        if (length > 10) return 'success';
+        else if (length > 5) return 'warning';
+        else if (length > 0) return 'error';
+        return null;
+    }
 
     componentDidMount() {
         if (Auth.isAuthenticated()) {
             History.push("/dashboard");
         }
     }
-    errorMessage() {
-        if (this.props.alert) {
-            return (
-                <div className={this.props.alert.type}>
-                    {this.props.alert.message}
-                </div>
-            );
-        }
-    }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        this.props.onSubmitLogin(this.username.value + "!@#" + this.tenant.value, this.password.value);
-    }
-
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password);
+        console.log(this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password));
+    };
+    handleChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value,
+        });
+    };
     render() {
-        const { classes, ...rest } = this.props;
-        console.log(this.props);
+
         return (
-            <div className={classes.wrapper}>
+            <div>
                 <AppHeader />
-                <div className={classes.mainPanel} ref="mainPanel" style={{margin:'80px'}}>
-                    <div className={classes.content}>
-                        <div className={classes.container}>
 
-                            <Grid container>
-                                <ItemGrid xs={12} sm={12} md={3}>
-                                </ItemGrid>
-                                <ItemGrid xs={12} sm={12} md={6}>
-                                    <form onSubmit={this.handleSubmit.bind(this)}>
-                                        <RegularCard
+                <div style={{backgroundColor:'white'}}>
 
-                                            content={
-                                                <div>
-                                                    <Grid container>
-                                                        <ItemGrid xs={12} sm={12} md={12}>
-                                                            <CustomInput
+                    {/* <!-- page content --> */}
+                    <div className="right_col login_col" role="main">
+                        <div className="clearfix"></div>
+                       
 
-                                                                labelText="User Name"
-                                                                id="username"
-                                                                inputRef={(input) => { this.username = input }}
-                                                                formControlProps={{
+                        <div className="login-container">
+                            <h1 className="page-title">Login</h1>
+                            <div className="login-content">
 
-                                                                    fullWidth: true
-                                                                }}
+                                <form onSubmit={this.handleSubmit}>
+                                    <FormGroup
+                                        controlId="formUsername"
+                                        validationState={this.getValidationState()}
+                                    >
+                                        <ControlLabel style={{color:'black'}}>Username</ControlLabel>
+                                        <FormControl
+                                            type="text"
+                                            name='username'
+                                            value={this.state.username}
+                                            placeholder="Username"
+                                            onChange={this.handleChange}
 
-                                                                disabled={{
-                                                                    inputDisabled: true
-                                                                }}
-                                                                inputProps={{
-                                                                    type: "text",
-
-
-                                                                }}
-
-                                                            />
-                                                        </ItemGrid>
-                                                    </Grid>
-
-                                                    <Grid container >
-                                                        <ItemGrid xs={12} sm={12} md={12}>
-                                                            <CustomInput
-
-                                                                labelText="Tenant"
-                                                                id="tenant"
-                                                                inputRef={(input) => { this.tenant = input }}
-                                                                formControlProps={{
-                                                                    fullWidth: true
-                                                                }}
-                                                                inputProps={{
-                                                                    type: "tenant",
-                                                                }}
-                                                            />
-                                                        </ItemGrid>
-                                                    </Grid>
-                                                    <Grid container>
-                                                        <ItemGrid xs={12} sm={12} md={12}>
-                                                            <CustomInput
-                                                                InputClassName={classes.TheInput}
-                                                                labelText="Password"
-                                                                id="password"
-                                                                inputRef={(input) => { this.password = input }}
-                                                                formControlProps={{
-                                                                    fullWidth: true
-                                                                }}
-                                                                inputProps={{
-                                                                    type: "password",
-                                                                }}
-                                                            />
-                                                        </ItemGrid>
-                                                    </Grid>
-
-                                                </div>
-                                            }
-                                            footer={
-                                                <Button className={classes.button} color='primary' type="submit" color="primary">Login</Button>
-                                            }
                                         />
-                                    </form>
-                                </ItemGrid>
-                                <ItemGrid xs={12} sm={12} md={3}>
-                                </ItemGrid>
+                                        <FormControl.Feedback />
+                                        {/* <HelpBlock>Validation is based on string length.</HelpBlock> */}
+                                    </FormGroup>
+                                    <FormGroup
+                                        controlId="formTenant"
+                                        validationState={this.getValidationState()}
+                                    >
+                                        <ControlLabel style={{color:'black'}}>Tenant</ControlLabel>
+                                        <FormControl
+                                            type="text"
+                                            name='tenant'
+                                            value={this.state.tenant}
+                                            placeholder="Enter tenant ID"
+                                            onChange={this.handleChange}
+                                        />
+                                        <FormControl.Feedback />
+                                        {/* <HelpBlock>Validation is based on string length.</HelpBlock> */}
+                                    </FormGroup>
+                                    <FormGroup
+                                        controlId="formPassword"
+                                        validationState={this.getValidationState()}
+                                    >
+                                        <ControlLabel style={{color:'black'}}>password</ControlLabel>
+                                        <FormControl
+                                            type="text"
+                                            name='password'
+                                            value={this.state.password}
+                                            placeholder="password"
+                                            onChange={this.handleChange}
+                                        />
+                                        <FormControl.Feedback />
+                                        {/* <HelpBlock></HelpBlock> */}
+                                    </FormGroup>
 
-                            </Grid>
+                                    <button type='submit' style={{ backgroundColor: 'lightblue' }}>Login</button>
+
+
+                                </form>
+
+                            </div>
+
                             <Footer />
                         </div>
                     </div>
@@ -152,7 +139,8 @@ Login.propTypes = {
 }
 const mapStateToProps = (state) => (
     {
-        alert: state.alert
+        //alert: state.alert
+        // there is no state in the store so no need of any props 
     }
 );
 
@@ -165,6 +153,7 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 
-Login = withStyles(appStyle, { withTheme: true })(Login);
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+

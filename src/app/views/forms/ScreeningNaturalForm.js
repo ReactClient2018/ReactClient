@@ -1,7 +1,8 @@
 import React from "react";
-import {UserActionCreators} from "actions";
+import { UserActionCreators } from "actions";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
+import { connect } from "react-redux"
+
 
 class ScreeningNaturalForm extends React.Component {
     constructor(props) {
@@ -19,6 +20,7 @@ class ScreeningNaturalForm extends React.Component {
             sex: "",
             mobile_number: "",
             email: "",
+
             date_of_birth: "",
             primary_identification_document_type: "",
             primary_identification_document_no: "",
@@ -41,6 +43,7 @@ class ScreeningNaturalForm extends React.Component {
     };
 
     handleSubmit = event => {
+
         var json = {
             screening_n_request_data: this.state
         };
@@ -392,6 +395,7 @@ class ScreeningNaturalForm extends React.Component {
                     Submit
                 </button>
             </form>
+
         );
     }
 }
@@ -399,7 +403,7 @@ class ScreeningNaturalForm extends React.Component {
 ScreeningNaturalForm.propTypes = {
     added: PropTypes.bool,
     onSubmitScreening: PropTypes.func.isRequired
-};
+}
 
 const mapStateToProps = state => ({screening: state.screening});
 

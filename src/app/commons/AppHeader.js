@@ -19,7 +19,7 @@ class AppHeader extends Component {
   render() {
     
     return (
-      <Header className="app-header">
+      <Header>
         <div>
           
           <Link to="/"><img src={logo} className=""></img></Link>
@@ -61,12 +61,12 @@ export default withRouter(AppHeader);
 class Footer extends Component {
   render() {
     return (
-      <div style={{ float: 'bottom', padding: '0px 10px' }} >
+      
       <footer className="login_col" style={{position:'relative'}}>
         <div className="pull-right">&copy; 2016-2017 TrustAML</div>
         <div className="clearfix"></div>
       </footer>
-      </div>
+      
     );
   }
 
