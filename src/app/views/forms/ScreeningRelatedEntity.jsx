@@ -43,11 +43,13 @@ class ScreeningRelatedEntity extends Component {
         console.log(e.target.name);
     };
     handleProceed = () => {
-        var json = {
-            screening_n_related_entity: this.state
-        };
-        const Entityjson = JSON.stringify(json);
-        alert(JSON.stringify(Entityjson));
+        var screening_n_related_entity = localStorage.getItem("screening_n_related_entity");
+
+        screening_n_related_entity = screening_n_related_entity ? JSON.parse(screening_n_related_entity):[];
+        alert(screening_n_related_entity.length);
+        screening_n_related_entity.push(this.state);
+      
+        localStorage.setItem("screening_n_related_entity", JSON.stringify(screening_n_related_entity));
         History.push("/screeningNaturalReview");
 
     }
