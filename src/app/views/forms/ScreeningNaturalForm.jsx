@@ -45,6 +45,7 @@ class ScreeningNaturalForm extends React.Component {
      
         localStorage.removeItem("screening_n_request_data");
         localStorage.removeItem("screening_n_related_person");
+        localStorage.removeItem("screening_n_related_entity");
         var screening_n_request_data = [];
 
         screening_n_request_data.push(this.state);

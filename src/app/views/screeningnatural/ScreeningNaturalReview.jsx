@@ -8,9 +8,10 @@ import {connect} from "react-redux";
 class ScreeningNaturalReview extends React.Component {
 
     handleSubmit = event => {
-
+    
         var sr = `{"screening_n_request_data": ` + this.fetchScreeningRequestData() + 
-        `,"screening_n_related_person": [` + this.fetchScreeningRelatedPerson() + `]` + `}`;
+        `,"screening_n_related_person": [` + this.fetchScreeningRelatedPerson() + `]`+
+        `,"screening_n_related_entity": [` + this.fetchScreeningRelatedEntity() + `]` + `}`;
 
         alert(sr);
         this.props.onSubmitScreening(sr);
@@ -30,7 +31,7 @@ class ScreeningNaturalReview extends React.Component {
     }
 
     fetchScreeningRelatedPerson() {
-        // alert("inside");
+        alert("inside P");
         var screening_n_related_person = JSON.parse(localStorage.getItem('screening_n_related_person'));
 
         var data = "";
@@ -44,6 +45,25 @@ class ScreeningNaturalReview extends React.Component {
                 }
             }
         }
+
+        return data;
+    }
+    fetchScreeningRelatedEntity() {
+        // alert("inside");
+        var screening_n_related_entity = JSON.parse(localStorage.getItem('screening_n_related_entity'));
+        // alert(JSON.stringify(screening_n_related_entity[0]));
+        var data = "";
+        var i;
+        if (screening_n_related_entity) {
+            for (i = screening_n_related_entity.length; i > 0; i--) {
+                if (i != 1) {
+                    data = data + `{"related_entity_request_data":`+JSON.stringify(screening_n_related_entity[i - 1]) + "},";
+                } else {
+                    data = data + `{"related_entity_request_data":`+JSON.stringify(screening_n_related_entity[i - 1]) + "}";
+                }
+            }
+        }
+        alert(data);
 
         return data;
     }
