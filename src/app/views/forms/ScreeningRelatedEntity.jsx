@@ -30,9 +30,11 @@ class ScreeningRelatedEntity extends Component {
             has_cust_id: true,
             branch_sol_id: "13244",
             date_of_establishment_bs: null,
-            repair_screening_l_request_id: 232
+            repair_screening_l_request_id: 232,
+            
 
         }
+    
 
     }
 
@@ -51,7 +53,35 @@ class ScreeningRelatedEntity extends Component {
         History.push("/screeningNaturalReview");
 
     }
-
+    handleReset=(id)=>{
+        this.setState({
+            accounts_l_sub_type: " ",
+            kycl_id: " ",
+            cust_id: " ",
+            name_of_institution: " ",
+            ls_name: " ",
+            date_of_establishment: " ",
+            registration_no: " ",
+            type_of_industry: " ",
+            country_of_issue: " ",
+            zone: " ",
+            district: " ",
+            mn_vdc: " ",
+            province: " ",
+            ward_no: " ",
+            pan_number: " ",
+            contact_number: " ",
+            email_id: " ",
+            notes: " ",
+            find_match_index: " ",
+            has_kyc: false,
+            has_cust_id: true,
+            branch_sol_id: " ",
+            date_of_establishment_bs:" ",
+            repair_screening_l_request_id: " ",
+            
+        });
+    }
     render() {
         const {
             handleSubmit,
@@ -63,7 +93,7 @@ class ScreeningRelatedEntity extends Component {
         } = this.props;
         return (
             <div>
-                <ScreeningTabTitle/>
+                <ScreeningTabTitle handleResetButton={this.handleReset}/>
 
                 <div style={{
                     backgroundColor: 'white'
