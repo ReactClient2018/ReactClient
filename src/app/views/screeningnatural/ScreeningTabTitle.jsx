@@ -26,6 +26,9 @@ class ScreeningTabTitle extends React.Component {
         );
     }
 }
+export default ScreeningTabTitle;
+
+
 class ScreeningPrimaryTab extends React.Component {
     handleRelatedPerson(){
         History.push("/screeningRelatedPersonPage");
@@ -117,4 +120,3 @@ class ScreeningPrimaryTab extends React.Component {
     }
 }
 
-export default ScreeningTabTitle;
