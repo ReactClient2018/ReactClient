@@ -28,10 +28,13 @@ class ScreeningTabTitle extends React.Component {
 }
 class ScreeningPrimaryTab extends React.Component {
     handleRelatedPerson(){
-        History.push("/screeningRelatedPersonPage");
+        History.push("/screeningRelatedPerson");
     }
     handleRelatedEntity(){
         History.push("/screeningRelatedEntity");
+    }
+    handleScreeningReview(){
+        History.push("/screeningNaturalReview")
     }
     render() {
         return (
@@ -67,7 +70,7 @@ class ScreeningPrimaryTab extends React.Component {
                         <i class="fa fa-plus"></i>
                         Add Documents</button>
                         
-                    <button
+                    <button onClick={this.handleScreeningReview}
                         class="btn btn-primary pull-left no-print"
                         style={{
                         margin: '10px'
@@ -77,7 +80,7 @@ class ScreeningPrimaryTab extends React.Component {
                         Review screening request</button>
                 </div>
 
-                {/* <div class="x_content"></div>
+              {/* <div class="x_content">
                 <div class="" role="tabpanel" data-example-id="togglable-tabs">
                     <ul
                         id="screeningnTabs"
@@ -90,7 +93,7 @@ class ScreeningPrimaryTab extends React.Component {
                                 id="screening-n-request-review-tab"
                                 data-toggle="tab"
                                 aria-expanded="false"
-                                styles="display: none;">Review</a>
+                                style={{display: "none"}}>Review</a>
                         </li>
                         <li role="presentation" class="">
                             <a
@@ -110,8 +113,9 @@ class ScreeningPrimaryTab extends React.Component {
                         </li>
                     </ul>
 
-                </div>
-    */}
+                </div> 
+                </div> */}
+  
             </div>
         );
     }

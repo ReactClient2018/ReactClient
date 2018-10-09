@@ -1,6 +1,7 @@
 import React from "react";
 import {UserActionCreators} from "actions";
 import PropTypes from "prop-types";
+import {History}  from 'utils';
 import {connect} from "react-redux";
 
 class ScreeningNaturalForm extends React.Component {
@@ -41,14 +42,20 @@ class ScreeningNaturalForm extends React.Component {
     };
 
     handleSubmit = event => {
-        var json = {
-            screening_n_request_data: this.state
-        };
-        const screening_json = JSON.stringify(json);
-        alert(JSON.stringify(screening_json));
-        this
-            .props
-            .onSubmitScreening(screening_json);
+     
+        localStorage.removeItem("screening_n_request_data");
+        localStorage.removeItem("screening_n_related_person");
+        var screening_n_request_data = [];
+
+        screening_n_request_data.push(this.state);
+        localStorage.setItem("screening_n_request_data", JSON.stringify(screening_n_request_data));  
+        // var json = {
+        //     screening_n_request_data: this.state
+        // };
+        // const screening_json = JSON.stringify(json);
+        // alert(JSON.stringify(screening_json));
+        // this.props.onSubmitScreening(screening_json);
+        History.push("./screeningRequest")
     };
     blackColor = {
         color: "black"
@@ -389,7 +396,7 @@ class ScreeningNaturalForm extends React.Component {
                 <hr/>
 
                 <button class="btn btn-primary" type="submit" color="primary">
-                    Submit
+                    Proceed.
                 </button>
             </form>
         );

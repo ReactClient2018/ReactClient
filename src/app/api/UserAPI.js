@@ -25,7 +25,7 @@ let UserAPI = {
             console.log("The user is"+user);
             return user;
         }).catch((error) =>{
-            alert(error);
+            // alert(error);
         
         }
         );
@@ -44,7 +44,6 @@ let UserAPI = {
             body: values
         }
         return fetch(url, requestOptions).then(response => {
-       
             if (response.ok) {
                 return Promise.reject(response.statusText);
             }

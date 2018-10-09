@@ -1,8 +1,12 @@
 import DashboardPage from "views/Dashboard/makerDashboard.jsx";
-import ScreeningRequestPage from "views/screeningnatural/ScreeningNaturalRequest.jsx";
+import ScreeningPrimaryRequestPage from "views/screeningnatural/ScreeningPrimaryRequest.jsx";
+import ScreeningNaturalRequestPage from "views/screeningnatural/ScreeningNaturalRequest.jsx";
+import ScreeningNaturalReviewPage from "views/screeningnatural/ScreeningNaturalReview.jsx";
 import TableList from "views/TableList/TableList.jsx";
 import {Authorization} from "utils";
-import ScreeningRelatedEntityPage from "views/screeningnatural/ScreeningRelatedEntity.jsx";
+import ScreeningRelatedEntityPage from "views/forms/ScreeningRelatedEntity.jsx";
+import ScreeningRelatedPersonPage from "views/forms/ScreeningRelatedPerson.jsx";
+
 
 import {
     Dashboard, Person, ContentPaste
@@ -19,8 +23,11 @@ const adminRoutes = [
 
 const userRoutes = [
     { path: "/makerDashBoard", navbarName: "Admin Dashboard", icon: Dashboard, component: DashboardPage },
-    { path: "/screeningRequest",component: ScreeningRequestPage },
+    { path: "/screeningRequest",component: ScreeningNaturalRequestPage },
+    { path: "/screeningPrimaryRequest",component: ScreeningPrimaryRequestPage },
     { path: "/screeningRelatedEntity",component: ScreeningRelatedEntityPage },
+    { path: "/screeningRelatedPerson",component: ScreeningRelatedPersonPage },
+    { path: "/screeningNaturalReview",component: ScreeningNaturalReviewPage },
     { redirect: true, path: "/", to: "/makerDashBoard", navbarName: "Redirect" }
 ];
 

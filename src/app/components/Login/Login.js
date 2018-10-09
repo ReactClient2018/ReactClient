@@ -4,10 +4,8 @@ import { connect } from "react-redux"
 import { LoginActionCreators } from "actions";
 import { Auth, History } from "utils"
 import AppHeader, { Footer } from '../../commons/AppHeader';
-import logo from '../../assets/img/bank_img/bfi-logo.png';
-import bankLogo from "../../assets/img/bank_img/bfi-logo.png";
 import { Form, Input, Button, Icon, notification } from 'antd';
-import { FieldGroup, FormControl, ControlLabel, HelpBlock, FormGroup, ButtonToolbar } from 'react-bootstrap';
+import { FormControl, ControlLabel, HelpBlock, FormGroup, ButtonToolbar } from 'react-bootstrap';
 import './Login.css';
 
 const FormItem = Form.Item;

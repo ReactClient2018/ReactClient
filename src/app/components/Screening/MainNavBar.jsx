@@ -13,7 +13,7 @@ class MainNavBar extends React.Component {
         History.push("/login");
     }
     handleScreeningClick() {
-        History.push("/screeningRequest");
+        History.push("/screeningPrimaryRequest");
     }
 
     render() {

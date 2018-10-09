@@ -1,6 +1,6 @@
 import React from "react";
-import ScreeningNaturalForm from "../forms/ScreeningNaturalForm.jsx";
-import ScreeningPrimaryRequest from "./ScreeningPrimaryRequest.jsx"
+import ScreeningPrimaryRequest from "./ScreeningTabTitle.jsx"
+import ScreeningTabTitle from "./ScreeningTabTitle.jsx";
 
 
 
@@ -9,7 +9,7 @@ class ScreeningNaturalRequest extends React.Component {
     
     render() {
         return (
-           <ScreeningPrimaryRequest />
+          <ScreeningTabTitle/>
         );
     }
 }
