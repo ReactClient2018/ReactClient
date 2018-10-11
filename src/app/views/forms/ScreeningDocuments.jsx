@@ -9,7 +9,7 @@ class ScreeningDocuments extends React.Component {
         super(props);
         this.state = {
             scanned_document_type: "",
-            scanned_content: {},
+            scanned_content: "",
             extension_text: "",
             notes: "",
             action_id: ""
@@ -28,8 +28,9 @@ class ScreeningDocuments extends React.Component {
     //     })
     //   }
     handleFileChange = (e) => {
-        //this.setState({scanned_content:e.target.files[0]});
-        //const value=e.target.value;
+
+        let file = e.target.files[0];
+        e.preventDefault();
         const imgObj = e.target.files[0];
         console.log(imgObj);
         var filename = e.target.files[0].name;
@@ -38,7 +39,7 @@ class ScreeningDocuments extends React.Component {
         var fileSize = 500;
         if (filename.indexOf('.') < 0) {
             alert("You cannot upload a file without an extension");
-           // value = "";
+            // value = "";
         } else if ((imgObj.size / 1024) > fileSize) {
             alert("The maximum file size permitted is " + fileSize + "KB only.");
             //value = "";
@@ -52,26 +53,17 @@ class ScreeningDocuments extends React.Component {
                     var binaryString = readerEvt.target.result;
                     var b64 = btoa(binaryString);
                     //fileControl.siblings(".scanned-content").val(b64);
-                    console.log(b64);
+                    //console.log(b64);
                 }
                 reader.readAsBinaryString(imgObj);
             }
         }
-        // console.log(img);
-        //console.log(img);
-    }
-    //   fileUpload(file){
-    //     const url = 'http://example.com/file-upload';
-    //     const formData = new FormData();
-    //     formData.append('file',file)
-    //     const config = {
-    //         headers: {
-    //             'content-type': 'multipart/form-data'
-    //         }
-    //     }
-    //     return  post(url, formData,config)
-    //   }
+        // reader.onloadend = () => {
+        //     this.setState({ scanned_content: file });
+        // }
+        console.log("the image is" + this.state.scanned_content);
 
+    }
     render() {
 
         return (
@@ -100,7 +92,7 @@ class ScreeningDocuments extends React.Component {
                         <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
                             <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>Attachment</label>
                             <div class="col-md-8 col-sm-8 col-xs-8">
-                                <input name='file' type='file' onChange={this.handleFileChange} value='' ></input>
+                                <input name='file' type='file' onChange={this.handleFileChange} value={this.state.scanned_content} ></input>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
