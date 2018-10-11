@@ -3,8 +3,102 @@ import {UserActionCreators} from "actions";
 import PropTypes from "prop-types";
 import {History}  from 'utils';
 import {connect} from "react-redux";
+import { reduxForm, Field } from 'redux-form';
+import {ConnectedCreateUserForm} from "../forms/UserForm";
+
+// let SignInForm = props => {
+    
+//     const { handleSubmit } = props;
+//   return <form onSubmit={handleSubmit} className="form">
+//       <div className="field">
+//         <div className="control">
+//           <label className="label">First Name</label>
+//           <Field className="input" name="firstName" component="input" type="text" placeholder="First Name"/>
+//         </div>
+//       </div>
+  
+//       <div className="field">
+//         <div className="control">
+//           <label className="label">Last Name</label>
+//           <Field className="input" name="lastName" component="input" type="text" placeholder="Last Name"/>
+//         </div>
+//       </div>
+  
+//       <div className="field">
+//         <div className="control">
+//           <label className="label">Email</label>
+//           <Field className="input" name="email" component="input" type="email" placeholder="Email Address"/>
+//         </div>
+//       </div>
+  
+//       <div className="field">
+//         <div className="control">
+//           <label className="label">Proficiency</label>
+//           <div className="select">
+//             <Field className="input" name="proficiency" component="select">
+//               <option />
+//               <option value="beginner">Beginner Dev</option>
+//               <option value="intermediate">Intermediate Dev</option>
+//               <option value="expert">Expert Dev</option>
+//             </Field>
+//           </div>
+//         </div>
+//       </div>
+  
+//       <div className="field">
+//         <div className="control">
+//           <label className="label">Age</label>
+//           <Field className="input" name="age" component="input" type="number" placeholder="Age"/>
+//         </div>
+//       </div>
+  
+//       <div className="field">
+//         <div className="control">
+//           <label className="label">Gender</label>
+//           <label className="radio">
+//             <Field name="gender" component="input" type="radio" value="male" />
+//             {' '}
+//             Male
+//           </label>
+//           <label className="radio">
+//             <Field name="gender" component="input" type="radio" value="female" />
+//             {' '}
+//             Female
+//           </label>
+//         </div>
+//       </div>
+  
+//       <div className="field">
+//         <div className="control">
+//           <label className="checkbox">
+//             <Field name="saveDetails" id="saveDetails" component="input" type="checkbox"/>
+//             Save Details
+//           </label>
+//         </div>
+//       </div>
+  
+//       <div className="field">
+//         <div className="control">
+//           <label className="label">Message</label>
+//           <Field className="textarea" name="message" component="textarea" />
+//         </div>
+//       </div>
+  
+//       <div className="field">
+//         <div className="control">
+//           <button className="button is-link">Submit</button>
+//         </div>
+//       </div>
+  
+//     </form>;
+//   };
+
+//   SignInForm = reduxForm({
+//     form: 'signIn',
+//   })(SignInForm);
 
 class ScreeningNaturalForm extends React.Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -61,8 +155,14 @@ class ScreeningNaturalForm extends React.Component {
     blackColor = {
         color: "black"
     };
+    handleSignIn = values => {
+        alert(JSON.stringify(values));
+        History.push("/screeningNaturalReview");
+        console.log(values);
+    };
 
     render() {
+        // const { handleSubmit } = this.props;
         const {
             handleSubmit,
             pristine,
@@ -72,9 +172,10 @@ class ScreeningNaturalForm extends React.Component {
             screening
         } = this.props;
         return (
-            <form onSubmit={this
-                .handleSubmit
-                .bind(this)}>
+           
+            
+            // <SignInForm onSubmit={this.handleSignIn} />
+            <form onSubmit={this.handleSubmit.bind(this)}>
                 <hr/>
                 <div
                     className='row'
@@ -90,6 +191,7 @@ class ScreeningNaturalForm extends React.Component {
                                 name="purpose_of_screening_n"
                                 value={this.state.purpose_of_screening_n}
                                 onChange={this.handleChange}>
+                                <option>Select purpose</option>
                                 <option value="Apply for loan">Apply for loan</option>
                                 <option value="Inward Remittance">Inward Remittance</option>
                                 <option value="Money Exchange">Money Exchange</option>
@@ -131,6 +233,7 @@ class ScreeningNaturalForm extends React.Component {
                                 name="salutation"
                                 value={this.state.salutation}
                                 onChange={this.handleChange}>
+                                <option>Select salutation</option>
                                 <option value="Mr.">Mr.</option>
                                 <option value="Mrs.">Mrs.</option>
                                 <option value="Ms.">Ms.</option>
@@ -214,6 +317,7 @@ class ScreeningNaturalForm extends React.Component {
                         </label>
                         <div>
                             <select name="sex" value={this.state.sex} onChange={this.handleChange}>
+                                <option>Choose gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Others">Others</option>
@@ -271,6 +375,7 @@ class ScreeningNaturalForm extends React.Component {
                                 name="primary_identification_document_type"
                                 value={this.state.primary_identification_document_type}
                                 onChange={this.handleChange}>
+                                <option>Choose Document type.</option>
                                 <option value="Citizenship">Citizenship</option>
                                 <option value="Passport">Passport</option>
                                 <option value="Driving License">Driving License</option>
@@ -416,3 +521,4 @@ const mapDispatchToProps = dispatch => ({
     onClose: () => dispatch(UserActionCreators.close())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ScreeningNaturalForm);
+

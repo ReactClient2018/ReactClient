@@ -7,12 +7,18 @@ import {
 } from 'react-router-dom';
 
 import store from "./store/multStore";
+import { createStore, combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
 import {Provider} from "react-redux";
 
 import './assets/css/material-dashboard-react.css';
 import  {History}  from "utils";
 import indexRoutes from './routes/index.jsx';
+
+const rootReducer = combineReducers({
+    form: formReducer,
+  });
 
 ReactDOM.render(
 

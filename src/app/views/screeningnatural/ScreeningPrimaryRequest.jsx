@@ -9,7 +9,7 @@ class ScreeningPrimaryRequest extends React.Component{
             backgroundColor: 'white',
             overflowY: 'auto',
             width: '100%',
-            height: '480px',
+            height: '510px',
             position: 'relative'
         };
         return (
