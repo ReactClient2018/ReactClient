@@ -10,8 +10,7 @@ class ScreeningNaturalReview extends React.Component {
     handleSubmit = event => {
     
         var sr = `{"screening_n_request_data": ` + this.fetchScreeningRequestData() + 
-        `,"screening_n_related_person": [` + this.fetchScreeningRelatedPerson() + `]`+
-        `,"screening_n_related_entity": [` + this.fetchScreeningRelatedEntity() + `]` + `}`;
+        `,"screening_n_related_person": [` + this.fetchScreeningRelatedPerson() + `]`+`,"screening_n_related_entity": [` + this.fetchScreeningRelatedEntity() + `]` + `}`;
 
         alert(sr);
         this.props.onSubmitScreening(sr);
@@ -23,15 +22,17 @@ class ScreeningNaturalReview extends React.Component {
 
         var data = "";
         var i;
+        if(screening_n_request_data){
         for (i = 0; i < screening_n_request_data.length; i++) {
             data = data + JSON.stringify(screening_n_request_data[i]);
         }
+    }
 
         return data;
     }
 
     fetchScreeningRelatedPerson() {
-        alert("inside P");
+        // alert("inside P");
         var screening_n_related_person = JSON.parse(localStorage.getItem('screening_n_related_person'));
 
         var data = "";
@@ -63,7 +64,7 @@ class ScreeningNaturalReview extends React.Component {
                 }
             }
         }
-        alert(data);
+        // alert(data);
 
         return data;
     }

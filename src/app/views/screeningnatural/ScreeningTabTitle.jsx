@@ -2,12 +2,6 @@ import React from "react";
 import {Auth, History} from "utils";
 
 class ScreeningTabTitle extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            index:1,
-        }
-    }
     
     handleReset=()=>{
         this.props.handleResetButton();
@@ -26,7 +20,7 @@ class ScreeningTabTitle extends React.Component {
                     </p>
                     <button  style={{marginButtom:'20px'}}
                         class="btn btn-primary pull-right no-print"
-                        id="reset-screening-n-request-form"  type="reset" onClick={this.handleReset}>
+                        id="reset-screening-n-request-form"  type="button" onClick={this.handleReset}>
                         
                         Reset
                     </button>
@@ -41,14 +35,17 @@ export default ScreeningTabTitle;
 
 
 class ScreeningPrimaryTab extends React.Component {
-    handleRelatedPerson(){
+    handleRelatedPerson=()=>{
         History.push("/screeningRelatedPerson");
     }
-    handleRelatedEntity(){
+    handleRelatedEntity=()=>{
         History.push("/screeningRelatedEntity");
     }
-    handleScreeningReview(){
+    handleScreeningReview=()=>{
         History.push("/screeningNaturalReview")
+    }
+    handleScreeningDocuments=()=>{
+        History.push("/screeningDocuments");
     }
     render() {
         return (
@@ -75,7 +72,7 @@ class ScreeningPrimaryTab extends React.Component {
                         <i class="fa fa-plus"></i>
                         Add related entity
                     </button>
-                    <button
+                    <button onClick={this.handleScreeningDocuments}
                         class="btn btn-primary"
                         style={{
                         margin: '10px'

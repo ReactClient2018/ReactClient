@@ -48,14 +48,14 @@ class ScreeningRelatedEntity extends Component {
         var screening_n_related_entity = localStorage.getItem("screening_n_related_entity");
 
         screening_n_related_entity = screening_n_related_entity ? JSON.parse(screening_n_related_entity):[];
-        alert(screening_n_related_entity.length);
+        // alert(screening_n_related_entity.length);
         screening_n_related_entity.push(this.state);
       
         localStorage.setItem("screening_n_related_entity", JSON.stringify(screening_n_related_entity));
         History.push("/screeningNaturalReview");
 
     }
-    handleReset=(id)=>{
+    handleReset=()=>{
         this.setState({
             accounts_l_sub_type: " ",
             kycl_id: " ",
@@ -85,14 +85,14 @@ class ScreeningRelatedEntity extends Component {
         });
     }
     render() {
-        const {
-            handleSubmit,
-            pristine,
-            reset,
-            submitting,
-            classes,
-            relatedEntity
-        } = this.props;
+        // const {
+        //     handleSubmit,
+        //     pristine,
+        //     reset,
+        //     submitting,
+        //     classes,
+        //     relatedEntity
+        // } = this.props;
         return (
             <div>
                 <ScreeningTabTitle handleResetButton={this.handleReset}/>

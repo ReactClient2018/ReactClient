@@ -2,6 +2,7 @@ import DashboardPage from "views/Dashboard/makerDashboard.jsx";
 import ScreeningPrimaryRequestPage from "views/screeningnatural/ScreeningPrimaryRequest.jsx";
 import ScreeningNaturalRequestPage from "views/screeningnatural/ScreeningNaturalRequest.jsx";
 import ScreeningNaturalReviewPage from "views/screeningnatural/ScreeningNaturalReview.jsx";
+import ScreeningDocumentsPage from "views/forms/ScreeningDocuments.jsx";
 import TableList from "views/TableList/TableList.jsx";
 import {Authorization} from "utils";
 import ScreeningRelatedEntityPage from "views/forms/ScreeningRelatedEntity.jsx";
@@ -28,6 +29,7 @@ const userRoutes = [
     { path: "/screeningRelatedEntity",component: ScreeningRelatedEntityPage },
     { path: "/screeningRelatedPerson",component: ScreeningRelatedPersonPage },
     { path: "/screeningNaturalReview",component: ScreeningNaturalReviewPage },
+    { path: "/screeningDocuments",component: ScreeningDocumentsPage },
     { redirect: true, path: "/", to: "/makerDashBoard", navbarName: "Redirect" }
 ];
 

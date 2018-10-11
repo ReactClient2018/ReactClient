@@ -37,12 +37,40 @@ class ScreeningRelatedPerson extends Component {
             [event.target.name]: event.target.value
         });
     };
+    handleReset=()=>{
+        this.setState({
+            purpose_of_screening_n: "",
+            customer_type: "",
+            salutation: "",
+            first_name: "",
+            middle_name: "",
+            last_name: "",
+            lsf_name: "",
+            lsm_name: "",
+            lsl_name: "",
+            sex: "",
+            mobile_number: "",
+            email: "",
+            date_of_birth: "",
+            primary_identification_document_type: "",
+            primary_identification_document_no: "",
+            country_of_issue: "",
+            zone: "",
+            province: "",
+            state: "",
+            district: "",
+            mn_vdc: "",
+            ward_no: "",
+            pan_number: "",
+            notes: ""
+        });
+    }
 
     handleSubmit = event => {
         var screening_n_related_person = localStorage.getItem("screening_n_related_person");
 
         screening_n_related_person = screening_n_related_person ? JSON.parse(screening_n_related_person):[];
-        alert(screening_n_related_person.length);
+        // alert(screening_n_related_person.length);
         screening_n_related_person.push(this.state);
       
         localStorage.setItem("screening_n_related_person", JSON.stringify(screening_n_related_person));
@@ -70,7 +98,7 @@ class ScreeningRelatedPerson extends Component {
         } = this.props;
         return (
             <div style={divStyle}>
-                <ScreeningTabTitle/>
+                <ScreeningTabTitle handleResetButton={this.handleReset}/>
                 <form
                     onSubmit={this
                     .handleSubmit
