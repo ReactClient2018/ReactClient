@@ -68,7 +68,6 @@ class ScreeningRelatedPerson extends Component {
 
     handleSubmit = event => {
         var screening_n_related_person = localStorage.getItem("screening_n_related_person");
-
         screening_n_related_person = screening_n_related_person ? JSON.parse(screening_n_related_person):[];
         // alert(screening_n_related_person.length);
         screening_n_related_person.push(this.state);
@@ -84,7 +83,7 @@ class ScreeningRelatedPerson extends Component {
             backgroundColor: 'white',
             overflowY: 'auto',
             width: '100%',
-            height: '480px',
+            height: '510px',
             position: 'relative'
         };
 
@@ -118,6 +117,7 @@ class ScreeningRelatedPerson extends Component {
                                     name="purpose_of_screening_n"
                                     value={this.state.purpose_of_screening_n}
                                     onChange={this.handleChange}>
+                                    <option>Select purpose.</option>
                                     <option value="Apply for loan">Apply for loan</option>
                                     <option value="Inward Remittance">Inward Remittance</option>
                                     <option value="Money Exchange">Money Exchange</option>
@@ -159,6 +159,7 @@ class ScreeningRelatedPerson extends Component {
                                     name="salutation"
                                     value={this.state.salutation}
                                     onChange={this.handleChange}>
+                                    <option>Select salutation</option>
                                     <option value="Mr.">Mr.</option>
                                     <option value="Mrs.">Mrs.</option>
                                     <option value="Ms.">Ms.</option>
@@ -242,6 +243,7 @@ class ScreeningRelatedPerson extends Component {
                             </label>
                             <div>
                                 <select name="sex" value={this.state.sex} onChange={this.handleChange}>
+                                    <option>Select gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Others">Others</option>
@@ -299,6 +301,7 @@ class ScreeningRelatedPerson extends Component {
                                     name="primary_identification_document_type"
                                     value={this.state.primary_identification_document_type}
                                     onChange={this.handleChange}>
+                                    <option>Choose Document Type.</option>
                                     <option value="Citizenship">Citizenship</option>
                                     <option value="Passport">Passport</option>
                                     <option value="Driving License">Driving License</option>

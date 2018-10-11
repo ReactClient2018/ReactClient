@@ -21,49 +21,49 @@ class ScreeningDocuments extends React.Component {
         })
         console.log(e.target.name);
     };
-    // onFormSubmit(e){
-    //     e.preventDefault() // Stop form submit
-    //     this.fileUpload(this.state.file).then((response)=>{
-    //       console.log(response.data);
-    //     })
-    //   }
+ 
     handleFileChange = (e) => {
+
 
         let file = e.target.files[0];
         e.preventDefault();
+        
         const imgObj = e.target.files[0];
         console.log(imgObj);
         var filename = e.target.files[0].name;
         console.log(imgObj.name);
-        //var fileControl = (this);
         var fileSize = 500;
         if (filename.indexOf('.') < 0) {
             alert("You cannot upload a file without an extension");
-            // value = "";
+
         } else if ((imgObj.size / 1024) > fileSize) {
             alert("The maximum file size permitted is " + fileSize + "KB only.");
-            //value = "";
         } else {
             var ext = filename.split('.').pop();
-            //fileControl.siblings(".extension-text").val(ext);
-            //var file = this.files[0];
             if (imgObj) {
                 var reader = new FileReader();
                 reader.onload = function (readerEvt) {
                     var binaryString = readerEvt.target.result;
                     var b64 = btoa(binaryString);
-                    //fileControl.siblings(".scanned-content").val(b64);
-                    //console.log(b64);
+
+                    console.log(b64);
+
                 }
                 reader.readAsBinaryString(imgObj);
             }
         }
+
         // reader.onloadend = () => {
         //     this.setState({ scanned_content: file });
         // }
         console.log("the image is" + this.state.scanned_content);
 
+ 
     }
+  
+
+
+    
     render() {
 
         return (
