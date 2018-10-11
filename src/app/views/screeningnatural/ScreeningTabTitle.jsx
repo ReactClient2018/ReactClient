@@ -2,6 +2,11 @@ import React from "react";
 import {Auth, History} from "utils";
 
 class ScreeningTabTitle extends React.Component {
+    
+    handleReset=()=>{
+        this.props.handleResetButton();
+    }
+
     render() {
         return (
             <div class="x_title">
@@ -13,12 +18,12 @@ class ScreeningTabTitle extends React.Component {
                         To send screening request, please enter following details, find match, review
                         then click Submit.
                     </p>
-                    <a  style={{marginButtom:'20px'}}
+                    <button  style={{marginButtom:'20px'}}
                         class="btn btn-primary pull-right no-print"
-                        id="reset-screening-n-request-form">
-                        <i class="fa fa-undo" aria-hidden="true" />
+                        id="reset-screening-n-request-form"  type="button" onClick={this.handleReset}>
+                        
                         Reset
-                    </a>
+                    </button>
                 </div>
                
                 <ScreeningPrimaryTab/>
@@ -30,14 +35,17 @@ export default ScreeningTabTitle;
 
 
 class ScreeningPrimaryTab extends React.Component {
-    handleRelatedPerson(){
+    handleRelatedPerson=()=>{
         History.push("/screeningRelatedPerson");
     }
-    handleRelatedEntity(){
+    handleRelatedEntity=()=>{
         History.push("/screeningRelatedEntity");
     }
-    handleScreeningReview(){
+    handleScreeningReview=()=>{
         History.push("/screeningNaturalReview")
+    }
+    handleScreeningDocuments=()=>{
+        History.push("/screeningDocuments");
     }
     render() {
         return (
@@ -64,7 +72,7 @@ class ScreeningPrimaryTab extends React.Component {
                         <i class="fa fa-plus"></i>
                         Add related entity
                     </button>
-                    <button
+                    <button onClick={this.handleScreeningDocuments}
                         class="btn btn-primary"
                         style={{
                         margin: '10px'

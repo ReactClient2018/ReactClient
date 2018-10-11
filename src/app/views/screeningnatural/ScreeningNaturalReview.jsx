@@ -19,9 +19,9 @@ class ScreeningNaturalReview extends React.Component {
     handleSubmit = event => {
 
         var sr = `{"screening_n_request_data": ` + this.fetchScreeningRequestData() + 
+
         `,"screening_n_related_person": [` + this.fetchScreeningRelatedPerson() + `]` + 
         `,"screening_n_related_entity": [` + this.fetchScreeningRelatedEntity() + `]` + `}`;
-
         alert(sr);
         this
             .props
@@ -33,10 +33,14 @@ class ScreeningNaturalReview extends React.Component {
         var screening_n_request_data = JSON.parse(localStorage.getItem('screening_n_request_data'));
 
         var data = "";
+
        
         for (var i = 0; i < screening_n_request_data.length; i++) {
             data += JSON.stringify(screening_n_request_data[i]);
+
+    
         }
+   
 
         return data;
     }

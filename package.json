@@ -6,6 +6,11 @@
   "scripts": {
     "start": "webpack-dev-server"
   },
+  
+  "engines": {
+    "npm": "5.7.1",
+    "node": "9.5.0"
+  },
   "dependencies": {
     "@livechat/ui-kit": "^0.1.0",
     "antd": "^3.10.0",
