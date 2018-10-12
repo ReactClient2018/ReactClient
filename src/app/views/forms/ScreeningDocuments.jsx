@@ -9,7 +9,7 @@ class ScreeningDocuments extends React.Component {
         super(props);
         this.state = {
             scanned_document_type: "",
-            scanned_content: {},
+            scanned_content: "",
             extension_text: "",
             notes: "",
             action_id: ""
@@ -21,9 +21,13 @@ class ScreeningDocuments extends React.Component {
         })
         console.log(e.target.name);
     };
+    handleProceed = () =>{
+        alert(JSON.stringify(this.state));
+    }
+    
  
     handleFileChange = (e) => {
-        
+        const scanned_content = {};
         const imgObj = e.target.files[0];
         console.log(imgObj);
         var filename = e.target.files[0].name;
@@ -40,7 +44,8 @@ class ScreeningDocuments extends React.Component {
                 reader.onload = function (readerEvt) {
                     var binaryString = readerEvt.target.result;
                     var b64 = btoa(binaryString);
-                    console.log(b64);
+                    this.setState({scanned_content:b64});
+;                    console.log(b64);
                 }
                 reader.readAsBinaryString(imgObj);
             }
@@ -67,6 +72,7 @@ class ScreeningDocuments extends React.Component {
                                     name="attachment-type"
                                     value={this.state.scanned_document_type}
                                     onChange={this.handleChange}>
+                                    <option>Select action type.</option>
                                     <option value='citizenship'>citizenship</option>
                                     <option value='passport'>passport</option>
                                     <option value='others'>others</option>
@@ -77,7 +83,7 @@ class ScreeningDocuments extends React.Component {
                         <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
                             <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>Attachment</label>
                             <div class="col-md-8 col-sm-8 col-xs-8">
-                                <input name='file' type='file' onChange={this.handleFileChange} value='' ></input>
+                                <input name='file' type='file' onChange={this.handleFileChange}></input>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
@@ -91,7 +97,7 @@ class ScreeningDocuments extends React.Component {
                             <button>Remove Attachment</button> */}
                         </div>
                         <div>
-                            <button>Proceed</button>
+                            <button onClick={this.handleProceed}>Proceed</button>
                         </div>
 
 
