@@ -29,7 +29,7 @@ class ScreeningRelatedEntity extends Component {
             has_kyc: false,
             has_cust_id: true,
             branch_sol_id: "13244",
-            date_of_establishment_bs: null,
+            date_of_establishment_bs: '2018-05-02',
             repair_screening_l_request_id: 232,
             
 
@@ -272,7 +272,7 @@ class ScreeningRelatedEntity extends Component {
                                         className="form-control col-sm-8 col-md-8 col-xs-8 track-changes"
                                         id="related-np-date-of-establishment0x"
                                         name="date_of_establishment_bs"
-                                        placeholder="Date of Establishment (BS)"
+                                        placeholder="YYYY-MM-DD(eg. 2072-05-02)"
                                         type="text"
                                         onChange={this.handleChange}
                                         value={this.state.date_of_establishment_bs}/>

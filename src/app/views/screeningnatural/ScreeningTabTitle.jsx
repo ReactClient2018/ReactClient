@@ -9,7 +9,7 @@ class ScreeningTabTitle extends React.Component {
 
     render() {
         return (
-            <div class="x_title">
+            <div className="x_title">
                 <div styles={{
                     width: "20px"
                 }}>
@@ -19,7 +19,7 @@ class ScreeningTabTitle extends React.Component {
                         then click Submit.
                     </p>
                     <button  style={{marginButtom:'20px'}}
-                        class="btn btn-primary pull-right no-print"
+                        className="btn btn-primary pull-right no-print"
                         id="reset-screening-n-request-form"  type="button" onClick={this.handleReset}>
                         
                         Reset
@@ -50,54 +50,54 @@ class ScreeningPrimaryTab extends React.Component {
     render() {
         return (
             <div>
-                <div class="x_content">
+                <div className="x_content">
 
                     <button onClick={this.handleRelatedPerson}
                         type='button'
-                        class="btn btn-primary"
+                        className="btn btn-primary"
                         style={{
                         margin: '10px'
                     }}
                         id="screening-l-add-related-person">
-                        <i class="fa fa-plus"></i>
+                        <i className="fa fa-plus"></i>
                         Add related person
                     </button>
                     <button onClick={this.handleRelatedEntity}
                         type='button'
-                        class="btn btn-primary"
+                        className="btn btn-primary"
                         style={{
                         margin: '10px'
                     }}
                         id="screening-l-add-related-entity">
-                        <i class="fa fa-plus"></i>
+                        <i className="fa fa-plus"></i>
                         Add related entity
                     </button>
                     <button onClick={this.handleScreeningDocuments}
-                        class="btn btn-primary"
+                        className="btn btn-primary"
                         style={{
                         margin: '10px'
                     }}
                         id="screening-l-add-related-entity">
-                        <i class="fa fa-plus"></i>
+                        <i className="fa fa-plus"></i>
                         Add Documents</button>
                         
                     <button onClick={this.handleScreeningReview}
-                        class="btn btn-primary pull-left no-print"
+                        className="btn btn-primary pull-left no-print"
                         style={{
                         margin: '10px'
                     }}
                         id="screening-n-review-btn">
-                        <i class="fa fa-file-text  "></i>
+                        <i className="fa fa-file-text  "></i>
                         Review screening request</button>
                 </div>
 
-              {/* <div class="x_content">
-                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+              {/* <div className="x_content">
+                <div className="" role="tabpanel" data-example-id="togglable-tabs">
                     <ul
                         id="screeningnTabs"
-                        class="col-md-2  nav nav-tabs tabs-left no-print"
+                        className="col-md-2  nav nav-tabs tabs-left no-print"
                         role="tablist">
-                        <li role="presentation" class="">
+                        <li role="presentation" className="">
                             <a
                                 href="#screening-n-request-review-content"
                                 role="tab"
@@ -106,7 +106,7 @@ class ScreeningPrimaryTab extends React.Component {
                                 aria-expanded="false"
                                 style={{display: "none"}}>Review</a>
                         </li>
-                        <li role="presentation" class="">
+                        <li role="presentation" className="">
                             <a
                                 href="#screening-request-content"
                                 id="screening-request-tab"
@@ -114,7 +114,7 @@ class ScreeningPrimaryTab extends React.Component {
                                 data-toggle="tab"
                                 aria-expanded="true">Primary customer</a>
                         </li>
-                        <li role="presentation" class="">
+                        <li role="presentation" className="">
                             <a
                                 href="#screening-request-attachments"
                                 id="screening-attachments-tab"

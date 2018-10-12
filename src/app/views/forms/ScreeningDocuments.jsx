@@ -1,8 +1,8 @@
 import React from "react";
 import ScreeningPrimaryRequest from "../screeningnatural/ScreeningTabTitle.jsx";
 import ScreeningTabTitle from '../screeningnatural/ScreeningTabTitle.jsx';
+import {History} from 'utils';
 // import './css/screeningDocuments.css';
-
 
 class ScreeningDocuments extends React.Component {
     constructor(props) {
@@ -19,15 +19,21 @@ class ScreeningDocuments extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-        console.log(e.target.name);
     };
-    handleProceed = () =>{
+    handleProceed = () => {
         alert(JSON.stringify(this.state));
+        var screening_n_attachment = localStorage.getItem("screening_n_attachment");
+        screening_n_attachment = screening_n_attachment ? JSON.parse(screening_n_attachment):[];
+        // alert(screening_n_related_person.length);
+        screening_n_attachment.push(this.state);
+      
+        localStorage.setItem("screening_n_attachment", JSON.stringify(screening_n_attachment));
+        History.push("/screeningNaturalReview")
     }
-    
- 
+
     handleFileChange = (e) => {
-        const scanned_content = {};
+        let file = e.target.files[0];
+        e.preventDefault();
         const imgObj = e.target.files[0];
         console.log(imgObj);
         var filename = e.target.files[0].name;
@@ -35,38 +41,44 @@ class ScreeningDocuments extends React.Component {
         var fileSize = 500;
         if (filename.indexOf('.') < 0) {
             alert("You cannot upload a file without an extension");
+
         } else if ((imgObj.size / 1024) > fileSize) {
             alert("The maximum file size permitted is " + fileSize + "KB only.");
         } else {
-            var ext = filename.split('.').pop();
+            var ext = filename
+                .split('.')
+                .pop();
             if (imgObj) {
                 var reader = new FileReader();
-                reader.onload = function (readerEvt) {
+                reader.onload = (readerEvt) => {
                     var binaryString = readerEvt.target.result;
                     var b64 = btoa(binaryString);
-                    this.setState({scanned_content:b64});
-;                    console.log(b64);
+
+                    this.setState({scanned_content: b64});
+                    // console.log(this.state.scanned_content);
+
                 }
                 reader.readAsBinaryString(imgObj);
             }
         }
- 
+
     }
-  
 
     render() {
 
         return (
             <div>
-                <ScreeningTabTitle />
+                <ScreeningTabTitle/>
 
-                <div style={{ backgroundColor: 'white' }}>
+                <div style={{
+                    backgroundColor: 'white'
+                }}>
                     <form>
 
                         <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
                             <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                                 Attachment Type:
-                        </label>
+                            </label>
                             <div class="col-md-8 col-sm-8 col-xs-8">
                                 <select
                                     name="attachment-type"
@@ -89,7 +101,11 @@ class ScreeningDocuments extends React.Component {
                         <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
                             <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>notes</label>
                             <div class="col-md-8 col-sm-8 col-xs-8">
-                                <textarea name="notes" required onChange={this.handleChange} value={this.state.notes}></textarea>
+                                <textarea
+                                    name="notes"
+                                    required
+                                    onChange={this.handleChange}
+                                    value={this.state.notes}></textarea>
                             </div>
                         </div>
                         <div>
@@ -100,7 +116,6 @@ class ScreeningDocuments extends React.Component {
                             <button onClick={this.handleProceed}>Proceed</button>
                         </div>
 
-
                     </form>
                 </div>
             </div>
@@ -108,4 +123,3 @@ class ScreeningDocuments extends React.Component {
     }
 }
 export default ScreeningDocuments;
-

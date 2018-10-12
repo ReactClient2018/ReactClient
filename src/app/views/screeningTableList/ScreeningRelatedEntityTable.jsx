@@ -1,4 +1,5 @@
 import React from 'react';
+import {History} from "utils";
 
 var createReactClass = require('create-react-class');
 var Templates = createReactClass({
@@ -16,7 +17,9 @@ var Templates = createReactClass({
                             <div
                                 class="btn btn-primary no-print edit-buttons"
                                 data-edit="screening-request-tab"
-                                onclick="editButtonsClick(this)">Edit</div>
+                                onClick={()=>{
+                                    History.push("/screeningRelatedEntity");
+                                }}>Edit</div>
 
                             <div
                                 class="btn btn-danger pull-right clear-active"

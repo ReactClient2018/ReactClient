@@ -6,96 +6,6 @@ import {connect} from "react-redux";
 import { reduxForm, Field } from 'redux-form';
 import {ConnectedCreateUserForm} from "../forms/UserForm";
 
-// let SignInForm = props => {
-    
-//     const { handleSubmit } = props;
-//   return <form onSubmit={handleSubmit} className="form">
-//       <div className="field">
-//         <div className="control">
-//           <label className="label">First Name</label>
-//           <Field className="input" name="firstName" component="input" type="text" placeholder="First Name"/>
-//         </div>
-//       </div>
-  
-//       <div className="field">
-//         <div className="control">
-//           <label className="label">Last Name</label>
-//           <Field className="input" name="lastName" component="input" type="text" placeholder="Last Name"/>
-//         </div>
-//       </div>
-  
-//       <div className="field">
-//         <div className="control">
-//           <label className="label">Email</label>
-//           <Field className="input" name="email" component="input" type="email" placeholder="Email Address"/>
-//         </div>
-//       </div>
-  
-//       <div className="field">
-//         <div className="control">
-//           <label className="label">Proficiency</label>
-//           <div className="select">
-//             <Field className="input" name="proficiency" component="select">
-//               <option />
-//               <option value="beginner">Beginner Dev</option>
-//               <option value="intermediate">Intermediate Dev</option>
-//               <option value="expert">Expert Dev</option>
-//             </Field>
-//           </div>
-//         </div>
-//       </div>
-  
-//       <div className="field">
-//         <div className="control">
-//           <label className="label">Age</label>
-//           <Field className="input" name="age" component="input" type="number" placeholder="Age"/>
-//         </div>
-//       </div>
-  
-//       <div className="field">
-//         <div className="control">
-//           <label className="label">Gender</label>
-//           <label className="radio">
-//             <Field name="gender" component="input" type="radio" value="male" />
-//             {' '}
-//             Male
-//           </label>
-//           <label className="radio">
-//             <Field name="gender" component="input" type="radio" value="female" />
-//             {' '}
-//             Female
-//           </label>
-//         </div>
-//       </div>
-  
-//       <div className="field">
-//         <div className="control">
-//           <label className="checkbox">
-//             <Field name="saveDetails" id="saveDetails" component="input" type="checkbox"/>
-//             Save Details
-//           </label>
-//         </div>
-//       </div>
-  
-//       <div className="field">
-//         <div className="control">
-//           <label className="label">Message</label>
-//           <Field className="textarea" name="message" component="textarea" />
-//         </div>
-//       </div>
-  
-//       <div className="field">
-//         <div className="control">
-//           <button className="button is-link">Submit</button>
-//         </div>
-//       </div>
-  
-//     </form>;
-//   };
-
-//   SignInForm = reduxForm({
-//     form: 'signIn',
-//   })(SignInForm);
 
 class ScreeningNaturalForm extends React.Component {
     
@@ -182,11 +92,11 @@ class ScreeningNaturalForm extends React.Component {
                     style={{
                     padding: '5px'
                 }}>
-                    <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Purpose of Screening:
                         </label>
-                        <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div className="col-md-8 col-sm-8 col-xs-8">
                             <select
                                 name="purpose_of_screening_n"
                                 value={this.state.purpose_of_screening_n}
@@ -202,8 +112,8 @@ class ScreeningNaturalForm extends React.Component {
                         </div>
                     </div>
 
-                    <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-md-4 col-xs-4" style={this.blackColor}>
+                    <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-md-4 col-xs-4" style={this.blackColor}>
                             Customer type
                         </label>
                         <input
@@ -216,15 +126,15 @@ class ScreeningNaturalForm extends React.Component {
                 </div>
                 <hr/>
 
-                <div class="clearfix"/>
+                <div className="clearfix"/>
                 <div
                     className="row"
                     style={{
                     padding: '5px'
                 }}>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
                         <label
-                            class="control-label col-md-4 col-sm-4 col-xs-4 "
+                            className="control-label col-md-4 col-sm-4 col-xs-4 "
                             style={this.blackColor}>
                             Salutation
                         </label>
@@ -243,9 +153,9 @@ class ScreeningNaturalForm extends React.Component {
                             </select>
                         </div>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             First name
                         </label>
                         <input
@@ -254,9 +164,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.first_name}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Middle name
                         </label>
                         <input
@@ -265,9 +175,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.middle_name}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Last name
                         </label>
                         <input
@@ -276,9 +186,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.last_name}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             नाम
                         </label>
                         <input
@@ -287,9 +197,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.lsf_name}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             बीचकाे &nbsp; नाम
                         </label>
                         <input
@@ -299,9 +209,9 @@ class ScreeningNaturalForm extends React.Component {
                             onChange={this.handleChange}/>
                     </div>
 
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             थर
                         </label>
                         <input
@@ -310,9 +220,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.lsl_name}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Gender
                         </label>
                         <div>
@@ -324,9 +234,9 @@ class ScreeningNaturalForm extends React.Component {
                             </select>
                         </div>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Mobile no.
                         </label>
                         <input
@@ -335,10 +245,10 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.mobile_number}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
+                    <div className="clearfix"/>
 
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Email ID
                         </label>
                         <input
@@ -347,9 +257,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.email}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Date of birth:
                         </label>
                         <input
@@ -360,14 +270,14 @@ class ScreeningNaturalForm extends React.Component {
                     </div>
                 </div>
                 <hr/>
-                <div class="clearfix"/>
+                <div className="clearfix"/>
                 <div
                     className="row"
                     style={{
                     padding: '5px'
                 }}>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Primary identification document type:
                         </label>
                         <div>
@@ -384,9 +294,9 @@ class ScreeningNaturalForm extends React.Component {
                             </select>
                         </div>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Primary identification document no:
                         </label>
                         <input
@@ -395,9 +305,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.primary_identification_document_no}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Country of Issue:
                         </label>
                         <input
@@ -406,9 +316,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.country_of_issue}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Province:
                         </label>
                         <input
@@ -417,9 +327,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.province}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Zone:
                         </label>
                         <input
@@ -428,9 +338,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.zone}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             District:
                         </label>
                         <input
@@ -439,9 +349,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.district}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             MN/VDC/City:
                         </label>
                         <input
@@ -451,9 +361,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.mn_vdc}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Ward no:
                         </label>
                         <input
@@ -462,9 +372,9 @@ class ScreeningNaturalForm extends React.Component {
                             value={this.state.ward_no}
                             onChange={this.handleChange}/>
                     </div>
-                    <div class="clearfix"/>
-                    <div class="col-md-6 col-sm-6 col-xs-12 item form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                    <div className="clearfix"/>
+                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                        <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                             Pan no:
                         </label>
                         <input
@@ -476,12 +386,12 @@ class ScreeningNaturalForm extends React.Component {
                 </div>
                 <hr/>
 
-                <div class="clearfix"/>
+                <div className="clearfix"/>
                 <div className="col-md-12 col-sm-12 col-xs-12 item form-group">
-                    <label class="control-label col-md-2 col-sm-2 col-xs-2" style={this.blackColor}>Notes</label>
-                    <div class="col-md-10 col-sm-10 col-xs-10">
+                    <label className="control-label col-md-2 col-sm-2 col-xs-2" style={this.blackColor}>Notes</label>
+                    <div className="col-md-10 col-sm-10 col-xs-10">
                         <textarea
-                            class="form-control col-sm-10 col-md-10 col-xs-10 entity-track-changes0x"
+                            className="form-control col-sm-10 col-md-10 col-xs-10 entity-track-changes0x"
                             id="related-entity-notes0x"
                             name="notes"
                             placeholder="General comments"
@@ -491,17 +401,17 @@ class ScreeningNaturalForm extends React.Component {
                     </div>
                 </div>
                 <div className="col-md-12 col-sm-12 col-xs-12 item form-group">
-                    <div class="col-md-2 col-sm-2 col-xs-2 item form-group">
-                        <label class="control-label" style={this.blackColor}>Match level<span >*</span>
+                    <div className="col-md-2 col-sm-2 col-xs-2 item form-group">
+                        <label className="control-label" style={this.blackColor}>Match level<span >*</span>
                         </label>
                     </div>
                     
                 </div>
 
-                <div class="clearfix"></div>
+                <div className="clearfix"></div>
                 <hr/>
 
-                <button class="btn btn-primary" type="submit" color="primary">
+                <button className="btn btn-primary" type="submit" color="primary">
                     Proceed.
                 </button>
             </form>
