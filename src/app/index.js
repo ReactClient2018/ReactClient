@@ -10,28 +10,28 @@ import store from "./store/multStore";
 import { createStore, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 
 import './assets/css/material-dashboard-react.css';
-import  {History}  from "utils";
+import { History } from "utils";
 import indexRoutes from './routes/index.jsx';
 
 const rootReducer = combineReducers({
     form: formReducer,
-  });
-
+});
+console.log(store.getState());
 ReactDOM.render(
 
-        <Provider store={store}>
-    <Router history={History}>
-        <Switch>
-            {
-                indexRoutes.map((prop,key) => {
-                    return (
-                        <Route path={prop.path} component={prop.component}  key={key}/>
-                    );
-                })
-            }
-        </Switch>
-    </Router></Provider>
+    <Provider store={store}>
+        <Router history={History}>
+            <Switch>
+                {
+                    indexRoutes.map((prop, key) => {
+                        return (
+                            <Route path={prop.path} component={prop.component} key={key} />
+                        );
+                    })
+                }
+            </Switch>
+        </Router></Provider>
     , document.getElementById('root'));

@@ -9,17 +9,20 @@ class ScreeningDocuments extends React.Component {
         super(props);
         this.state = {
             scanned_document_type: "",
-            //scanned_content: "",
-            //extension_text: "",
+            scanned_content: "",
+            extension_text: "",
             notes: "",
            // action_id: ""
         }
+    }
+    handleProceed =()=>{
+        alert(JSON.stringify(this.state));
     }
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
-        console.log(e.target.name);
+        //console.log(e.target.name);
     };
  
     handleFileChange = (e) => {
@@ -27,7 +30,9 @@ class ScreeningDocuments extends React.Component {
 
         let file = e.target.files[0];
         e.preventDefault();
-        
+    //    this.setState({scanned_content:e.target.files[0]});
+        //alert(JSON.stringify(this.state.scanned_content));
+       // console.log(JSON.stringify(this.state.scanned_content));
         const imgObj = e.target.files[0];
         console.log(imgObj);
         var filename = e.target.files[0].name;
@@ -42,11 +47,12 @@ class ScreeningDocuments extends React.Component {
             var ext = filename.split('.').pop();
             if (imgObj) {
                 var reader = new FileReader();
-                reader.onload = function (readerEvt) {
+                reader.onload = (readerEvt)=> {
                     var binaryString = readerEvt.target.result;
                     var b64 = btoa(binaryString);
-
-                    console.log(b64);
+                  this.setState({scanned_content:b64});
+                    console.log(this.state.scanned_content);
+                    //console.log(b64);
 
                 }
                 reader.readAsBinaryString(imgObj);
@@ -106,7 +112,7 @@ class ScreeningDocuments extends React.Component {
                             <button>Remove Attachment</button> */}
                         </div>
                         <div>
-                            <button>Proceed</button>
+                            <button onClick={this.handleProceed}>Proceed</button>
                         </div>
 
 
