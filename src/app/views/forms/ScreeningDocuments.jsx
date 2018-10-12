@@ -79,11 +79,11 @@ class ScreeningDocuments extends React.Component {
                 <div style={{ backgroundColor: 'white' }}>
                     <form>
 
-                        <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
-                            <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                        <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
+                            <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                                 Attachment Type:
                         </label>
-                            <div class="col-md-8 col-sm-8 col-xs-8">
+                            <div className="col-md-8 col-sm-8 col-xs-8">
                                 <select
                                     name="attachment-type"
                                     value={this.state.scanned_document_type}
@@ -95,15 +95,15 @@ class ScreeningDocuments extends React.Component {
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
-                            <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>Attachment</label>
-                            <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
+                            <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>Attachment</label>
+                            <div className="col-md-8 col-sm-8 col-xs-8">
                                 <input name='file' type='file' onChange={this.handleFileChange}></input>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
-                            <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>notes</label>
-                            <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
+                            <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>notes</label>
+                            <div className="col-md-8 col-sm-8 col-xs-8">
                                 <textarea name="notes" required onChange={this.handleChange} value={this.state.notes}></textarea>
                             </div>
                         </div>

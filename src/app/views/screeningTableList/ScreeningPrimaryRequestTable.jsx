@@ -11,65 +11,65 @@ class ScreeningPrimaryRequestTable extends React.Component {
         return (
             <div>
                 <div id="screening-n-request-review-wrap">
-                    <div class="clearfix"></div>
-                    <div class="col-md-6">
+                    <div className="clearfix"></div>
+                    <div className="col-md-6">
                         <h3>Primary Customer</h3>
                     </div>
-                    <div class="col-md-6 pull-right text-right">
+                    <div className="col-md-6 pull-right text-right">
                         <div
-                            class="btn btn-primary no-print edit-buttons"
+                            className="btn btn-primary no-print edit-buttons"
                             data-edit="screening-request-tab"
                             onClick={()=>{
-                                History.push("/screeningRelatedPerson");
+                                History.push("/screeningPrimaryRequestEdit");
                             }}>Edit</div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="col-xs-12 hover-group review-group">
-                        <label class="control-label col-xs-4 review-key">PURPOSE OF SCREENING N
+                    <div className="clearfix"></div>
+                    <div className="col-xs-12 hover-group review-group">
+                        <label className="control-label col-xs-4 review-key">PURPOSE OF SCREENING N
                         </label>
-                        <div class="col-xs-8 review-value">
-                            <label class="">{data[0].purpose_of_screening_n}</label>
+                        <div className="col-xs-8 review-value">
+                            <label className="">{data[0].purpose_of_screening_n}</label>
                         </div>
                     </div>
-                    <div class="col-xs-12 hover-group review-group">
-                        <label class="control-label col-xs-4 review-key">ACCOUNTS N SUB TYPE
+                    <div className="col-xs-12 hover-group review-group">
+                        <label className="control-label col-xs-4 review-key">ACCOUNTS N SUB TYPE
                         </label>
-                        <div class="col-xs-8 review-value">
-                            <label class="">Primary account holder</label>
+                        <div className="col-xs-8 review-value">
+                            <label className="">Primary account holder</label>
                         </div>
                     </div>
-                    <div class="col-xs-12 hover-group review-group">
-                        <label class="control-label col-xs-4 review-key">MIGRATED
+                    <div className="col-xs-12 hover-group review-group">
+                        <label className="control-label col-xs-4 review-key">MIGRATED
                         </label>
-                        <div class="col-xs-8 review-value">
-                            <label class="">false</label>
+                        <div className="col-xs-8 review-value">
+                            <label className="">false</label>
                         </div>
                     </div>
-                    <div class="col-xs-12 hover-group review-group">
-                        <label class="control-label col-xs-4 review-key">FIRST NAME
+                    <div className="col-xs-12 hover-group review-group">
+                        <label className="control-label col-xs-4 review-key">FIRST NAME
                         </label>
-                        <div class="col-xs-8 review-value">
-                            <label class="">{data[0].first_name}</label>
+                        <div className="col-xs-8 review-value">
+                            <label className="">{data[0].first_name}</label>
                         </div>
                     </div>
-                    <div class="col-xs-12 hover-group review-group">
-                        <label class="control-label col-xs-4 review-key">LAST NAME
+                    <div className="col-xs-12 hover-group review-group">
+                        <label className="control-label col-xs-4 review-key">LAST NAME
                         </label>
-                        <div class="col-xs-8 review-value">
-                            <label class="">{data[0].last_name}</label>
+                        <div className="col-xs-8 review-value">
+                            <label className="">{data[0].last_name}</label>
                         </div>
                     </div>
-                    <div class="col-xs-12 hover-group review-group">
-                        <label class="control-label col-xs-4 review-key">COUNTRY OF ISSUE
+                    <div className="col-xs-12 hover-group review-group">
+                        <label className="control-label col-xs-4 review-key">COUNTRY OF ISSUE
                         </label>
-                        <div class="col-xs-8 review-value">
-                            <label class="">Nepal</label>
+                        <div className="col-xs-8 review-value">
+                            <label className="">Nepal</label>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
-                    {/* <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div className="clearfix"></div>
+                    {/* <div className="col-md-12 col-sm-12 col-xs-12">
                         <h4>
-                            <div class="alert alert-danger" role="alert">No Nominee has been assigned.</div>
+                            <div className="alert alert-danger" role="alert">No Nominee has been assigned.</div>
                         </h4>
                     </div> */}
                 </div>

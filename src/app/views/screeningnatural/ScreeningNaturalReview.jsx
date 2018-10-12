@@ -103,7 +103,7 @@ class ScreeningNaturalReview extends React.Component {
                 <ScreeningRelatedEntityTable />
                 <button
                     onClick={this.handleSubmit}
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     type="submit"
                     color="primary">
                     Submit.

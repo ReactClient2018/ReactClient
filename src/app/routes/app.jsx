@@ -7,7 +7,7 @@ import TableList from "views/TableList/TableList.jsx";
 import {Authorization} from "utils";
 import ScreeningRelatedEntityPage from "views/forms/ScreeningRelatedEntity.jsx";
 import ScreeningRelatedPersonPage from "views/forms/ScreeningRelatedPerson.jsx";
-
+import ScreeningPrimaryRequestEditPage from "views/screeningEditList/ScreeningPrimaryRequestEdit.jsx";
 
 import {
     Dashboard, Person, ContentPaste
@@ -30,6 +30,7 @@ const userRoutes = [
     { path: "/screeningRelatedPerson",component: ScreeningRelatedPersonPage },
     { path: "/screeningNaturalReview",component: ScreeningNaturalReviewPage },
     { path: "/screeningDocuments",component: ScreeningDocumentsPage },
+    { path: "/screeningPrimaryRequestEdit",component: ScreeningPrimaryRequestEditPage },
     { redirect: true, path: "/", to: "/makerDashBoard", navbarName: "Redirect" }
 ];
 
