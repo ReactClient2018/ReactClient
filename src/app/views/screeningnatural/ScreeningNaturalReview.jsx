@@ -17,40 +17,45 @@ class ScreeningNaturalReview extends React.Component {
 
 
     handleSubmit = event => {
-
         var sr = `{"screening_n_request_data": ` + this.fetchScreeningRequestData() +
-
             `,"screening_n_related_person": [` + this.fetchScreeningRelatedPerson() + `]` +
-            `,"screening_n_related_entity": [` + this.fetchScreeningRelatedEntity() + `]` + `}`;
+            `,"screening_n_related_entity": [` + this.fetchScreeningRelatedEntity() + `]` + 
+            `,"screening_n_attachment": [` + this.fetchScreeningDocument() + `]`+
+            `}`;
         alert(sr);
         this
             .props
             .onSubmitScreening(sr);
 
     };
+    fetchScreeningDocument(){
+        var screening_n_attachment = JSON.parse(localStorage.getItem('screening_n_attachment'));
+        var data = "";
+        if (screening_n_attachment) {
+            for (var i = screening_n_attachment.length; i > 0; i--) {
+                if (i != 1) {
+                    data += JSON.stringify(screening_n_attachment[i - 1]) + ",";
+                } else {
+                    data += JSON.stringify(screening_n_attachment[i - 1]);
+                }
+            }
+        }
+        return data;
+    }
 
     fetchScreeningRequestData() {
         var screening_n_request_data = JSON.parse(localStorage.getItem('screening_n_request_data'));
-
         var data = "";
-
-
         for (var i = 0; i < screening_n_request_data.length; i++) {
             data += JSON.stringify(screening_n_request_data[i]);
-
-
         }
-
-
         return data;
     }
 
     fetchScreeningRelatedPerson() {
         // alert("inside P");
         var screening_n_related_person = JSON.parse(localStorage.getItem('screening_n_related_person'));
-
         var data = "";
-
         if (screening_n_related_person) {
             for (var i = screening_n_related_person.length; i > 0; i--) {
                 if (i != 1) {
@@ -60,15 +65,12 @@ class ScreeningNaturalReview extends React.Component {
                 }
             }
         }
-
         return data;
     }
     fetchScreeningRelatedEntity() {
         // alert("inside");
         var screening_n_related_entity = JSON.parse(localStorage.getItem('screening_n_related_entity'));
-        // alert(JSON.stringify(screening_n_related_entity[0]));
         var data = "";
-
         if (screening_n_related_entity) {
             for (var i = screening_n_related_entity.length; i > 0; i--) {
                 if (i != 1) {
@@ -78,8 +80,6 @@ class ScreeningNaturalReview extends React.Component {
                 }
             }
         }
-        // alert(data);
-
         return data;
     }
     render() {

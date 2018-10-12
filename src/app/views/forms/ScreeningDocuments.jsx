@@ -1,8 +1,8 @@
 import React from "react";
 import ScreeningPrimaryRequest from "../screeningnatural/ScreeningTabTitle.jsx";
 import ScreeningTabTitle from '../screeningnatural/ScreeningTabTitle.jsx';
+import { History } from 'utils';
 // import './css/screeningDocuments.css';
-
 
 class ScreeningDocuments extends React.Component {
     constructor(props) {
@@ -12,27 +12,28 @@ class ScreeningDocuments extends React.Component {
             scanned_content: "",
             extension_text: "",
             notes: "",
-           // action_id: ""
+            action_id: ""
         }
-    }
-    handleProceed =()=>{
-        alert(JSON.stringify(this.state));
     }
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
-        //console.log(e.target.name);
     };
- 
+    handleProceed = () => {
+        alert(JSON.stringify(this.state));
+        var screening_n_attachment = localStorage.getItem("screening_n_attachment");
+        screening_n_attachment = screening_n_attachment ? JSON.parse(screening_n_attachment) : [];
+        // alert(screening_n_related_person.length);
+        screening_n_attachment.push(this.state);
+
+        localStorage.setItem("screening_n_attachment", JSON.stringify(screening_n_attachment));
+        History.push("/screeningNaturalReview")
+    }
+
     handleFileChange = (e) => {
-
-
         let file = e.target.files[0];
         e.preventDefault();
-    //    this.setState({scanned_content:e.target.files[0]});
-        //alert(JSON.stringify(this.state.scanned_content));
-       // console.log(JSON.stringify(this.state.scanned_content));
         const imgObj = e.target.files[0];
         console.log(imgObj);
         var filename = e.target.files[0].name;
@@ -44,83 +45,88 @@ class ScreeningDocuments extends React.Component {
         } else if ((imgObj.size / 1024) > fileSize) {
             alert("The maximum file size permitted is " + fileSize + "KB only.");
         } else {
-            var ext = filename.split('.').pop();
+            var ext = filename
+                .split('.')
+                .pop();
             if (imgObj) {
                 var reader = new FileReader();
-                reader.onload = (readerEvt)=> {
+                reader.onload = (readerEvt) => {
                     var binaryString = readerEvt.target.result;
                     var b64 = btoa(binaryString);
-                  this.setState({scanned_content:b64});
-                    console.log(this.state.scanned_content);
-                    //console.log(b64);
+
+                    this.setState({ scanned_content: b64 });
+                    // console.log(this.state.scanned_content);
 
                 }
                 reader.readAsBinaryString(imgObj);
             }
         }
 
-        // reader.onloadend = () => {
-        //     this.setState({ scanned_content: file });
-        // }
-      //  console.log("the image is" + this.state.scanned_content);
-
- 
     }
-  
 
-
-    
     render() {
 
         return (
             <div>
                 <ScreeningTabTitle />
 
-                <div style={{ backgroundColor: 'white' }}>
+                <div style={{
+                    backgroundColor: 'white'
+                }}>
                     <form>
 
                         <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
                             <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
                                 Attachment Type:
+
                         </label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <select
-                                    name="attachment-type"
-                                    value={this.state.scanned_document_type}
-                                    onChange={this.handleChange}>
-                                    <option value='citizenship'>citizenship</option>
-                                    <option value='passport'>passport</option>
-                                    <option value='others'>others</option>
-                                </select>
-                            </div>
-                        </div>
+                           
 
-                        <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
-                            <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>Attachment</label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <input name='file' type='file' onChange={this.handleFileChange}></input>
+
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+
+                                    <select
+                                        name="attachment-type"
+                                        value={this.state.scanned_document_type}
+                                        onChange={this.handleChange}>
+                                        <option>Select action type.</option>
+                                        <option value='citizenship'>citizenship</option>
+                                        <option value='passport'>passport</option>
+                                        <option value='others'>others</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
-                            <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>notes</label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <textarea name="notes" required onChange={this.handleChange} value={this.state.notes}></textarea>
+
+                            <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
+                                <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>Attachment</label>
+                                <div className="col-md-8 col-sm-8 col-xs-8">
+                                    <input name='file' type='file' onChange={this.handleFileChange}></input>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            {/* <button>Add Attachment</button>
+
+                            <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>notes</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <textarea
+                                        name="notes"
+                                        required
+                                        onChange={this.handleChange}
+                                        value={this.state.notes}></textarea>
+
+                                </div>
+                            </div>
+                            <div>
+                                {/* <button>Add Attachment</button>
                             <button>Remove Attachment</button> */}
-                        </div>
-                        <div>
-                            <button onClick={this.handleProceed}>Proceed</button>
-                        </div>
-
+                            </div>
+                            <div>
+                                <button onClick={this.handleProceed}>Proceed</button>
+                            </div>
 
                     </form>
                 </div>
-            </div>
-        );
-    }
-}
-export default ScreeningDocuments;
-
+                </div>
+                );
+            }
+        }
+        export default ScreeningDocuments;
