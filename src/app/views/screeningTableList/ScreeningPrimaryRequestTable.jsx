@@ -1,9 +1,11 @@
 import React from "react";
-
+import {Auth, History} from "utils";
 class ScreeningPrimaryRequestTable extends React.Component {
-    handleEdit=()=>{
-        alert("Edit Called!!!");
-    }
+    // handleEdit=()=>{
+    //     //
+    //     History.push("/screeningRelatedPerson");
+    //    // alert("Edit Called!!!");
+    // }
     render() {
         var data = JSON.parse(localStorage.getItem('screening_n_request_data'));
         return (
@@ -17,7 +19,9 @@ class ScreeningPrimaryRequestTable extends React.Component {
                         <div
                             class="btn btn-primary no-print edit-buttons"
                             data-edit="screening-request-tab"
-                            onClick={this.handleEdit}>Edit</div>
+                            onClick={()=>{
+                                History.push("/screeningRelatedPerson");
+                            }}>Edit</div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-xs-12 hover-group review-group">

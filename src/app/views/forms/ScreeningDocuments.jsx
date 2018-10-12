@@ -9,10 +9,10 @@ class ScreeningDocuments extends React.Component {
         super(props);
         this.state = {
             scanned_document_type: "",
-            scanned_content: "",
-            extension_text: "",
+            //scanned_content: "",
+            //extension_text: "",
             notes: "",
-            action_id: ""
+           // action_id: ""
         }
     }
     handleChange = (e) => {
@@ -56,7 +56,7 @@ class ScreeningDocuments extends React.Component {
         // reader.onloadend = () => {
         //     this.setState({ scanned_content: file });
         // }
-        console.log("the image is" + this.state.scanned_content);
+      //  console.log("the image is" + this.state.scanned_content);
 
  
     }
@@ -92,7 +92,7 @@ class ScreeningDocuments extends React.Component {
                         <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
                             <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>Attachment</label>
                             <div class="col-md-8 col-sm-8 col-xs-8">
-                                <input name='file' type='file' onChange={this.handleFileChange} value={this.state.scanned_content} ></input>
+                                <input name='file' type='file' onChange={this.handleFileChange}></input>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12 item form-group">

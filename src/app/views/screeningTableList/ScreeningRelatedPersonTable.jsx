@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {History} from "utils";
 
 class Templates extends React.Component{   
  
@@ -18,8 +18,8 @@ class Templates extends React.Component{
                             <div
                                 class="btn btn-primary no-print edit-buttons"
                                 data-edit="screening-request-tab"
-                                onClick={function handleEdit(){
-                                    alert("Edit Called");
+                                onClick={()=>{
+                                    History.push("/screeningRelatedPerson");
                                 }}
                                 >Edit</div>
                             <div
