@@ -1,5 +1,6 @@
 import React from 'react';
 import {History} from "utils";
+import screeningRelatedPersonEdit from '../screeningEditList/ScreeningRelatedPersonEdit.jsx'
 
 class Templates extends React.Component{   
  
@@ -19,7 +20,8 @@ class Templates extends React.Component{
                                 className="btn btn-primary no-print edit-buttons"
                                 data-edit="screening-request-tab"
                                 onClick={()=>{
-                                    History.push("/screeningRelatedPerson");
+                                    localStorage.setItem('screening_related_person_index',index);
+                                    History.push("/screeningRelatedPersonEdit");
                                 }}
                                 >Edit</div>
                             <div

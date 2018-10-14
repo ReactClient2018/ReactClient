@@ -12,10 +12,10 @@ class ScreeningPrimaryRequestEdit extends React.Component {
 
     constructor(props) {
         super(props);
+
         var data = JSON.parse(localStorage.getItem('screening_n_request_data'))
 
         this.state = data[0];
-
 
     }
 
@@ -30,19 +30,16 @@ class ScreeningPrimaryRequestEdit extends React.Component {
 
         localStorage.removeItem("screening_n_request_data");
         var screening_n_request_data = [];
-
         screening_n_request_data.push(this.state);
+
         localStorage.setItem("screening_n_request_data", JSON.stringify(screening_n_request_data));
         History.push("/screeningPrimaryRequestEdit")
+
     };
     blackColor = {
         color: "black"
     };
-    // handleSignIn = values => {
-    //     alert(JSON.stringify(values));
-    //     History.push("/screeningNaturalReview");
-    //     console.log(values);
-    // };
+    
 
     render() {
         // const { handleSubmit } = this.props;
@@ -65,7 +62,7 @@ class ScreeningPrimaryRequestEdit extends React.Component {
         return (
 
 
-            // <SignInForm onSubmit={this.handleSignIn} />
+            
             <div>
                 <ScreeningTabTitle/>
                 <form onSubmit={this.handleSubmit.bind(this)}>
