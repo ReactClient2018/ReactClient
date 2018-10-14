@@ -92,13 +92,19 @@ class ScreeningRelatedEntity extends Component {
         //     classes,
         //     relatedEntity
         // } = this.props;
+        const divStyle = {
+            backgroundColor: 'white',
+            overflowY: 'auto',
+            width: '100%',
+            height: '600px',
+            position: 'relative'
+        };
         return (
-            <div>
-                <ScreeningTabTitle handleResetButton={this.handleReset}/>
+            <div style={divStyle}>
+                <ScreeningTabTitle handleResetButton={this.handleReset} />
 
-                <div style={{
-                    backgroundColor: 'white'
-                }}>
+                <div 
+                  >
                     <form id="related-entity-form0x">
 
                         {/* <!-- for repair --> */}

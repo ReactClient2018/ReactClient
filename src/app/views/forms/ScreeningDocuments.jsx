@@ -55,7 +55,7 @@ class ScreeningDocuments extends React.Component {
                     var b64 = btoa(binaryString);
 
                     this.setState({ scanned_content: b64 });
-                    // console.log(this.state.scanned_content);
+                     console.log(this.state.scanned_content);
 
                 }
                 reader.readAsBinaryString(imgObj);
