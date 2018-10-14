@@ -7,13 +7,9 @@ import { History } from 'utils';
 class ScreeningDocumentsEdit extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            scanned_document_type: "",
-            scanned_content: "",
-            extension_text: "",
-            notes: "",
-            action_id: ""
-        }
+        var data = JSON.parse(localStorage.getItem('screening_n_attachment'));
+        var dat = data[localStorage.getItem('screening_attachment_index')];
+        this.state = dat;
     }
     handleChange = (e) => {
         this.setState({
@@ -24,9 +20,8 @@ class ScreeningDocumentsEdit extends React.Component {
         alert(JSON.stringify(this.state));
         var screening_n_attachment = localStorage.getItem("screening_n_attachment");
         screening_n_attachment = screening_n_attachment ? JSON.parse(screening_n_attachment) : [];
-        // alert(screening_n_related_person.length);
+        screening_n_attachment.splice(localStorage.getItem('screening_attachment_index'),1);
         screening_n_attachment.push(this.state);
-
         localStorage.setItem("screening_n_attachment", JSON.stringify(screening_n_attachment));
         History.push("/screeningNaturalReview")
     }
@@ -84,9 +79,8 @@ class ScreeningDocumentsEdit extends React.Component {
 
 
                                 <div class="col-md-8 col-sm-8 col-xs-8">
-
                                     <select
-                                        name="attachment-type"
+                                        name="scanned_document_type-type"
                                         value={this.state.scanned_document_type}
                                         onChange={this.handleChange}>
                                         <option>Select action type.</option>
