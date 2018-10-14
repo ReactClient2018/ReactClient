@@ -33,7 +33,7 @@ class ScreeningPrimaryRequestEdit extends React.Component {
         screening_n_request_data.push(this.state);
 
         localStorage.setItem("screening_n_request_data", JSON.stringify(screening_n_request_data));
-        History.push("/screeningPrimaryRequestEdit")
+        History.push("/screeningNaturalReview")
 
     };
     blackColor = {
@@ -47,7 +47,7 @@ class ScreeningPrimaryRequestEdit extends React.Component {
             backgroundColor: 'white',
             overflowY: 'auto',
             width: '100%',
-            height: '1000px',
+            height: '600px',
             position: 'relative'
         };
 
@@ -63,8 +63,8 @@ class ScreeningPrimaryRequestEdit extends React.Component {
 
 
             
-            <div>
-                <ScreeningTabTitle/>
+            <div style={divStyle}>
+               
                 <form onSubmit={this.handleSubmit.bind(this)}>
                     <hr />
                     <div
