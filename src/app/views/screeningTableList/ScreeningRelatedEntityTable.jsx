@@ -19,7 +19,6 @@ var Templates = createReactClass({
                                 data-edit="screening-request-tab"
                                 onClick={()=>{
                                     localStorage.setItem('screening_related_entity_index',index);
-                                    alert(localStorage.getItem('screening_related_entity_index'));
                                     History.push("/screeningRelatedEntityEdit");
                                 }}>Edit</div>
 

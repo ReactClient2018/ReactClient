@@ -6,32 +6,7 @@ class ScreeningRelatedPersonEdit extends Component {
         super(props);
         var data = JSON.parse(localStorage.getItem('screening_n_related_person'));
         var dat =data[localStorage.getItem('screening_related_person_index')];
-        this.state = {
-            purpose_of_screening_n: dat.purpose_of_screening_n,
-            customer_type: dat.customer_type,
-            salutation: dat.salutation,
-            first_name: dat.first_name,
-            middle_name: dat.middle_name,
-            last_name: dat.last_name,
-            lsf_name: dat.lsf_name,
-            lsm_name: dat.lsm_name,
-            lsl_name: dat.lsl_name,
-            sex: dat.sex,
-            mobile_number: dat.mobile_number,
-            email: dat.email,
-            date_of_birth: dat.date_of_birth,
-            primary_identification_document_type: dat.primary_identification_document_type,
-            primary_identification_document_no: dat.primary_identification_document_no,
-            country_of_issue: dat.country_of_issue,
-            zone: dat.zone,
-            province: dat.province,
-            state: dat.state,
-            district: dat.district,
-            mn_vdc: dat.mn_vdc,
-            ward_no: dat.ward_no,
-            pan_number: dat.pan_number,
-            notes: dat.notes
-        };
+        this.state = dat;
     }
 
     handleChange = event => {

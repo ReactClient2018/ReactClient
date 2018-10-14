@@ -21,7 +21,6 @@ class Templates extends React.Component{
                                 data-edit="screening-request-tab"
                                 onClick={()=>{
                                     localStorage.setItem('screening_related_person_index',index);
-                                    alert(localStorage.getItem('screening_related_person_index'));
                                     History.push("/screeningRelatedPersonEdit");
                                 }}
                                 >Edit</div>

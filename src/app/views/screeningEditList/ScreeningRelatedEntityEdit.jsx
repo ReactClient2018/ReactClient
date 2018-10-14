@@ -6,34 +6,7 @@ class ScreeningRelatedEntityEdit extends Component {
         super(props);
         var data = JSON.parse(localStorage.getItem('screening_n_related_entity'));
         var dat =data[localStorage.getItem('screening_related_entity_index')];
-        this.state = {
-
-            accounts_l_sub_type: dat.accounts_l_sub_type,
-            kycl_id: dat.kycl_id,
-            cust_id: dat.cust_id,
-            name_of_institution: dat.name_of_institution,
-            ls_name: dat.ls_name,
-            date_of_establishment: dat.date_of_establishment,
-            registration_no: dat.registration_no,
-            type_of_industry: dat.type_of_industry,
-            country_of_issue: dat.country_of_issue,
-            zone: dat.zone,
-            district: dat.district,
-            mn_vdc: dat.mn_vdc,
-            province: dat.province,
-            ward_no: dat.ward_no,
-            pan_number: dat.pan_number,
-            contact_number: dat.contact_number,
-            email_id: dat.email_id,
-            notes: dat.notes,
-            find_match_index: dat.find_match_index,
-            has_kyc: false,
-            has_cust_id: true,
-            branch_sol_id: dat.branch_sol_id,
-            date_of_establishment_bs: dat.date_of_establishment_bs,
-            repair_screening_l_request_id: dat.repair_screening_l_request_id,
-        }
-    
+        this.state = dat;
 
     }
 
