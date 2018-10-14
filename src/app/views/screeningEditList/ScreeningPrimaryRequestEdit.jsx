@@ -11,34 +11,11 @@ class ScreeningPrimaryRequestEdit extends React.Component {
     
     constructor(props) {
         super(props);
-        var data = JSON.parse(localStorage.getItem('screening_n_request_data'))
-        console.log(data);
-        this.state = {
-            purpose_of_screening_n: data[0].purpose_of_screening_n,
-            customer_type: "",
-            salutation: "",
-            first_name: "",
-            middle_name: "",
-            last_name: "",
-            lsf_name: "",
-            lsm_name: "",
-            lsl_name: "",
-            sex: "",
-            mobile_number: "",
-            email: "",
-            date_of_birth: "",
-            primary_identification_document_type: "",
-            primary_identification_document_no: "",
-            country_of_issue: "",
-            zone: "",
-            province: "",
-            state: "",
-            district: "",
-            mn_vdc: "",
-            ward_no: "",
-            pan_number: "",
-            notes: ""
-        };
+        var data= JSON.parse(localStorage.getItem('screening_n_request_data'))
+        
+        this.state = data[0];
+        
+        
     }
 
     handleChange = event => {
@@ -50,8 +27,6 @@ class ScreeningPrimaryRequestEdit extends React.Component {
     handleSubmit = event => {
      
         localStorage.removeItem("screening_n_request_data");
-        localStorage.removeItem("screening_n_related_person");
-        localStorage.removeItem("screening_n_related_entity");
         var screening_n_request_data = [];
 
         screening_n_request_data.push(this.state);
