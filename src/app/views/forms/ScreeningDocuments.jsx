@@ -84,9 +84,8 @@ class ScreeningDocuments extends React.Component {
 
 
                                 <div class="col-md-8 col-sm-8 col-xs-8">
-
                                     <select
-                                        name="attachment-type"
+                                        name="scanned_document_type"
                                         value={this.state.scanned_document_type}
                                         onChange={this.handleChange}>
                                         <option>Select action type.</option>
