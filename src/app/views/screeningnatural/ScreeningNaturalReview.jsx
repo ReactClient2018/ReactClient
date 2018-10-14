@@ -9,6 +9,7 @@ import { ConnectedEditUserForm } from "../forms/UserForm";
 import ScreeningPrimaryRequestTable from '../screeningTableList/ScreeningPrimaryRequestTable.jsx';
 import ScreeningRelatedPersonTable from '../screeningTableList/ScreeningRelatedPersonTable.jsx'
 import ScreeningRelatedEntityTable from '../screeningTableList/ScreeningRelatedEntityTable.jsx'
+import ScreeningDocumentsTable from '../screeningTableList/ScreeningDocumentTable.jsx'
 
 // const selector = formValueSelector("signIn");
 
@@ -101,6 +102,7 @@ class ScreeningNaturalReview extends React.Component {
                 <ScreeningPrimaryRequestTable />
                 <ScreeningRelatedPersonTable />
                 <ScreeningRelatedEntityTable />
+                <ScreeningDocumentsTable />
                 <button
                     onClick={this.handleSubmit}
                     className="btn btn-primary"

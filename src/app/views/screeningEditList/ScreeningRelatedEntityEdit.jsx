@@ -1,38 +1,37 @@
 import React, {Component} from 'react';
 import ScreeningTabTitle from '../screeningnatural/ScreeningTabTitle.jsx';
-import "./css/screeningRelatedEntity.css";
 import {History} from 'utils';
-class ScreeningRelatedEntity extends Component {
+class ScreeningRelatedEntityEdit extends Component {
     constructor(props) {
         super(props);
+        var data = JSON.parse(localStorage.getItem('screening_n_related_entity'));
+        var dat =data[localStorage.getItem('screening_related_entity_index')];
         this.state = {
 
-            accounts_l_sub_type: "loan",
-            kycl_id: "2343",
-            cust_id: "23",
-            name_of_institution: "wrc",
-            ls_name: "virgo",
-            date_of_establishment: "1995",
-            registration_no: "23244",
-            type_of_industry: "IT",
-            country_of_issue: "Nepal",
-            zone: "Dhaulagiri",
-            district: "kaski",
-            mn_vdc: "Lamachaur",
-            province: "4",
-            ward_no: "3",
-            pan_number: "24434",
-            contact_number: "23598765",
-            email_id: "dfafdf@gmail.com",
-            notes: "Better way to make future",
-            find_match_index: "23",
+            accounts_l_sub_type: dat.accounts_l_sub_type,
+            kycl_id: dat.kycl_id,
+            cust_id: dat.cust_id,
+            name_of_institution: dat.name_of_institution,
+            ls_name: dat.ls_name,
+            date_of_establishment: dat.date_of_establishment,
+            registration_no: dat.registration_no,
+            type_of_industry: dat.type_of_industry,
+            country_of_issue: dat.country_of_issue,
+            zone: dat.zone,
+            district: dat.district,
+            mn_vdc: dat.mn_vdc,
+            province: dat.province,
+            ward_no: dat.ward_no,
+            pan_number: dat.pan_number,
+            contact_number: dat.contact_number,
+            email_id: dat.email_id,
+            notes: dat.notes,
+            find_match_index: dat.find_match_index,
             has_kyc: false,
             has_cust_id: true,
-            branch_sol_id: "13244",
-            date_of_establishment_bs: '2018-05-02',
-            repair_screening_l_request_id: 232,
-            
-
+            branch_sol_id: dat.branch_sol_id,
+            date_of_establishment_bs: dat.date_of_establishment_bs,
+            repair_screening_l_request_id: dat.repair_screening_l_request_id,
         }
     
 
@@ -48,6 +47,7 @@ class ScreeningRelatedEntity extends Component {
         var screening_n_related_entity = localStorage.getItem("screening_n_related_entity");
 
         screening_n_related_entity = screening_n_related_entity ? JSON.parse(screening_n_related_entity):[];
+        screening_n_related_entity.splice(localStorage.getItem('screening_related_entity_index'),1);
         screening_n_related_entity.push(this.state);
       
         localStorage.setItem("screening_n_related_entity", JSON.stringify(screening_n_related_entity));
@@ -129,53 +129,13 @@ class ScreeningRelatedEntity extends Component {
                                 </select>
                             </div>
 
-                            {/* <div className="col-md-8 col-sm-8 col-xs-8" id="kycl-id-wrap">
-                                <div id="kycl-opt-content">
-                                    <label className="control-label col-md-3 col-sm-3 col-xs-3"
-                                        for="related-has-kycl0x" id="kycl-id-label"
-                                        style={{ marginTop: "10px" }}>KYC ID</label>
-                                    <input
-                                        className="col-md-4 col-sm-4 col-xs-4 entity-track-changes0x"
-                                        id="related-kycl-id0x" name="kycl_id" placeholder="KYC ID"
-                                        type="text" style={{ marginRight: "10px" }}
-                                        onChange={this.handleChange}
-                                        value={this.state.kycl_id}
-                                    />
-                                    <button type="button" id="related-kycl-search-btn0x"
-                                        className='btn btn-info col-md-4 col-sm-4 col-xs-4 no-print related-kycl-search-btn'
-                                        disabled="disabled">Search</button>
-                                </div>
-                            </div> */}
+                          
 
                         </div>
 
                         <div>
                             <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
-                                {/* <div className="col-md-1 col-sm-1 col-xs-1">
-                                    <input
-                                        className="form-control entity-track-changes0x related-entity-has-cust-id"
-                                        id="related-entity-has-cust-id0x" name="has_cust_id"
-                                        value="true" type="checkbox" onChange={this.handleChange} />
-                                </div>
-                                <label className="control-label col-md-3 col-sm-3 col-xs-3"
-                                    for="related-entity-has-cust-id0x"
-                                    id="related-entity-cust-id-label0x" style={{ marginTop: '10px' }}>CUST
-											ID
-                                </label> */}
-                                {/* <div className="col-md-8 col-sm-8 col-xs-8"
-                                    id="related-entity-cust-id-wrap">
-                                    <div id="cust-id-opt-content">
-                                        <input
-                                            className="col-md-4 col-sm-4 col-xs-4 entity-track-changes0x"
-                                            id="related-entity-cust-id0x" name="cust_id"
-                                            placeholder="CUST ID" type="text"
-                                            style={{ marginRight: '10px' }} disabled="disabled" onChange={this.handleChange} value={this.state.cust_id} />
-                                        <button type="button"
-                                            id="related-entity-cust-id-search-btn0x"
-                                            className='btn btn-info col-md-4 col-sm-4 col-xs-4 no-print related-entity-cust-id-search-btn'
-                                            title="Not available yet." disabled="disabled">Search</button>
-                                    </div>
-                                </div> */}
+                               
                             </div>
                             <div className="clearfix"></div>
 
@@ -206,17 +166,7 @@ class ScreeningRelatedEntity extends Component {
                                 </div>
                             </div>
 
-                            {/* <div
-                            className="col-md-6 col-sm-6 col-xs-12 item form-group cbs-generated-related-entity">
-                            <label className="control-label col-md-4 col-sm-4 col-xs-4"
-                                for="related-entity-cbs-cust-name0x">Customer name</label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <input
-                                    className="form-control col-sm-8 col-md-8 col-xs-8 entity-track-changes0x"
-                                    id="related-entity-cbs-cust-name0x"
-                                    placeholder="Customer name" type="text" disabled="disabled" onChange={this.handleChange} value={this.state.name}/>
-                            </div>
-                        </div> */}
+                           
 
                             <div className="clearfix"></div>
 
@@ -302,19 +252,7 @@ class ScreeningRelatedEntity extends Component {
                                 </div>
                             </div>
 
-                            {/* <div
-                            className="col-md-6 col-sm-6 col-xs-12 item form-group cbs-generated-related-entity">
-                            <label className="control-label col-md-4 col-sm-4 col-xs-4"
-                                for="related-entity-cbs-nat-id-card-num0x">National
-											ID card no.</label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <input
-                                    className="form-control col-sm-8 col-md-8 col-xs-8 entity-track-changes0x"
-                                    id="related-entity-cbs-nat-id-card-num0x"
-                                    placeholder="National ID card no." type="text"
-                                    disabled="disabled" onChange={this.handleChange} value={this.state.national_id_card_no}/>
-                            </div>
-                        </div> */}
+                           
 
                             <div className="clearfix"></div>
 
@@ -337,18 +275,10 @@ class ScreeningRelatedEntity extends Component {
                                             backgroundColor: '#aaa'
                                         }}></option>
                                     </select>
-                                    {/* <input className="form-control col-sm-8 col-md-8 col-xs-8" type="text" name="type_of_industry" id="related-entity-type-industry0x"
-                                        placeholder="Select type of industry" onfocus="this.select()"
-                                        style={{ position: 'absolute', width: '278px', width: '180px', width: '188px', height: '27.9px', height: '21px', height: '18px', border: '1px solid #D3D3D3' }}
-                                        onChange={this.handleChange}
-                                        value={this.state.type_of_industry}
-                                    /> */}
+                                  
                                 </div>
                             </div>
-                            {/* <script>
-									autoCompleteDropDown('#related-entity-type-industry0x',"#related-entity-type-of-industry0x");
-									</script> */}
-
+                           
                             <div className="clearfix"></div>
 
                             <div className="col-md-6 col-sm-12 col-xs-12 item form-group">
@@ -368,34 +298,10 @@ class ScreeningRelatedEntity extends Component {
 
                                     </select>
 
-                                    {/* <input value="Nepal" className="form-control col-sm-8 col-md-8 col-xs-8 country" type="text" name="country_of_issue" id="related-entity-country0x"
-                                        placeholder="Select country" onfocus="this.select()"
-                                        style={{ position: 'absolute', width: '278px', width: '180px', width: '188px', height: '27.9px', height: '21px', height: '18px', border: '1px solid #D3D3D3' }}
-                                        onChange={this.handleChange}
-                                        value={this.state.country_of_issue}
-                                    /> */}
+                                    
                                 </div>
                             </div>
-                            {/* <script>
-									autoCompleteDropDown('#related-entity-country0x',"#related-entity-country-of-issue0x");
-									disableZoneAndDistrict('.country','#related-entity-zone','#related-entity-district','#related-entity-select-zone',"#related-entity-select-district");
-									</script> */}
-                            {/* <div
-                            className="col-md-6 col-sm-6 col-xs-12 item form-group cbs-generated-related-entity">
-                            <label className="control-label col-md-4 col-sm-4 col-xs-4"
-                                for="related-entity-cbs-cust-perm-cntry-code0x">Customer
-											perm. country code</label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <input
-                                    className="form-control col-sm-8 col-md-8 col-xs-8 entity-track-changes0x"
-                                    id="related-entity-cbs-cust-perm-cntry-code0x"
-                                    placeholder="Customer permanent country code" type="text"
-                                    disabled="disabled"
-                                    onChange={this.handleChange}
-                                    value={this.state.cust_perm_country_code}
-                                />
-                            </div>
-                        </div> */}
+                            
 
                             <div className="clearfix"></div>
                             <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
@@ -423,10 +329,7 @@ class ScreeningRelatedEntity extends Component {
                                     Zone
                                 </label>
                                 <div className="col-md-8 col-sm-8 col-xs-12">
-                                    {/* <!-- <input
-												className="form-control col-sm-8 col-md-7 col-xs-12 entity-track-changes0x"
-												id="related-zone0x" name="zone" placeholder="Zone"
-												type="text" path="zone" /> --> */}
+                                  
                                     <select
                                         className="form-control col-sm-8 col-md-8 col-xs-8  entity-track-changes0x rel-entity-zone"
                                         id="related-entity-zone0x"
@@ -434,38 +337,12 @@ class ScreeningRelatedEntity extends Component {
                                         <option value="Bagmati">Bagmati</option>
                                     </select>
 
-                                    {/* <input className="form-control col-sm-8 col-md-8 col-xs-8 rel-entity-zone" type="text" name="zone" id="related-entity-select-zone0x"
-                                        placeholder="Select zone" onfocus="this.select()"
-                                        onChange={this.handleChange}
-                                        style={{
-                                            position: 'absolute', width: '278px', width: '180px', width: '188px',
-                                            height: '27.9px', height: '21px', height: '18px', border: '1px solid #D3D3D3'
-                                        }}
-                                        value={this.state.zone}
-                                    /> */}
+                                  
                                 </div>
                             </div>
-                            {/* <script>
-                                autoCompleteDropDown('#related-entity-select-zone0x',"#related-entity-zone0x");
-									</script> */}
+                        
 
-                            {/* <div
-                            className="col-md-6 col-sm-6 col-xs-12 item form-group cbs-generated-related-entity">
-                            <label className="control-label col-md-4 col-sm-4 col-xs-4"
-                                for="related-entity-cbs-cust-perm-addr0x">Customer
-											permanent address</label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <input
-                                    className="form-control col-sm-8 col-md-8 col-xs-8 entity-track-changes0x"
-                                    id="related-entity-cbs-cust-perm-addr0x"
-                                    placeholder="Customer permanent address" type="text"
-                                    disabled="disabled"
-                                    onChange={this.handleChange}
-                                    value={this.state.cust_perm_address}
-                                    />
-                            </div>
-                        </div> */}
-
+                           
                             <div className="clearfix"></div>
 
                             <div className="col-md-6 col-sm-12 col-xs-12 item form-group">
@@ -486,34 +363,9 @@ class ScreeningRelatedEntity extends Component {
                                         <option value="Kathmandu">Kathmandu</option>
                                     </select>
 
-                                    {/* <input className="form-control col-sm-8 col-md-8 col-xs-8 rel-entity-district" type="text" name="district" id="related-entity-select-district0x"
-                                        placeholder="Select district" onfocus="this.select()"
-                                        onChange={this.handleChange}
-                                        style={{
-                                            position: 'absolute', width: '278px', width: '180px', width: '188px',
-                                            height: '27.9px', height: '21px', height: '18px', border: '1px solid #D3D3D3'
-                                        }}
-                                        value={this.state.district}
-                                    /> */}
                                 </div>
                             </div>
-                            {/* <script>
-									autoCompleteDropDown('#related-entity-select-district0x','#related-entity-district0x');
-									populateAndAutoChangeArrayDistrict('.rel-entity-district','.rel-entity-zone');
-									</script>; */}
-
-                            {/* <div
-                            className="col-md-6 col-sm-6 col-xs-12 item form-group cbs-generated-related-entity">
-                            <label className="control-label col-md-4 col-sm-4 col-xs-4"
-                                for="related-entity-cbs-district0x">District</label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <input
-                                    className="form-control col-sm-8 col-md-8 col-xs-8 entity-track-changes0x"
-                                    id="related-entity-cbs-district0x" placeholder="District"
-                                    type="text" disabled="disabled"
-                                    onChange={this.handleChange} value={this.state.district}/>
-                            </div>
-                        </div> */}
+                          
 
                             <div className="clearfix"></div>
 
@@ -536,20 +388,7 @@ class ScreeningRelatedEntity extends Component {
                                 </div>
                             </div>
 
-                            {/* <div
-                            className="col-md-6 col-sm-6 col-xs-12 item form-group cbs-generated-related-entity">
-                            <label className="control-label col-md-4 col-sm-4 col-xs-4"
-                                for="related-entity-cbs-cust-perm-city-code0x">Customer
-											permanent city code</label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <input
-                                    className="form-control col-sm-8 col-md-8 col-xs-8 entity-track-changes0x"
-                                    id="related-entity-cbs-cust-perm-city-code0x"
-                                    placeholder="Customer permanent city code" type="text"
-                                    disabled="disabled"
-                                    onChange={this.handleChange} value={this.state.cust_perm_city_code}/>
-                            </div>
-                        </div> */}
+                           
 
                             <div className="clearfix"></div>
 
@@ -675,15 +514,7 @@ class ScreeningRelatedEntity extends Component {
                             </div>
 
                             <div className="clearfix"></div>
-                            <hr/> {/* <div className='col-md-2'>
-                                <button type="button"
-                                    id="find-natural-related-entity-match-btn0x"
-                                    className='btn btn-info find-natural-related-entity-match-btn'>Find
-										match</button>
-                                <span id="find-match-loader-entity0x" style={{ display: 'none' }}><img
-                                    alt="" src="./static/images/loader.gif" /></span>
-                            </div>
-                            <input type="submit" className="formSubmit" style={{ display: "none" }} /> */}
+                            <hr/>
                         </div>
 
                     </form>
@@ -708,12 +539,5 @@ class ScreeningRelatedEntity extends Component {
 
 }
 
-// ScreeningRelatedEntity.propTypes = {     added: PropTypes.bool,
-// onSubmitScreeningRelatedEntity: PropTypes.func.isRequired }; const
-// mapStateToProps = state => ({relatedEntity: state.relatedEntity}); const
-// mapDispatchToProps = dispatch => ({     onSubmitScreeningRelatedEntity:
-// values => dispatch(UserActionCreators.addScreeningRelatedEntity(values)),
-// onClose: () => dispatch(UserActionCreators.close()) }); export default
-// connect(mapStateToProps, mapDispatchToProps)(ScreeningRelatedEntity);
 
-export default ScreeningRelatedEntity;
+export default ScreeningRelatedEntityEdit;

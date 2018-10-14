@@ -11,7 +11,7 @@ class ScreeningPrimaryRequestEdit extends React.Component {
     
     constructor(props) {
         super(props);
-        var data = JSON.parse(localStorage.getItem('screening_n_request_data'))
+        var data = JSON.parse(localStorage.getItem('screening_n_request_data'));
         console.log(data);
         this.state = {
             purpose_of_screening_n: data[0].purpose_of_screening_n,

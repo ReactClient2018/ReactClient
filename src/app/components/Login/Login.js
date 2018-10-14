@@ -137,7 +137,7 @@ Login.propTypes = {
 }
 const mapStateToProps = (state) => (
     {
-        //alert: state.alert
+        alert: state.alert
         // there is no state in the store so no need of any props 
     }
 );

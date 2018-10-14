@@ -18,7 +18,9 @@ var Templates = createReactClass({
                                 className="btn btn-primary no-print edit-buttons"
                                 data-edit="screening-request-tab"
                                 onClick={()=>{
-                                    History.push("/screeningRelatedEntity");
+                                    localStorage.setItem('screening_related_entity_index',index);
+                                    alert(localStorage.getItem('screening_related_entity_index'));
+                                    History.push("/screeningRelatedEntityEdit");
                                 }}>Edit</div>
 
                             <div

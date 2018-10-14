@@ -8,6 +8,9 @@ import {Authorization} from "utils";
 import ScreeningRelatedEntityPage from "views/forms/ScreeningRelatedEntity.jsx";
 import ScreeningRelatedPersonPage from "views/forms/ScreeningRelatedPerson.jsx";
 import ScreeningPrimaryRequestEditPage from "views/screeningEditList/ScreeningPrimaryRequestEdit.jsx";
+import ScreeningRelatedPersonEditPage from "views/screeningEditList/ScreeningRelatedPersonEdit.jsx";
+import ScreeningRelatedEntityEditPage from "views/screeningEditList/ScreeningRelatedEntityEdit.jsx";
+import ScreeningDocumentsEditPage from "views/screeningEditList/ScreeningDocumentsEdit.jsx";
 
 import {
     Dashboard, Person, ContentPaste
@@ -31,6 +34,10 @@ const userRoutes = [
     { path: "/screeningNaturalReview",component: ScreeningNaturalReviewPage },
     { path: "/screeningDocuments",component: ScreeningDocumentsPage },
     { path: "/screeningPrimaryRequestEdit",component: ScreeningPrimaryRequestEditPage },
+    { path: "/screeningRelatedPersonEdit",component: ScreeningRelatedPersonEditPage },
+    { path: "/screeningRelatedEntityEdit",component: ScreeningRelatedEntityEditPage },
+    { path: "/screeningDocumentsEdit",component: ScreeningDocumentsEditPage },
+
     { redirect: true, path: "/", to: "/makerDashBoard", navbarName: "Redirect" }
 ];
 

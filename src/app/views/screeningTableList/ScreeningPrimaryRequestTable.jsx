@@ -1,20 +1,17 @@
 import React from "react";
 import {Auth, History} from "utils";
 class ScreeningPrimaryRequestTable extends React.Component {
-    // handleEdit=()=>{
-    //     //
-    //     History.push("/screeningRelatedPerson");
-    //    // alert("Edit Called!!!");
-    // }
     render() {
         var data = JSON.parse(localStorage.getItem('screening_n_request_data'));
         return (
             <div>
                 <div id="screening-n-request-review-wrap">
+                <div className="clearfix"></div>
+                        <div className="col-md-6">
+                            <h3>Primary Customer </h3>
+                        </div>
                     <div className="clearfix"></div>
-                    <div className="col-md-6">
-                        <h3>Primary Customer</h3>
-                    </div>
+                    <div className="clearfix"></div>
                     <div className="col-md-6 pull-right text-right">
                         <div
                             className="btn btn-primary no-print edit-buttons"
