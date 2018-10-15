@@ -1,5 +1,5 @@
 import App from 'containers';
-import {Login} from 'components'
+import {Login} from 'components';
 
 const indexRoutes = [
     { path: "/login", component: Login },
