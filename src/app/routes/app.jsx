@@ -1,4 +1,4 @@
-import DashboardPage from "views/Dashboard/makerDashboard.jsx";
+import DashboardPage from "views/Dashboard/MakerDashboard.jsx";
 import ScreeningPrimaryRequestPage from "views/screeningnatural/ScreeningPrimaryRequest.jsx";
 import ScreeningNaturalRequestPage from "views/screeningnatural/ScreeningNaturalRequest.jsx";
 import ScreeningNaturalReviewPage from "views/screeningnatural/ScreeningNaturalReview.jsx";
