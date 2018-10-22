@@ -56,17 +56,17 @@ class ScreeningRelatedEntityEdit extends Component {
             
         });
     }
+ 
     render() {
-        // const {
-        //     handleSubmit,
-        //     pristine,
-        //     reset,
-        //     submitting,
-        //     classes,
-        //     relatedEntity
-        // } = this.props;
+        const divStyle = {
+            backgroundColor: 'white',
+            overflowY: 'auto',
+            width: '100%',
+            height: '600px',
+            position: 'relative'
+        };
         return (
-            <div>
+            <div style={divStyle}>
                 <ScreeningTabTitle handleResetButton={this.handleReset}/>
 
                 <div style={{

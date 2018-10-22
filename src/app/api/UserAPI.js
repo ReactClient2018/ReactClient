@@ -24,11 +24,8 @@ let UserAPI = {
         }).then(user => {
             console.log("The user is"+user);
             return user;
-        }).catch((error) =>{
-            // alert(error);
-        
-        }
-        );
+        });
+    
 
     },
 
@@ -47,7 +44,8 @@ let UserAPI = {
             if (response.ok) {
                 return Promise.reject(response.statusText);
             }
-            alert("here success");
+            alert(response.status);
+            console.log(response);
             return response.json();
         }).then(response => {
             return response;

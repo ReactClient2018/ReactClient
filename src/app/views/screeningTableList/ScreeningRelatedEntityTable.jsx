@@ -11,7 +11,7 @@ var Templates = createReactClass({
                     <div id="screening-n-request-review-wrap">
                         <div className="clearfix"></div>
                         <div className="col-md-6">
-                            <h3>Related Entity</h3>
+                            <h3>Related Entity {index +1}</h3>
                         </div>
                         <div className="col-md-6 pull-right text-right">
                             <div
