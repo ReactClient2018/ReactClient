@@ -9,6 +9,7 @@ let Auth = {
     logout(){
         // Clear access token and ID token from local storage
         localStorage.removeItem('access_token');
+        localStorage.removeItem('tenant');
         localStorage.removeItem('username');
         localStorage.removeItem('expires_at');
         localStorage.removeItem('roles');

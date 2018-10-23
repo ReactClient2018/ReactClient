@@ -24,9 +24,7 @@ class ScreeningNaturalReview extends React.Component {
             `,"screening_n_attachment": [` + this.fetchScreeningDocument() + `]`+
             `}`;
         alert(sr);
-        this
-            .props
-            .onSubmitScreening(sr);
+        this.props.onSubmitScreening(sr);
 
     };
     fetchScreeningDocument(){
@@ -62,7 +60,7 @@ class ScreeningNaturalReview extends React.Component {
                 if (i != 1) {
                     data += `{"related_person_request_data":` + JSON.stringify(screening_n_related_person[i - 1]) + "},";
                 } else {
-                    data += data + `{"related_person_request_data":` + JSON.stringify(screening_n_related_person[i - 1]) + "}";
+                    data += `{"related_person_request_data":` + JSON.stringify(screening_n_related_person[i - 1]) + "}";
                 }
             }
         }
@@ -106,7 +104,7 @@ class ScreeningNaturalReview extends React.Component {
                 <button
                     onClick={this.handleSubmit}
                     className="btn btn-primary"
-                    type="submit"
+                    type="button"
                     color="primary">
                     Submit.
                 </button>
@@ -125,7 +123,7 @@ ScreeningNaturalReview.propTypes = {
 const mapStateToProps = state => ({ screening: state.screening });
 
 const mapDispatchToProps = dispatch => ({
-    onSubmitScreening: values => dispatch(UserActionCreators.addUser(values)),
+    onSubmitScreening: values => dispatch(UserActionCreators.addScreeningNatural(values)),
     onClose: () => dispatch(UserActionCreators.close())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ScreeningNaturalReview);

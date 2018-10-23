@@ -2,9 +2,10 @@ import React from 'react';
 import {Auth, History} from "utils";
 import {Router, Switch, Route} from "react-router-dom";
 import {MenuItem, Nav, Navbar, NavItem, NavDropdown} from "react-bootstrap";
-import {Provider} from "react-redux";
+import { UserActionCreators } from "actions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import ScreeningNaturalRequest from '../../views/screeningnatural/ScreeningNaturalRequest.jsx'
 
 class MainNavBar extends React.Component {
 
@@ -14,6 +15,10 @@ class MainNavBar extends React.Component {
     }
     handleScreeningClick() {
         History.push("/screeningPrimaryRequest");
+    }
+    handleNotificationClick=(event) =>{
+        this.props.onNotification();
+        History.push("/screeningNotification");
     }
 
     render() {
@@ -192,6 +197,13 @@ class MainNavBar extends React.Component {
                             </MenuItem>
                         </NavDropdown>
                         <NavDropdown eventKey={6} title="Notifications" id="basic-nav-dropdown">
+                        <MenuItem>
+                                <button
+                                    className="content-links"
+                                    onClick={this.handleNotificationClick}>
+                                    <b>Review screening list.</b>
+                                </button>
+                            </MenuItem>
                             <ul id="menu1" className="dropdown-menu list-unstyled msg_list" role="menu">
                                 <li>
                                     <div className="text-center">
@@ -231,4 +243,15 @@ class MainNavBar extends React.Component {
         );
     }
 }
-export default MainNavBar;
+MainNavBar.propTypes = {
+    added: PropTypes.bool,
+    onNotification: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({ notification: state.notification });
+
+const mapDispatchToProps = dispatch => ({
+    onNotification: values => dispatch(UserActionCreators.fetchScreening()),
+    onClose: () => dispatch(UserActionCreators.close())
+});
+export default connect(mapStateToProps, mapDispatchToProps)(MainNavBar);

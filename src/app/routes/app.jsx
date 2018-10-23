@@ -1,4 +1,4 @@
-import DashboardPage from "views/Dashboard/makerDashboard.jsx";
+import DashboardPage from "views/Dashboard/MakerDashboard.jsx";
 import ScreeningPrimaryRequestPage from "views/screeningnatural/ScreeningPrimaryRequest.jsx";
 import ScreeningNaturalRequestPage from "views/screeningnatural/ScreeningNaturalRequest.jsx";
 import ScreeningNaturalReviewPage from "views/screeningnatural/ScreeningNaturalReview.jsx";
@@ -11,6 +11,7 @@ import ScreeningPrimaryRequestEditPage from "views/screeningEditList/ScreeningPr
 import ScreeningRelatedPersonEditPage from "views/screeningEditList/ScreeningRelatedPersonEdit.jsx";
 import ScreeningRelatedEntityEditPage from "views/screeningEditList/ScreeningRelatedEntityEdit.jsx";
 import ScreeningDocumentsEditPage from "views/screeningEditList/ScreeningDocumentsEdit.jsx";
+import ScreeningNotificationPage from "views/screeningnatural/ScreeningNotification.jsx"
 
 import {
     Dashboard, Person, ContentPaste
@@ -37,6 +38,7 @@ const userRoutes = [
     { path: "/screeningRelatedPersonEdit",component: ScreeningRelatedPersonEditPage },
     { path: "/screeningRelatedEntityEdit",component: ScreeningRelatedEntityEditPage },
     { path: "/screeningDocumentsEdit",component: ScreeningDocumentsEditPage },
+    { path: "/screeningNotification",component: ScreeningNotificationPage},
 
     { redirect: true, path: "/", to: "/makerDashBoard", navbarName: "Redirect" }
 ];

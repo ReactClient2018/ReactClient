@@ -22,17 +22,19 @@ let UserAPI = {
             console.log("success");
             return response.json();
         }).then(user => {
-            console.log("The user is"+user);
+            // console.log("The user is "+user);
             return user;
-        });
+        }).catch((error) =>{
+            // alert(error);
+       
+       }
+       );
     
+
 
     },
 
-    addUser(values) {
-        alert("for api");
-        
-        var state= {}
+    addScreeningNatural(values) {  
         var url = 'http://192.168.110.12:8080/multi-ds/api/screening_n/create?access_token='+ localStorage.getItem('access_token');
         const requestOptions = {
             method: 'POST',
@@ -40,20 +42,36 @@ let UserAPI = {
             'X-TENANT-ID': localStorage.getItem('tenant')},
             body: values
         }
-        return fetch(url, requestOptions).then(response => {
-            if (response.ok) {
+        return fetch(url, requestOptions)
+        .then(response => {
+            if (!response.ok) {
                 return Promise.reject(response.statusText);
             }
-            alert(response.status);
-            console.log(response);
             return response.json();
         }).then(response => {
             return response;
         }).catch((error) =>{
-            alert(error);
+            // alert(error);
         
         }
         );
+    },
+
+    fetchScreenings(){
+        const requestOptions = {
+            method: 'GET',
+            headers: Auth.fetchToken()
+        }
+        return fetch('http://192.168.110.12:8080/multi-ds/api/screening_n/all?access_token='+ localStorage.getItem('access_token'), requestOptions)
+            .then(response => {
+                 if (!response.ok) {
+                    return Promise.reject(response.statusText);
+                }
+                return response.json();
+            })
+            .then(response => {
+                return response;
+            });
     }
 }
 

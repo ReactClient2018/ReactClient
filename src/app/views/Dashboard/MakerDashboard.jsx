@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 import {Auth, History} from "utils";
 import ScreeningNaturalRequest from "../screeningnatural/ScreeningNaturalRequest.jsx";
 
-class makerDashboard extends React.Component {
+class MakerDashboard extends React.Component {
     constructor() {
         super();
     }
@@ -87,4 +87,70 @@ class ScreeningRequestState extends React.Component {
                                                         }}/>
                                                         <div
                                                             style={{
-    
+                                                            clear: "both"
+                                                        }}/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="x_panel">
+                                            <div className="x_title">
+                                                <h2>Legal Screening Request Statistics</h2>
+                                                <div className="clearfix"/>
+                                            </div>
+                                            <div className="x_content">
+                                                <div className="col-md-6 col-sm-6 col-xs-12">
+                                                    <div
+                                                        className="chart-container"
+                                                        style={{
+                                                        position: "relative",
+                                                        width: "30vw"
+                                                    }}>
+                                                        <canvas id="myPieChart1"/>
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-6 col-sm-6 col-xs-12">
+                                                    <div
+                                                        className="chart-container"
+                                                        style={{
+                                                        position: "relative",
+                                                        height: "25vh",
+                                                        width: "25vw"
+                                                    }}>
+                                                        <div
+                                                            className="legend"
+                                                            id="myPieChart1Legend"
+                                                            style={{
+                                                            float: "left",
+                                                            paddingTop: "30px"
+                                                        }}/>
+                                                        <div
+                                                            style={{
+                                                            clear: "both"
+                                                        }}/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* <!-- /CONTENT --> */}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        );
+    }
+}
+
+MakerDashboard.propTypes = {};
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({});
+export default connect(mapStateToProps, mapDispatchToProps)(MakerDashboard);

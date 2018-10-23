@@ -38,6 +38,7 @@ class Login extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        localStorage.setItem("tenant",this.state.tenant);
         this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password);
         console.log(this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password));
     };

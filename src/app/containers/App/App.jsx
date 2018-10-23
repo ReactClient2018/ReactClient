@@ -51,7 +51,8 @@ class App extends React.Component{
     };
 
     componentDidMount(){
-        if(!Auth.isAuthenticated()){
+        if(!Auth.isAuthenticated())
+        {
             History.push("/login");
         }
         if(window.innerWidth > 991){
