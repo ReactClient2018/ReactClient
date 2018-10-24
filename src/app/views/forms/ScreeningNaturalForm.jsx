@@ -44,7 +44,14 @@ class ScreeningNaturalForm extends React.Component {
             [event.target.name]: event.target.value
         });
     };
-
+    
+    handleDateChange=(event)=>{
+        var dateFormat=event.target.value;
+        console.log(dateFormat);
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
     handleSubmit = event => {
      
         localStorage.removeItem("screening_n_request_data");
@@ -71,6 +78,9 @@ class ScreeningNaturalForm extends React.Component {
         History.push("/screeningNaturalReview");
         console.log(values);
     };
+    getValidationState=()=>{
+        
+    }
 
     render() {
         // const { handleSubmit } = this.props;
@@ -264,10 +274,10 @@ class ScreeningNaturalForm extends React.Component {
                             Date of birth:
                         </label>
                         <input
-                            type="text"
+                            type="date"
                             name="date_of_birth"
                             value={this.state.date_of_birth}
-                            onChange={this.handleChange}/>
+                            onChange={this.handleDateChange}/>
                     </div>
                 </div>
                 <hr/>

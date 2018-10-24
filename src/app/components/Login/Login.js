@@ -26,7 +26,7 @@ class Login extends React.Component {
         const length = this.state.password.length;
         if (length > 10) return 'success';
         else if (length > 5) return 'warning';
-        else if (length > 0) return 'error';
+        else if (length > 0) return 'error occured';
         return null;
     }
 
@@ -79,7 +79,7 @@ class Login extends React.Component {
 
                                         />
                                         <FormControl.Feedback />
-                                        {/* <HelpBlock>Validation is based on string length.</HelpBlock> */}
+                                        <HelpBlock>Validation is based on string length.</HelpBlock>
                                     </FormGroup>
                                     <FormGroup
                                         controlId="formTenant"
@@ -94,7 +94,7 @@ class Login extends React.Component {
                                             onChange={this.handleChange}
                                         />
                                         <FormControl.Feedback />
-                                        {/* <HelpBlock>Validation is based on string length.</HelpBlock> */}
+                                        <HelpBlock>Validation is based on string length.</HelpBlock>
                                     </FormGroup>
                                     <FormGroup
                                         controlId="formPassword"
@@ -109,7 +109,7 @@ class Login extends React.Component {
                                             onChange={this.handleChange}
                                         />
                                         <FormControl.Feedback />
-                                        {/* <HelpBlock></HelpBlock> */}
+                                        <HelpBlock></HelpBlock>
                                     </FormGroup>
 
                                     <button type='submit' style={{ backgroundColor: 'lightblue' }}>Login</button>
