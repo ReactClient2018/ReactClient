@@ -282,7 +282,7 @@ class ScreeningRelatedPerson extends Component {
                                 Date of birth:
                             </label>
                             <input
-                                type="text"
+                                type="date"
                                 name="date_of_birth"
                                 value={this.state.date_of_birth}
                                 onChange={this.handleChange}/>
