@@ -8,6 +8,7 @@ let Auth = {
 
     logout(){
         // Clear access token and ID token from local storage
+
         localStorage.removeItem('access_token');
         localStorage.removeItem('tenant');
         localStorage.removeItem('username');
@@ -19,7 +20,8 @@ let Auth = {
         let expiresAt = JSON.stringify((authResult["expires_in"] * 1000) + new Date().getTime());
         localStorage.setItem('access_token', authResult["access_token"]);
         localStorage.setItem('username', authResult["username"]);
-        localStorage.setItem('roles', authResult["roles"]);
+        localStorage.setItem('scope', authResult["scope"]);
+        localStorage.setItem('roles', authResult["roles"][0].role);
         localStorage.setItem('expires_at', expiresAt);
     },
     fetchToken(){

@@ -1,6 +1,7 @@
 import React from "react";
 import ScreeningNaturalForm from "../forms/ScreeningNaturalForm.jsx";
-import ScreeningTabTitle from "./ScreeningTabTitle.jsx"
+import ScreeningTabTitle from "./ScreeningTabTitle.jsx";
+import NavBar from "../../components/Screening/MainNavBar.jsx";
 
 class ScreeningPrimaryRequest extends React.Component{
 
@@ -13,9 +14,12 @@ class ScreeningPrimaryRequest extends React.Component{
             position: 'relative'
         };
         return (
+            <div>
+                <NavBar/>
             <div style={divStyle}>
                 <ScreeningTabTitle />
                 <ScreeningNaturalForm />
+            </div>
             </div>
         );
     }

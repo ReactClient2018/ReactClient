@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ScreeningTabTitle from '../screeningnatural/ScreeningTabTitle.jsx';
+import NavBar from "../../components/Screening/MainNavBar.jsx";
 import "./css/screeningRelatedEntity.css";
 import {History} from 'utils';
 class ScreeningRelatedEntity extends Component {
@@ -100,11 +101,12 @@ class ScreeningRelatedEntity extends Component {
             position: 'relative'
         };
         return (
+            <div>
+                <NavBar/>
             <div style={divStyle}>
                 <ScreeningTabTitle handleResetButton={this.handleReset} />
 
-                <div 
-                  >
+                <div >
                     <form id="related-entity-form0x">
 
                         {/* <!-- for repair --> */}
@@ -707,6 +709,7 @@ class ScreeningRelatedEntity extends Component {
                     <div className="clearfix"></div>
 
                 </div>
+            </div>
             </div>
 
         );

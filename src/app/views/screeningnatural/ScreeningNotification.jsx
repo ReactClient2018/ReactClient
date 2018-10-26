@@ -1,16 +1,18 @@
 import React from "react";
 import ReactTable from "react-table";
-import 'react-table/react-table.css'
+import 'react-table/react-table.css';
+import {History} from 'utils';
+import Navbar from "../../components/Screening/CheckerNavBar.jsx";
 
 class ScreeningNotification extends React.Component {
 
-    submitClick = event => {
-        alert("Hello!!");
+    submitClick = (event) => {
+        History.push("./screeningAction");
     };
-    fetchScreeningData() {
+    fetchScreeningData = () => {
+
         var data = [];
         var json = JSON.parse(localStorage.getItem("screeningNRequestList"));
-
         for (var i = 0; i < json.length; i++) {
             var screening_data = json[i].screening_n_request_data;
             if (screening_data) {
@@ -20,7 +22,7 @@ class ScreeningNotification extends React.Component {
                     first_name: screening_data.first_name,
                     middle_name: screening_data.middle_name,
                     last_name: screening_data.last_name,
-                    date:''
+                    date: ''
                 }
                 data.push(details);
             }
@@ -29,6 +31,7 @@ class ScreeningNotification extends React.Component {
 
     }
     render() {
+
         const data = this.fetchScreeningData();
         const columns = [
             {
@@ -68,8 +71,7 @@ class ScreeningNotification extends React.Component {
                 style: {
                     cursor: 'pointer'
                 },
-                // Cell: props => <button onClick={() => submitClick(props.value)}>Details
-                Cell: props => <button onClick={this.submitClick}>Details
+                Cell: props => <button onClick={() => this.submitClick(props.value)}>Review
                     </button>
             }
         ]
@@ -82,20 +84,34 @@ class ScreeningNotification extends React.Component {
         };
 
         return (
-            <div style={divStyle}>
-                <h2
-                    style={{
-                    color: 'lightBlue',
-                    textAlign: 'center'
-                }}>
-                    <span>Review Screening Checker!!!</span>
-                </h2>
-
-                <ReactTable
-                    data={data}
-                    columns={columns}
-                    defaultPageSize={8}
-                    pageSizeOptions={[6, 10, 18]}/>
+            <div>
+                <Navbar/>
+                <div style={divStyle}>
+                    <h2
+                        style={{
+                        color: 'lightBlue',
+                        textAlign: 'center'
+                    }}>
+                        <span>Review Screening Checker!!!</span>
+                    </h2>
+                    <ReactTable
+                        data={data}
+                        columns={columns}
+                        defaultPageSize={9}
+                        pageSizeOptions={[6, 10, 18]}
+                        getTdProps={(state, row, rowInfo, column, instance) => {
+                        return {
+                            onClick: (e, handleOriginal) => {
+                                console.log(row.index);
+                                localStorage.removeItem("screening_n_notification_index");
+                                localStorage.setItem("screening_n_notification_index", row.index);
+                                if (handleOriginal) {
+                                    handleOriginal();
+                                }
+                            }
+                        }
+                    }}/>
+                </div>
             </div>
         );
     }

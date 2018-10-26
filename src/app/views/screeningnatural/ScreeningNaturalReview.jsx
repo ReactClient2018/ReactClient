@@ -7,9 +7,10 @@ import { connect } from "react-redux";
 // import {formValueSelector} from "redux-form";
 import { ConnectedEditUserForm } from "../forms/UserForm";
 import ScreeningPrimaryRequestTable from '../screeningTableList/ScreeningPrimaryRequestTable.jsx';
-import ScreeningRelatedPersonTable from '../screeningTableList/ScreeningRelatedPersonTable.jsx'
-import ScreeningRelatedEntityTable from '../screeningTableList/ScreeningRelatedEntityTable.jsx'
-import ScreeningDocumentsTable from '../screeningTableList/ScreeningDocumentTable.jsx'
+import ScreeningRelatedPersonTable from '../screeningTableList/ScreeningRelatedPersonTable.jsx';
+import ScreeningRelatedEntityTable from '../screeningTableList/ScreeningRelatedEntityTable.jsx';
+import ScreeningDocumentsTable from '../screeningTableList/ScreeningDocumentTable.jsx';
+import NavBar from "../../components/Screening/MainNavBar.jsx";
 
 // const selector = formValueSelector("signIn");
 
@@ -93,6 +94,8 @@ class ScreeningNaturalReview extends React.Component {
 
 
         return (
+            <div>
+                <NavBar/>
             <div style={divStyle}>
                 <ScreeningTabTitle />
                 <h2 style={{ color: 'lightBlue', textAlign:'center' }}><span>Review Screening!!!</span></h2>
@@ -108,6 +111,7 @@ class ScreeningNaturalReview extends React.Component {
                     color="primary">
                     Submit.
                 </button>
+            </div>
             </div>
         );
     }

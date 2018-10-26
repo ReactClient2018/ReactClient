@@ -2,6 +2,7 @@ import React from "react";
 import ScreeningPrimaryRequest from "../screeningnatural/ScreeningTabTitle.jsx";
 import ScreeningTabTitle from '../screeningnatural/ScreeningTabTitle.jsx';
 import { History } from 'utils';
+import NavBar from "../../components/Screening/MainNavBar.jsx";
 // import './css/screeningDocuments.css';
 
 class ScreeningDocumentsEdit extends React.Component {
@@ -63,6 +64,7 @@ class ScreeningDocumentsEdit extends React.Component {
 
         return (
             <div>
+                <NavBar/>
                 <ScreeningTabTitle />
 
                 <div style={{

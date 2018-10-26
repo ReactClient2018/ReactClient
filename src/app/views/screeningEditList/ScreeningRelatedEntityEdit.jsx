@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ScreeningTabTitle from '../screeningnatural/ScreeningTabTitle.jsx';
 import {History} from 'utils';
+import NavBar from "../../components/Screening/MainNavBar.jsx";
 class ScreeningRelatedEntityEdit extends Component {
     constructor(props) {
         super(props);
@@ -66,6 +67,8 @@ class ScreeningRelatedEntityEdit extends Component {
             position: 'relative'
         };
         return (
+            <div>
+                <NavBar/>
             <div style={divStyle}>
                 <ScreeningTabTitle handleResetButton={this.handleReset}/>
 
@@ -504,6 +507,7 @@ class ScreeningRelatedEntityEdit extends Component {
                     </div>
                     <div className="clearfix"></div>
 
+                </div>
                 </div>
             </div>
 

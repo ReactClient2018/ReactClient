@@ -5,20 +5,22 @@ class ScreeningPrimaryRequestTable extends React.Component {
         var data = JSON.parse(localStorage.getItem('screening_n_request_data'));
         return (
             <div>
+             
                 <div id="screening-n-request-review-wrap">
-                <div className="clearfix"></div>
-                        <div className="col-md-6">
-                            <h3>Primary Customer </h3>
-                        </div>
+                    <div className="clearfix"></div>
+                    <div className="col-md-6">
+                        <h3>Primary Customer
+                        </h3>
+                    </div>
                     <div className="clearfix"></div>
                     <div className="clearfix"></div>
                     <div className="col-md-6 pull-right text-right">
                         <div
                             className="btn btn-primary no-print edit-buttons"
                             data-edit="screening-request-tab"
-                            onClick={()=>{
-                                History.push("/screeningPrimaryRequestEdit");
-                            }}>Edit</div>
+                            onClick={() => {
+                            History.push("/screeningPrimaryRequestEdit");
+                        }}>Edit</div>
                     </div>
                     <div className="clearfix"></div>
                     <div className="col-xs-12 hover-group review-group">

@@ -75,7 +75,7 @@ class App extends React.Component{
                         handleDrawerToggle={this.handleDrawerToggle.bind(this)}
                         {...rest}
                     />
-                    <MainNavBar/>
+                    {/* <MainNavBar/> */}
                     <div className={classes.content}>
                         <div className={classes.container}>
                             {switchRoutes}

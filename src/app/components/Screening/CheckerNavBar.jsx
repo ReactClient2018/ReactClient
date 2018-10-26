@@ -7,19 +7,19 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 
-class MainNavBar extends React.Component {
+class CheckerNavBar extends React.Component {
 
     handleLogout() {
+        // Auth.logout();
         localStorage.clear();
         History.push("/login");
     }
     handleScreeningClick() {
-        History.push("/screeningPrimaryRequest");
+        // History.push("/screeningPrimaryRequest");
     }
     handleNotificationClick=(event) =>{
-       
-        // this.props.onNotification();
-        // History.push("/screeningNotification");
+        this.props.onNotification();
+        History.push("/screeningNotification");
     }
 
     render() {
@@ -31,7 +31,7 @@ class MainNavBar extends React.Component {
                         <NavDropdown eventKey={1} title="Screening" id="basic-nav-dropdown">
                             <MenuItem eventKey={1.1}>
                                 <button className="content-links" onClick={this.handleScreeningClick}>
-                                    <b>Send Request (Natural person)</b>
+                                    <b>View Open Account Request Reviews</b>
                                 </button>
                             </MenuItem>
                             <MenuItem eventKey={1.2}>
@@ -39,7 +39,7 @@ class MainNavBar extends React.Component {
                                 <button
                                     className="content-links"
                                     href="${pageContext.request.contextPath}/screeningl/requestForm">
-                                    <b>Send Request (Legal person)</b>
+                                    <b>View Remitance and Other Reviews</b>
                                 </button>
                             </MenuItem>
 
@@ -52,52 +52,18 @@ class MainNavBar extends React.Component {
                                 <button
                                     className="content-links"
                                     href="${pageContext.request.contextPath}/screening/migratedKYCListForm">
-                                    <b>Screen Migrated KYC</b>
+                                    <b>View Rejected Request Reviews</b>
+                                </button>
+                            </MenuItem>
+                            <MenuItem eventKey={1.3}>
+                                <button
+                                    className="content-links"
+                                    href="${pageContext.request.contextPath}/screening/migratedKYCListForm">
+                                    <b>View Completed Request Reviews</b>
                                 </button>
                             </MenuItem>
 
-                            <hr
-                                style={{
-                                margin: "4px"
-                            }}/>
-
-                            <MenuItem eventKey={1.4}>
-                                {" "}
-                                <button
-                                    className="content-links"
-                                    href="${pageContext.request.contextPath}/screening/replyListForm">
-                                    <b>View Replies - Natural</b>
-                                </button>
-                            </MenuItem>
-                            <MenuItem eventKey={1.5}>
-                                {" "}
-                                <button
-                                    className="content-links"
-                                    href="${pageContext.request.contextPath}/screeningl/replyListForm">
-                                    <b>View Replies - Legal</b>
-                                </button>
-                            </MenuItem>
-
-                            <hr
-                                style={{
-                                margin: "4px"
-                            }}/>
-
-                            <MenuItem eventKey={1.6}>
-                                {" "}
-                                <button
-                                    className="content-links"
-                                    href="${pageContext.request.contextPath}/upload/mt103prt">
-                                    <b>Upload SWIFT Print File(.prt)</b>
-                                </button>
-                            </MenuItem>
-                            <MenuItem eventKey={1.7}>
-                                <button
-                                    className="content-links"
-                                    href="${pageContext.request.contextPath}/upload/virtual-account">
-                                    <b>Upload Virtual Account (excel)</b>
-                                </button>
-                            </MenuItem>
+                         
                         </NavDropdown>
 
                         <NavDropdown eventKey={2} title="KYC" id="basic-nav-dropdown">
@@ -223,11 +189,10 @@ class MainNavBar extends React.Component {
                             <button
                                 className="btn btn-primary pull-right"
                                 href="#"
-                                // disabled
                                 style={{
                                 color: "#f3f2f3"
                             }}>
-                                Maker user logged in: <span>{localStorage.getItem('user')}</span> 
+                                Checker user logged in: <span>{localStorage.getItem('user')}</span> 
                             </button>
                         </NavItem>
                         <NavItem eventKey={8}>
@@ -244,7 +209,7 @@ class MainNavBar extends React.Component {
         );
     }
 }
-MainNavBar.propTypes = {
+CheckerNavBar.propTypes = {
     added: PropTypes.bool,
     onNotification: PropTypes.func.isRequired
 };
@@ -255,4 +220,4 @@ const mapDispatchToProps = dispatch => ({
     onNotification: values => dispatch(UserActionCreators.fetchScreening()),
     onClose: () => dispatch(UserActionCreators.close())
 });
-export default connect(mapStateToProps, mapDispatchToProps)(MainNavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(CheckerNavBar);

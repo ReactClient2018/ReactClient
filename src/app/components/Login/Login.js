@@ -32,13 +32,14 @@ class Login extends React.Component {
 
     componentDidMount() {
         if (Auth.isAuthenticated()) {
-            History.push("/dashboard");
+            // History.push("/dashboard");
         }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem("tenant",this.state.tenant);
+        localStorage.setItem("user",this.state.username);
         this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password);
         console.log(this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password));
     };
