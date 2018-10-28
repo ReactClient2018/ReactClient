@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ScreeningTabTitle from "../screeningnatural/ScreeningTabTitle.jsx"
 import {History} from 'utils';
+import './css/screeningRelatedPerson.css';
 class ScreeningRelatedPerson extends Component {
     constructor(props) {
         super(props);
