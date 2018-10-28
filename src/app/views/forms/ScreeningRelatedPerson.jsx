@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import ScreeningTabTitle from "../screeningnatural/ScreeningTabTitle.jsx"
+import ScreeningTabTitle from "../screeningnatural/ScreeningTabTitle.jsx";
+import NavBar from "../../components/Screening/MainNavBar.jsx";
 import {History} from 'utils';
 import './css/screeningRelatedPerson.css';
 class ScreeningRelatedPerson extends Component {
@@ -97,6 +98,8 @@ class ScreeningRelatedPerson extends Component {
             screening
         } = this.props;
         return (
+            <div>
+                <NavBar/>
             <div style={divStyle}>
                 <ScreeningTabTitle handleResetButton={this.handleReset}/>
                 <form
@@ -432,6 +435,7 @@ class ScreeningRelatedPerson extends Component {
                         Proceed
                     </button>
                 </form>
+            </div>
             </div>
         );
     }

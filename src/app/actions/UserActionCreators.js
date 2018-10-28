@@ -25,27 +25,52 @@ let UserActionCreators = {
             dispatch({type: constants.UPDATE_SCREENING_SUCCESS, response});
         }
     },
-    fetchScreening() {
+    updateScreeningNatural(values, id) {
+        // alert(id);
         return (dispatch) => {
-            dispatch({type: constants.FETCH_USER_REQUEST});
+            dispatch({type: constants.ADD_SCREENING_REQUEST});
             UserAPI
-                .fetchScreenings()
+                .updateScreeningNatural(values, id)
                 .then((response) => {
-                    alert(JSON.stringify(response["screeningNRequestList"]))
-                    localStorage.setItem("screeningNRequestList", JSON.stringify(response["screeningNRequestList"]));
-                    // var json = JSON.parse(localStorage.getItem("screeningNRequestList"));
-                    // alert(json[0].id);
-                    dispatch({type: constants.FETCH_USER_SUCCESS, success: true, response});
-                }, (error) => {
-                    console.log(error);
-                    dispatch({type: constants.FETCH_USER_FAILURE, success: false});
-                });
+                    var data = localStorage.getItem("screeningNRequestList");
+                        data = data? JSON.parse(data): [];
+                        var index = localStorage.getItem('screening_n_notification_index');
+                        if (data.length != 0) {
+                            data.splice(index, 1);
+                            localStorage.setItem("screeningNRequestList", JSON.stringify(data));
+                            window
+                                .location
+                                .reload(true);
+                        }
+                        alert(JSON.stringify(response["message"]));
+                        dispatch({type: constants.ADD_SCREENING_SUCCESS, success: true, response});
+                    },
+                    (error) => {
+                        console.log(error);
+                        dispatch({type: constants.ADD_SCREENING_FAILURE, success: false});
+                    });}
+        },
+        fetchScreening() {
+            return (dispatch) => {
+                dispatch({type: constants.FETCH_USER_REQUEST});
+                UserAPI
+                    .fetchScreenings()
+                    .then((response) => {
+                        // alert(JSON.stringify(response["screeningNRequestList"]));
+                        localStorage.removeItem("screeningNRequestList");
+                        localStorage.setItem("screeningNRequestList", JSON.stringify(response["screeningNRequestList"]));
+                        window.location.reload(true); var json =
+                        dispatch({type: constants.FETCH_USER_SUCCESS, success: true, response});
+                    }, (error) => {
+                        console.log(error);
+                        dispatch({type: constants.FETCH_USER_FAILURE, success: false});
+                    });
+            }
+        },
+        close() {
+            return {type: constants.USER_MESSAGE_CLOSE, show: false};
         }
-    },
-    close() {
-        return {type: constants.USER_MESSAGE_CLOSE, show: false};
+
     }
 
-}
-
-export default UserActionCreators;
+    export default UserActionCreators;

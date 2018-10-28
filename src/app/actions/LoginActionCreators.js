@@ -15,7 +15,12 @@ let LoginActionCreators = {
                 (user) => {
                         dispatch({type: constants.LOGIN_SUCCESS, success:true, user});
                         Auth.setSession(user);
-                        History.push('/dashboard')
+                        if(user["roles"][0].role == 'ADMIN'){
+                            History.push("/checkerDashBoard");
+                       
+                        }else{
+                            History.push('/dashboard');
+                        }
                 },
                 (error) => {
                 

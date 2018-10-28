@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { reduxForm, Field } from 'redux-form';
 import { ConnectedCreateUserForm } from "../forms/UserForm";
 import ScreeningTabTitle from "../screeningnatural/ScreeningTabTitle.jsx";
+import NavBar from "../../components/Screening/MainNavBar.jsx";
 
 
 class ScreeningPrimaryRequestEdit extends React.Component {
@@ -61,7 +62,8 @@ class ScreeningPrimaryRequestEdit extends React.Component {
         return (
 
 
-            
+            <div>
+                <NavBar/>
             <div style={divStyle}>
                
                 <form onSubmit={this.handleSubmit.bind(this)}>
@@ -394,6 +396,7 @@ class ScreeningPrimaryRequestEdit extends React.Component {
                         Proceed.
                 </button>
                 </form>
+            </div>
             </div>
         );
     }

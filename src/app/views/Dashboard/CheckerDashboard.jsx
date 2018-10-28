@@ -6,10 +6,10 @@ import {Router, Route} from "react-router-dom";
 
 import {connect} from "react-redux";
 import {Auth, History} from "utils";
-import NavBar from "../../components/Screening/MainNavBar.jsx"
+import NavBar from "../../components/Screening/CheckerNavBar.jsx";
 import ScreeningNaturalRequest from "../screeningnatural/ScreeningNaturalRequest.jsx";
 
-class MakerDashboard extends React.Component {
+class CheckerDashboard extends React.Component {
     constructor() {
         super();
     }
@@ -21,7 +21,7 @@ class MakerDashboard extends React.Component {
             <div>
                 <NavBar/>
                 <GreetingAndDateNavBar/>
-                <ScreeningRequestState/>
+                {/* <ScreeningRequestState/> */}
             </div>
         );
     }
@@ -37,7 +37,7 @@ class GreetingAndDateNavBar extends React.Component {
                         <div className="clearfix"/>
                         <div id="date-display"/>
                     </div>
-                    Greetings, Maker1!
+                    Greetings, Checker1!
                     <br/>
                     Date:
                 </div>
@@ -150,9 +150,9 @@ class ScreeningRequestState extends React.Component {
     }
 }
 
-MakerDashboard.propTypes = {};
+CheckerDashboard.propTypes = {};
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({});
-export default connect(mapStateToProps, mapDispatchToProps)(MakerDashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(CheckerDashboard);
