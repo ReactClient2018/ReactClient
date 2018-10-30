@@ -12,6 +12,11 @@ class MainNavBar extends React.Component {
 
     handleLogout() {
         localStorage.clear();
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('tenant');
+        localStorage.removeItem('username');
+        localStorage.removeItem('expires_at');
+        localStorage.removeItem('roles');
         History.push("/login");
     }
     handleScreeningClick() {

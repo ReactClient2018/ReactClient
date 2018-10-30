@@ -33,11 +33,14 @@ class Login extends React.Component {
         this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password);
         console.log(this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password));
     };
+
     // componentDidMount() {
     //     if (Auth.isAuthenticated()) {
     //         History.push("/dashboard");
     //     }
     // }
+
+
     onFormSubmit = evt => {
         const people = [...this.state.people];
         const person = this.state.fields;
@@ -96,7 +99,7 @@ class Login extends React.Component {
                                     <div>
                                         <input
                                             type='text'
-                                            placeholder="userame"
+                                            placeholder="username"
                                             name="username"
                                             value={this.state.fields.username}
                                             onChange={this.onInputChange}

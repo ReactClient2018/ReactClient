@@ -2,13 +2,15 @@ let Auth = {
     isAuthenticated(){
         // Check whether the current time is past the
         // access token's expiry time
+       
+        console.log("has not expired yet"+localStorage.getItem('expires_at'))
         let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
         return new Date().getTime() < expiresAt;
     },
 
     logout(){
         // Clear access token and ID token from local storage
-
+       
         localStorage.removeItem('access_token');
         localStorage.removeItem('tenant');
         localStorage.removeItem('username');
