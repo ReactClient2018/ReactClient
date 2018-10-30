@@ -25,8 +25,10 @@ import { appStyle } from 'variables';
 const switchRoutes = (<Switch>
 {
     appRoutes.map((prop,key) => {
+        console.log("inside App/App.jsx");
         if(prop.redirect)
             return (
+                
                 <Redirect from={prop.path} to={prop.to} key={key}/>
             );
         return (
