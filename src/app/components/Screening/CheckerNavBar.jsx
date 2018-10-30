@@ -5,6 +5,7 @@ import {MenuItem, Nav, Navbar, NavItem, NavDropdown} from "react-bootstrap";
 import { UserActionCreators } from "actions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Header from "../Header/CheckerHeader.jsx"
 
 
 class CheckerNavBar extends React.Component {
@@ -26,6 +27,7 @@ class CheckerNavBar extends React.Component {
 
         return (
             <div>
+                <Header/>
                 <Navbar>
                     <Nav pullLeft>
                         <NavDropdown eventKey={1} title="Screening" id="basic-nav-dropdown">

@@ -67,14 +67,12 @@ class App extends React.Component{
     render(){
         const { classes, ...rest } = this.props;
         return (
-           
-                
                 <div className={classes.mainPanel} ref="mainPanel">
-                    <Header
+                    {/* <Header
                         routes={appRoutes}
                         handleDrawerToggle={this.handleDrawerToggle.bind(this)}
                         {...rest}
-                    />
+                    /> */}
                     {/* <MainNavBar/> */}
                     <div className={classes.content}>
                         <div className={classes.container}>

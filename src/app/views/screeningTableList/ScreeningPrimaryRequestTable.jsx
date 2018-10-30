@@ -2,7 +2,17 @@ import React from "react";
 import {Auth, History} from "utils";
 class ScreeningPrimaryRequestTable extends React.Component {
     render() {
-        var data = JSON.parse(localStorage.getItem('screening_n_request_data'));
+        var data = localStorage.getItem('screening_n_request_data');
+        if(data){
+            data = JSON.parse(data)[0];
+        }else{
+            data = {
+                purpose_of_screening_n: "",
+                first_name:"",
+                last_name:"",
+            };
+        }
+
         return (
             <div>
              
@@ -27,7 +37,7 @@ class ScreeningPrimaryRequestTable extends React.Component {
                         <label className="control-label col-xs-4 review-key">PURPOSE OF SCREENING N
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">{data[0].purpose_of_screening_n}</label>
+                            <label className="">{data.purpose_of_screening_n}</label>
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
@@ -48,14 +58,14 @@ class ScreeningPrimaryRequestTable extends React.Component {
                         <label className="control-label col-xs-4 review-key">FIRST NAME
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">{data[0].first_name}</label>
+                            <label className="">{data.first_name}</label>
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
                         <label className="control-label col-xs-4 review-key">LAST NAME
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">{data[0].last_name}</label>
+                            <label className="">{data.last_name}</label>
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">

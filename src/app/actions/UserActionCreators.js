@@ -5,6 +5,22 @@ import constants from "../constants/user-constants"
 
 let UserActionCreators = {
 
+    addUser(values) {
+        return (dispatch) => {
+
+            dispatch({type: constants.ADD_USER_REQUEST});
+            UserAPI
+                .addUser(values)
+                .then((response) => {
+                    alert(JSON.stringify(response["message"]));
+                    dispatch({type: constants.ADD_USER_SUCCESS, success: true, response});
+                }, (error) => {
+                    console.log(error);
+                    dispatch({type: constants.ADD_USER_FAILURE, success: false});
+                });
+        }
+    },
+
     addScreeningNatural(values) {
         return (dispatch) => {
 
