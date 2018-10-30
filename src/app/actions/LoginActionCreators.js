@@ -28,8 +28,8 @@ let LoginActionCreators = {
                        
                 },
                 (error) => {
-                    
-                    console.log(error);
+                
+                  
                     dispatch({ type: constants.LOGIN_FAILURE, success:false });
                     dispatch(AlertActionCreators.error(error))
                 }

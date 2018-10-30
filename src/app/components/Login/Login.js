@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import React from 'react';
 import PropTypes from "prop-types";
 import { connect } from "react-redux"
 import { LoginActionCreators } from "actions";
@@ -8,33 +9,22 @@ import { Form, Input, Button, Icon, notification } from 'antd';
 import { FormControl, ControlLabel, HelpBlock, FormGroup, ButtonToolbar } from 'react-bootstrap';
 import './Login.css';
 
-const FormItem = Form.Item;
-
+const content = document.createElement('div');
+document.body.appendChild(content);
 
 class Login extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    static displayName = '07-basic-validation';
+
+    state = {
+        fields: {
             username: '',
             password: '',
             tenant: ''
+        },
+        fieldErrors: {},
+        people: []
         };
-    }
-
-
-    getValidationState() {
-        const length = this.state.password.length;
-        if (length > 10) return 'success';
-        else if (length > 5) return 'warning';
-        else if (length > 0) return 'error occured';
-        return null;
-    }
-
-    componentDidMount() {
-        if (Auth.isAuthenticated()) {
-            // History.push("/dashboard");
-        }
-    }
+    
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -43,93 +33,121 @@ class Login extends React.Component {
         this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password);
         console.log(this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password));
     };
-    handleChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
-    };
-    render() {
+    // componentDidMount() {
+    //     if (Auth.isAuthenticated()) {
+    //         History.push("/dashboard");
+    //     }
+    // }
+    onFormSubmit = evt => {
+        const people = [...this.state.people];
+        const person = this.state.fields;
+        const fieldErrors = this.validate(person);
+        this.setState({ fieldErrors });
+        evt.preventDefault();
 
+        if (Object.keys(fieldErrors).length) return;
+
+        this.setState({
+            people: people.concat(person),
+            fields: {
+                username: '',
+                password: '',
+                tenant: '',
+            }
+        });
+        evt.preventDefault();
+        localStorage.setItem("tenant", this.state.fields.tenant);
+        this.props.onSubmitLogin(this.state.fields.username + "!@#" + this.state.fields.tenant, this.state.fields.password);
+        
+        
+    };
+
+    onInputChange = evt => {
+        const fields = Object.assign({}, this.state.fields);
+        fields[evt.target.name] = evt.target.value;
+        this.setState({ fields });
+    };
+
+    validate = person => {
+        const errors = {};
+        if (!person.username) errors.username = 'userame Required';
+        if (!person.password) errors.password = 'password Required';
+        if (!person.tenant) errors.tenant = 'tenant Required';
+        return errors;
+    };
+
+    render() {
+        
         return (
             <div>
                 <AppHeader />
-
-                <div style={{backgroundColor:'white'}}>
+                <div style={{ backgroundColor: 'white' }}>
 
                     {/* <!-- page content --> */}
                     <div className="right_col login_col" role="main">
                         <div className="clearfix"></div>
-                       
+
 
                         <div className="login-container">
                             <h1 className="page-title">Login</h1>
                             <div className="login-content">
 
-                                <form onSubmit={this.handleSubmit}>
-                                    <FormGroup
-                                        controlId="formUsername"
-                                        validationState={this.getValidationState()}
-                                    >
-                                        <ControlLabel style={{color:'black'}}>Username</ControlLabel>
-                                        <FormControl
-                                            type="text"
-                                            name='username'
-                                            value={this.state.username}
-                                            placeholder="Username"
-                                            onChange={this.handleChange}
+                                <form onSubmit={this.onFormSubmit}>
+                                    <div>
+                                        <input
+                                            type='text'
+                                            placeholder="userame"
+                                            name="username"
+                                            value={this.state.fields.username}
+                                            onChange={this.onInputChange}
+                                        />
 
-                                        />
-                                        <FormControl.Feedback />
-                                        <HelpBlock>Validation is based on string length.</HelpBlock>
-                                    </FormGroup>
-                                    <FormGroup
-                                        controlId="formTenant"
-                                        validationState={this.getValidationState()}
-                                    >
-                                        <ControlLabel style={{color:'black'}}>Tenant</ControlLabel>
-                                        <FormControl
-                                            type="text"
-                                            name='tenant'
-                                            value={this.state.tenant}
-                                            placeholder="Enter tenant ID"
-                                            onChange={this.handleChange}
-                                        />
-                                        <FormControl.Feedback />
-                                        <HelpBlock>Validation is based on string length.</HelpBlock>
-                                    </FormGroup>
-                                    <FormGroup
-                                        controlId="formPassword"
-                                        validationState={this.getValidationState()}
-                                    >
-                                        <ControlLabel style={{color:'black'}}>password</ControlLabel>
-                                        <FormControl
-                                            type="text"
-                                            name='password'
-                                            value={this.state.password}
+                                        <span style={{ color: 'red' }}>{this.state.fieldErrors.username}</span>
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <input
+                                            type='text'
                                             placeholder="password"
-                                            onChange={this.handleChange}
+                                            name="password"
+                                            value={this.state.fields.password}
+                                            onChange={this.onInputChange}
                                         />
-                                        <FormControl.Feedback />
-                                        <HelpBlock></HelpBlock>
-                                    </FormGroup>
-
-                                    <button type='submit' style={{ backgroundColor: 'lightblue' }}>Login</button>
-
-
+                                        <span style={{ color: 'red' }}>{this.state.fieldErrors.password}</span>
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <input
+                                            type='text'
+                                            placeholder="tenant"
+                                            name="tenant"
+                                            value={this.state.fields.tenant}
+                                            onChange={this.onInputChange}
+                                        />
+                                        <span style={{ color: 'red' }}>{this.state.fieldErrors.tenant}</span>
+                                    </div>
+                                    <br />
+                                    <input type="submit" />
                                 </form>
 
-                            </div>
 
+
+                                <br />
+
+                            </div>
+                        </div>
+                        {/* <div>{this.props.onSubmitLogin(this.state.fields.username + "!@#" + this.state.fields.tenant, this.state.fields.password)}</div> */}
+                        <div style={{ marginTop: '200px', position: 'relative' }}>
                             <Footer />
                         </div>
                     </div>
-
                 </div>
-            </div>
+
+            </div >
+
         );
     }
-}
-
+};
 Login.propTypes = {
     alert: PropTypes.shape({
         type: PropTypes.string,
@@ -151,9 +169,4 @@ const mapDispatchToProps = (dispatch) => (
         )
     }
 );
-
-
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-

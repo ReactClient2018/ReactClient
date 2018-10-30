@@ -25,7 +25,7 @@ let UserAPI = {
             // console.log("The user is "+user);
             return user;
         }).catch((error) =>{
-            // alert(error);
+             alert("Wrong Credentials");
        
        }
        );
@@ -48,7 +48,7 @@ let UserAPI = {
         }).then(response => {
             return response;
         }).catch((error) =>{
-            // alert(error);
+             alert(error);
         
         }
         );
