@@ -9,11 +9,8 @@ import { Form, Input, Button, Icon, notification } from 'antd';
 import { FormControl, ControlLabel, HelpBlock, FormGroup, ButtonToolbar } from 'react-bootstrap';
 import './Login.css';
 
-const content = document.createElement('div');
-document.body.appendChild(content);
-
 class Login extends React.Component {
-    static displayName = '07-basic-validation';
+   
 
     state = {
         fields: {
@@ -25,16 +22,9 @@ class Login extends React.Component {
         people: []
         };
     
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        localStorage.setItem("tenant",this.state.tenant);
-        localStorage.setItem("user",this.state.username);
-        this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password);
-        console.log(this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password));
-    };
     componentDidMount() {
         if (Auth.isAuthenticated()) {
+            if(localStorage.getItem())
             History.push("/dashboard");
         }
     }
@@ -70,7 +60,7 @@ class Login extends React.Component {
 
     validate = person => {
         const errors = {};
-        if (!person.username) errors.username = 'userame Required';
+        if (!person.username) errors.username = 'username Required';
         if (!person.password) errors.password = 'password Required';
         if (!person.tenant) errors.tenant = 'tenant Required';
         return errors;
@@ -96,7 +86,7 @@ class Login extends React.Component {
                                     <div>
                                         <input
                                             type='text'
-                                            placeholder="userame"
+                                            placeholder="username"
                                             name="username"
                                             value={this.state.fields.username}
                                             onChange={this.onInputChange}

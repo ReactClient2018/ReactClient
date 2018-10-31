@@ -233,6 +233,7 @@ class MainNavBar extends React.Component {
                                 color: "#f3f2f3"
                             }}>
                                 Maker user logged in: <span>{localStorage.getItem('user')}</span> 
+                                
                             </button>
                         </NavItem>
                         <NavItem eventKey={8}>
@@ -261,3 +262,65 @@ const mapDispatchToProps = dispatch => ({
     onClose: () => dispatch(UserActionCreators.close())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(MainNavBar);
+
+class GreetingAndDateNavBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+            timer: {
+                hr: 0,
+                min: 0,
+                sec: 0
+            }
+
+        }
+    }
+    tyme = setInterval(() => this.setState(() => {
+        const timer = Object.assign({}, this.state.timer);
+        // const time=this.state.time;
+        if (timer.sec === 59) {
+            timer.min = this.state.timer.min + 1;
+            timer.hr = this.state.timer.hr;
+            timer.sec = 0;
+
+            return{
+                    timer
+                }
+        }
+        else if (timer.min === 59) {
+            timer.min = 0;
+            timer.hr = this.state.timer.hr + 1;
+            timer.sec = 0;
+            return {
+                timer
+            }
+        }
+        else {
+            return {
+                timer: {
+                    hr: timer.hr,
+                    min: timer.min,
+                    sec: timer.sec + 1
+
+                }
+            }
+        }
+    }
+    ), 1000);
+
+
+    render() {
+        var date = new Date(Date.now()).toLocaleDateString();
+        var time = new Date(Date.now()).toLocaleTimeString();
+        console.log(date);
+        return (
+            <nav className="navbar navbar-default">
+                <div className="container-fluid">
+                    <div>Date:{date}</div>
+                    <span> You are logged in for:{this.state.timer.hr + ":" + (this.state.timer.min) + ":" + (this.state.timer.sec)}</span>
+                </div>
+            </nav>
+        );
+    }
+}export{GreetingAndDateNavBar};
