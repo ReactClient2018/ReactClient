@@ -6,10 +6,10 @@ import {Router, Route} from "react-router-dom";
 
 import {connect} from "react-redux";
 import {Auth, History} from "utils";
-import NavBar from "../../components/Screening/MainNavBar.jsx"
-import Header from "../../components/Header/Header.jsx"
+import NavBar from "../../components/Screening/AdminNavBar.jsx";
+import ScreeningNaturalRequest from "../screeningnatural/ScreeningNaturalRequest.jsx";
 
-class MakerDashboard extends React.Component {
+class AdminDashboard extends React.Component {
     constructor() {
         super();
     }
@@ -19,10 +19,9 @@ class MakerDashboard extends React.Component {
     render() {
         return (
             <div>
-                
                 <NavBar/>
                 <GreetingAndDateNavBar/>
-                <ScreeningRequestState/>
+                <UserState/>
             </div>
         );
     }
@@ -38,7 +37,7 @@ class GreetingAndDateNavBar extends React.Component {
                         <div className="clearfix"/>
                         <div id="date-display"/>
                     </div>
-                    Greetings, Maker1!
+                    Greetings, Admin!
                     <br/>
                     Date:
                 </div>
@@ -47,7 +46,7 @@ class GreetingAndDateNavBar extends React.Component {
     }
 }
 
-class ScreeningRequestState extends React.Component {
+class UserState extends React.Component {
     render() {
         return (
             <div className="right_col" id="right-col" role="main">
@@ -60,7 +59,7 @@ class ScreeningRequestState extends React.Component {
                                     <div className="col-md-6 col-sm-6 col-xs-12">
                                         <div className="x_panel">
                                             <div className="x_title">
-                                                <h2>Natural Screening Request Statistics</h2>
+                                                <h2>User Statistics</h2>
                                                 <div className="clearfix"/>
                                             </div>
                                             <div className="x_content">
@@ -97,47 +96,7 @@ class ScreeningRequestState extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-6 col-sm-6 col-xs-12">
-                                        <div className="x_panel">
-                                            <div className="x_title">
-                                                <h2>Legal Screening Request Statistics</h2>
-                                                <div className="clearfix"/>
-                                            </div>
-                                            <div className="x_content">
-                                                <div className="col-md-6 col-sm-6 col-xs-12">
-                                                    <div
-                                                        className="chart-container"
-                                                        style={{
-                                                        position: "relative",
-                                                        width: "30vw"
-                                                    }}>
-                                                        <canvas id="myPieChart1"/>
-                                                    </div>
-                                                </div>
-                                                <div className="col-md-6 col-sm-6 col-xs-12">
-                                                    <div
-                                                        className="chart-container"
-                                                        style={{
-                                                        position: "relative",
-                                                        height: "25vh",
-                                                        width: "25vw"
-                                                    }}>
-                                                        <div
-                                                            className="legend"
-                                                            id="myPieChart1Legend"
-                                                            style={{
-                                                            float: "left",
-                                                            paddingTop: "30px"
-                                                        }}/>
-                                                        <div
-                                                            style={{
-                                                            clear: "both"
-                                                        }}/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                                 {/* <!-- /CONTENT --> */}
@@ -151,9 +110,9 @@ class ScreeningRequestState extends React.Component {
     }
 }
 
-MakerDashboard.propTypes = {};
+AdminDashboard.propTypes = {};
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({});
-export default connect(mapStateToProps, mapDispatchToProps)(MakerDashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);

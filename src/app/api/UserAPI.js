@@ -29,9 +29,6 @@ let UserAPI = {
        
        }
        );
-    
-
-
     },
 
     addScreeningNatural(values) {  
@@ -52,6 +49,29 @@ let UserAPI = {
             return response;
         }).catch((error) =>{
              alert(error);
+
+        
+        }
+        );
+    },
+    addUser(values) {  
+        var url = 'http://192.168.110.12:8080/multi-ds/api/create?access_token='+ localStorage.getItem('access_token');
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type':'application/json' },
+            body: values
+        }
+        return fetch(url, requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                return Promise.reject(response.statusText);
+            }
+            return response.json();
+        }).then(response => {
+            return response;
+        }).catch((error) =>{
+            // alert(error);
+
         
         }
         );

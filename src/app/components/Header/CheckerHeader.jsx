@@ -17,7 +17,7 @@ import {headerStyle} from 'variables';
 
 import HeaderLinks from './HeaderLinks.jsx';
 
-class Header extends React.Component {
+class CheckerHeader extends React.Component {
 
     render() {
         const {classes, color} = this.props;
@@ -30,7 +30,7 @@ class Header extends React.Component {
                     fontSize: '2em',
                     verticalAlign: 'middle'
                 }}>
-                    | Maker Panel</span>
+                    | Checker Panel</span>
                 <div
                     style={{
                     float: 'right',
@@ -50,10 +50,10 @@ class Header extends React.Component {
     }
 }
 
-Header.propTypes = {
+CheckerHeader.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     color: PropTypes.oneOf(["primary", "info", "success", "warning", "danger"])
 };
 
-export default withStyles(headerStyle, {withTheme: true})(Header);
+export default withStyles(headerStyle, {withTheme: true})(CheckerHeader);

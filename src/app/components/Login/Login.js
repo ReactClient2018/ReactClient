@@ -28,6 +28,17 @@ class Login extends React.Component {
             History.push("/dashboard");
         }
     }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        localStorage.setItem("tenant",this.state.tenant);
+        localStorage.setItem("user",this.state.username);
+        this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password);
+        console.log(this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password));
+    };
+
+   
+
     onFormSubmit = evt => {
         const people = [...this.state.people];
         const person = this.state.fields;
