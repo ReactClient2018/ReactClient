@@ -8,9 +8,10 @@ import AppHeader, { Footer } from '../../commons/AppHeader';
 import { Form, Input, Button, Icon, notification } from 'antd';
 import { FormControl, ControlLabel, HelpBlock, FormGroup, ButtonToolbar } from 'react-bootstrap';
 import './Login.css';
+import Field from "./FieldLogin";
 
 class Login extends React.Component {
-   
+
 
     state = {
         fields: {
@@ -19,66 +20,48 @@ class Login extends React.Component {
             tenant: ''
         },
         fieldErrors: {},
-        people: []
-        };
-    
+
+    };
+
     componentDidMount() {
         if (Auth.isAuthenticated()) {
-            if(localStorage.getItem())
-            History.push("/dashboard");
+            if (localStorage.getItem())
+                History.push("/dashboard");
         }
     }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        localStorage.setItem("tenant",this.state.tenant);
-        localStorage.setItem("user",this.state.username);
-        this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password);
-        console.log(this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password));
-    };
-
-   
-
     onFormSubmit = evt => {
-        const people = [...this.state.people];
+
         const person = this.state.fields;
-        const fieldErrors = this.validate(person);
-        this.setState({ fieldErrors });
         evt.preventDefault();
-
-        if (Object.keys(fieldErrors).length) return;
-
-        this.setState({
-            people: people.concat(person),
-            fields: {
-                username: '',
-                password: '',
-                tenant: '',
-            }
-        });
-        evt.preventDefault();
+        if(this.validate()) return ;
         localStorage.setItem("tenant", this.state.fields.tenant);
+        localStorage.setItem("user", this.state.fields.username);
         this.props.onSubmitLogin(this.state.fields.username + "!@#" + this.state.fields.tenant, this.state.fields.password);
-        
-        
+        evt.preventDefault();
     };
 
-    onInputChange = evt => {
+    handleChange = (name,value,error) => {
         const fields = Object.assign({}, this.state.fields);
-        fields[evt.target.name] = evt.target.value;
-        this.setState({ fields });
+        fields[name] = value;
+        const fieldErrors=Object.assign({}, this.state.fieldErrors);
+        fieldErrors[name]=error;
+        this.setState({ fields, fieldErrors });
     };
 
-    validate = person => {
-        const errors = {};
-        if (!person.username) errors.username = 'username Required';
-        if (!person.password) errors.password = 'password Required';
-        if (!person.tenant) errors.tenant = 'tenant Required';
-        return errors;
+    validate = () => {
+        const person=this.state.fields;
+        const fieldErrors=this.state.fieldErrors;
+        //const errMessage=Object.keys(fieldErrors).filter((k)=>fieldErrors[K]);
+        if (!person.username) return true;
+        if (!person.password) return true;
+        if (!person.tenant) return true;
+        //if(errMessage.length) return true;
+        return false;
     };
+    
 
     render() {
-        
+
         return (
             <div>
                 <AppHeader />
@@ -94,41 +77,28 @@ class Login extends React.Component {
                             <div className="login-content">
 
                                 <form onSubmit={this.onFormSubmit}>
-                                    <div>
-                                        <input
-                                            type='text'
+                                        <Field
                                             placeholder="username"
                                             name="username"
                                             value={this.state.fields.username}
-                                            onChange={this.onInputChange}
+                                            onChange={this.handleChange}
+                                            validate={val=>(val?false:'username required')}
                                         />
-
-                                        <span style={{ color: 'red' }}>{this.state.fieldErrors.username}</span>
-                                    </div>
-                                    <br />
-                                    <div>
-                                        <input
-                                            type='text'
-                                            placeholder="password"
-                                            name="password"
-                                            value={this.state.fields.password}
-                                            onChange={this.onInputChange}
-                                        />
-                                        <span style={{ color: 'red' }}>{this.state.fieldErrors.password}</span>
-                                    </div>
-                                    <br />
-                                    <div>
-                                        <input
-                                            type='text'
+                                         <Field
                                             placeholder="tenant"
                                             name="tenant"
                                             value={this.state.fields.tenant}
-                                            onChange={this.onInputChange}
+                                            onChange={this.handleChange}
+                                            validate={val=>(val?false:'tenant required')}
                                         />
-                                        <span style={{ color: 'red' }}>{this.state.fieldErrors.tenant}</span>
-                                    </div>
-                                    <br />
-                                    <input type="submit" />
+                                        <Field
+                                            placeholder="password"
+                                            name="password"
+                                            value={this.state.fields.password}
+                                            onChange={this.handleChange}
+                                            validate={val=>(val?false:"password required")}
+                                        />
+                                    <input type="submit" disabled={this.validate()} />
                                 </form>
 
 
