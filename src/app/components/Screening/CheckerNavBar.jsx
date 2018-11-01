@@ -195,6 +195,7 @@ class CheckerNavBar extends React.Component {
                                 color: "#f3f2f3"
                             }}>
                                 Checker user logged in: <span>{localStorage.getItem('user')}</span> 
+                              
                             </button>
                         </NavItem>
                         <NavItem eventKey={8}>

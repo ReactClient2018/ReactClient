@@ -4,6 +4,7 @@ let UserAPI = {
 
     login(username, password) {
         console.log("the username and password is"+ username, password);
+       
         const requestOptions = {
             // credentials: 'include',
             method: 'POST',
