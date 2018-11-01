@@ -22,6 +22,9 @@ let LoginActionCreators = {
                             case 'ROLE_ADMIN':
                                  History.push("/adminDashBoard");
                                  break;
+                                 case 'MAIN_ADMIN':
+                                 History.push("/mainAdminDashBoard");
+                                 break;
                             default:
                                  History.push('/dashboard');
                         }

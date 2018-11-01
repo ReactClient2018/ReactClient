@@ -20,6 +20,21 @@ let UserActionCreators = {
                 });
         }
     },
+    createTenant(values) {
+        return (dispatch) => {
+
+            dispatch({type: constants.CREATE_TENANT_REQUEST});
+            UserAPI
+                .createTenant(values)
+                .then((response) => {
+                    alert(JSON.stringify(response["message"]));
+                    dispatch({type: constants.CREATE_TENANT_SUCCESS, success: true, response});
+                }, (error) => {
+                    console.log(error);
+                    dispatch({type: constants.CREATE_TENANT_FAILURE, success: false});
+                });
+        }
+    },
 
     addScreeningNatural(values) {
         return (dispatch) => {

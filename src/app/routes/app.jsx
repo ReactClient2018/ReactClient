@@ -1,11 +1,13 @@
 import DashboardPage from "views/Dashboard/MakerDashboard.jsx";
 import CheckerDashboardPage from "views/Dashboard/CheckerDashboard.jsx";
 import AdminDashboardPage from "views/Dashboard/AdminDashBoard.jsx";
+import MainAdminDashboardPage from "views/Dashboard/MainAdminDashboard.jsx";
 import ScreeningPrimaryRequestPage from "views/screeningnatural/ScreeningPrimaryRequest.jsx";
 import ScreeningNaturalRequestPage from "views/screeningnatural/ScreeningNaturalRequest.jsx";
 import ScreeningNaturalReviewPage from "views/screeningnatural/ScreeningNaturalReview.jsx";
 import ScreeningDocumentsPage from "views/forms/ScreeningDocuments.jsx";
 import AddUserPage from "views/forms/AddUserRequest.jsx";
+import CreateTenantPage from "views/forms/CreateNewTenant.jsx";
 import TableList from "views/TableList/TableList.jsx";
 import {Authorization} from "utils";
 import ScreeningRelatedEntityPage from "views/forms/ScreeningRelatedEntity.jsx";
@@ -54,13 +56,22 @@ const userRoutes = [
         path: "/adminDashBoard",
         icon: Dashboard,
         component: AdminDashboardPage
-    }, {
+    }, 
+    {
+        path: "/mainAdminDashBoard",
+        icon: Dashboard,
+        component: MainAdminDashboardPage
+    },{
         path: "/screeningRequest",
         component: ScreeningNaturalRequestPage
     }, {
         path: "/addUserRequest",
         component: AddUserPage
-    }, {
+    }, 
+     {
+        path: "/createTenantRequest",
+        component: CreateTenantPage
+    },{
         path: "/screeningPrimaryRequest",
         component: ScreeningPrimaryRequestPage
     }, {

@@ -13,7 +13,6 @@ const content = document.createElement('div');
 document.body.appendChild(content);
 
 class Login extends React.Component {
-    static displayName = '07-basic-validation';
 
     state = {
         fields: {
@@ -21,28 +20,12 @@ class Login extends React.Component {
             password: '',
             tenant: ''
         },
-        fieldErrors: {},
-        people: []
+        fieldErrors: {}
         };
-    
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        localStorage.setItem("tenant",this.state.tenant);
-        localStorage.setItem("user",this.state.username);
-        this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password);
-        console.log(this.props.onSubmitLogin(this.state.username + "!@#" + this.state.tenant, this.state.password));
-    };
-
-    // componentDidMount() {
-    //     if (Auth.isAuthenticated()) {
-    //         History.push("/dashboard");
-    //     }
-    // }
 
 
     onFormSubmit = evt => {
-        const people = [...this.state.people];
         const person = this.state.fields;
         const fieldErrors = this.validate(person);
         this.setState({ fieldErrors });
@@ -51,7 +34,7 @@ class Login extends React.Component {
         if (Object.keys(fieldErrors).length) return;
 
         this.setState({
-            people: people.concat(person),
+    
             fields: {
                 username: '',
                 password: '',

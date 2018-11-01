@@ -1,20 +1,16 @@
 import React from "react";
-import {withStyles} from "material-ui";
 import PropTypes from "prop-types";
 
 import {Router, Route} from "react-router-dom";
 
 import {connect} from "react-redux";
 import {Auth, History} from "utils";
-import NavBar from "../../components/Screening/AdminNavBar.jsx";
+import NavBar from "../../components/Screening/MainAdminNavBar.jsx";
 
-
-class AdminDashboard extends React.Component {
+class MainAdminDashboard extends React.Component {
     constructor() {
         super();
     }
-    handleSubmit(event) {}
-    componentDidMount() {}
 
     render() {
         return (
@@ -110,9 +106,9 @@ class UserState extends React.Component {
     }
 }
 
-AdminDashboard.propTypes = {};
+MainAdminDashboard.propTypes = {};
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({});
-export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(MainAdminDashboard);

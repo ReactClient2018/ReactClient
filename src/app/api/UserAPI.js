@@ -76,6 +76,29 @@ let UserAPI = {
         }
         );
     },
+
+    createTenant(values) {  
+        var url = 'http://192.168.110.12:8080/multi-ds/api/create_tenant?access_token='+ localStorage.getItem('access_token');
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type':'application/json' },
+            body: values
+        }
+        return fetch(url, requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                return Promise.reject(response.statusText);
+            }
+            return response.json();
+        }).then(response => {
+            return response;
+        }).catch((error) =>{
+            // alert(error);
+
+        
+        }
+        );
+    },
     updateScreeningNatural(values,id) {  
         var url = 'http://192.168.110.12:8080/multi-ds/api/screening_n/action/?id='+id+ '&access_token='+ localStorage.getItem('access_token');
         const requestOptions = {
