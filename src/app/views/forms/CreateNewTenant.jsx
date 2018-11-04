@@ -74,7 +74,7 @@ class CreateNewTenant extends Component {
         var data = JSON.stringify(this.state.fields);
         alert(data);
       
-        // this.props.onSubmitTenant(data);
+        this.props.onSubmitTenant(data);
     };
     render() {
         const divStyle = {
