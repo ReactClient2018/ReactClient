@@ -1,15 +1,16 @@
 import React from "react";
 import {Auth, History} from "utils";
-class ScreeningPrimaryRequestTable extends React.Component {
+class ScreeningLegalPrimaryTable extends React.Component {
     render() {
-        var data = localStorage.getItem('screening_n_request_data');
+        var data = localStorage.getItem('screening_l_request_data');
         if(data){
             data = JSON.parse(data)[0];
         }else{
             data = {
-                purpose_of_screening_n: "",
-                first_name:"",
-                last_name:"",
+                purpose_of_screening: "",
+                name_of_institution:"",
+                type_of_industry:"",
+                country_of_issue:""
             };
         }
 
@@ -29,7 +30,7 @@ class ScreeningPrimaryRequestTable extends React.Component {
                             className="btn btn-primary no-print edit-buttons"
                             data-edit="screening-request-tab"
                             onClick={() => {
-                            History.push("/screeningPrimaryRequestEdit");
+                            History.push("/screeningLegalPrimaryEdit");
                         }}>Edit</div>
                     </div>
                     <div className="clearfix"></div>
@@ -37,7 +38,7 @@ class ScreeningPrimaryRequestTable extends React.Component {
                         <label className="control-label col-xs-4 review-key">PURPOSE OF SCREENING
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">{data.purpose_of_screening_n}</label>
+                            <label className="">{data.purpose_of_screening}</label>
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
@@ -55,24 +56,24 @@ class ScreeningPrimaryRequestTable extends React.Component {
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
-                        <label className="control-label col-xs-4 review-key">FIRST NAME
+                        <label className="control-label col-xs-4 review-key">NAME OF INSTITUTION
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">{data.first_name}</label>
+                            <label className="">{data.name_of_institution}</label>
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
-                        <label className="control-label col-xs-4 review-key">LAST NAME
+                        <label className="control-label col-xs-4 review-key">TYPE OF INDUSTRY
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">{data.last_name}</label>
+                            <label className="">{data.type_of_industry}</label>
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
                         <label className="control-label col-xs-4 review-key">COUNTRY OF ISSUE
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">Nepal</label>
+                            <label className="">{data.country_of_issue}</label>
                         </div>
                     </div>
                     <div className="clearfix"></div>
@@ -89,4 +90,4 @@ class ScreeningPrimaryRequestTable extends React.Component {
         );
     }
 }
-export default ScreeningPrimaryRequestTable;
+export default ScreeningLegalPrimaryTable;

@@ -33,7 +33,7 @@ class ScreeningPrimaryRequestEdit extends React.Component {
         screening_n_request_data.push(this.state);
 
         localStorage.setItem("screening_n_request_data", JSON.stringify(screening_n_request_data));
-        History.push("/screeningNaturalReview")
+        History.push("/screeningNaturalReview");
 
     };
     blackColor = {

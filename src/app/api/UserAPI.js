@@ -49,9 +49,29 @@ let UserAPI = {
         }).then(response => {
             return response;
         }).catch((error) =>{
-             alert(error);
+             console.log(error); 
+        }
+        );
+    },
 
-        
+    addScreeningLegal(values) {  
+        var url = 'http://192.168.110.12:8080/multi-ds/api/screening_l/create?access_token='+ localStorage.getItem('access_token');
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type':'application/json' ,
+            'X-TENANT-ID': localStorage.getItem('tenant')},
+            body: values
+        }
+        return fetch(url, requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                return Promise.reject(response.statusText);
+            }
+            return response.json();
+        }).then(response => {
+            return response;
+        }).catch((error) =>{
+             console.log(error); 
         }
         );
     },
@@ -71,7 +91,7 @@ let UserAPI = {
         }).then(response => {
             return response;
         }).catch((error) =>{
-            // alert(error);
+            console.log(error);
 
         
         }
@@ -130,6 +150,23 @@ let UserAPI = {
             headers: Auth.fetchToken()
         }
         return fetch('http://192.168.110.12:8080/multi-ds/api/screening_n/fetch_by_action?access_token='+ localStorage.getItem('access_token'), requestOptions)
+            .then(response => {
+                 if (!response.ok) {
+                    return Promise.reject(response.statusText);
+                }
+                return response.json();
+            })
+            .then(response => {
+                return response;
+            });
+    },
+
+    fetchScreeningsLegal(){
+        const requestOptions = {
+            method: 'GET',
+            headers: Auth.fetchToken()
+        }
+        return fetch('http://192.168.110.12:8080/multi-ds/api/screening_l/fetch_by_action?access_token='+ localStorage.getItem('access_token'), requestOptions)
             .then(response => {
                  if (!response.ok) {
                     return Promise.reject(response.statusText);

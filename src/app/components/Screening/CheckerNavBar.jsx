@@ -19,6 +19,7 @@ class CheckerNavBar extends React.Component {
         // History.push("/screeningPrimaryRequest");
     }
     handleNotificationClick=(event) =>{
+        this.props.onFetchLegal();
         this.props.onNotification();
         History.push("/screeningNotification");
     }
@@ -214,13 +215,15 @@ class CheckerNavBar extends React.Component {
 }
 CheckerNavBar.propTypes = {
     added: PropTypes.bool,
-    onNotification: PropTypes.func.isRequired
+    onNotification: PropTypes.func.isRequired,
+    onFetchLegal: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({ notification: state.notification });
 
 const mapDispatchToProps = dispatch => ({
     onNotification: values => dispatch(UserActionCreators.fetchScreening()),
+    onFetchLegal: values => dispatch(UserActionCreators.fetchScreeningLegal()),
     onClose: () => dispatch(UserActionCreators.close())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(CheckerNavBar);

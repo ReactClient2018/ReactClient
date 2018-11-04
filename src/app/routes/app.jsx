@@ -4,7 +4,10 @@ import AdminDashboardPage from "views/Dashboard/AdminDashBoard.jsx";
 import MainAdminDashboardPage from "views/Dashboard/MainAdminDashboard.jsx";
 import ScreeningPrimaryRequestPage from "views/screeningnatural/ScreeningPrimaryRequest.jsx";
 import ScreeningNaturalRequestPage from "views/screeningnatural/ScreeningNaturalRequest.jsx";
+import ScreeningLegalRequestPage from "views/screeninglegal/ScreeningLegalRequest.jsx";
+import ScreeningLegalPage from "views/screeninglegal/ScreeningLegal.jsx";
 import ScreeningNaturalReviewPage from "views/screeningnatural/ScreeningNaturalReview.jsx";
+import ScreeningLegalReviewPage from "views/screeninglegal/ScreeningLegalReview.jsx";
 import ScreeningDocumentsPage from "views/forms/ScreeningDocuments.jsx";
 import AddUserPage from "views/forms/AddUserRequest.jsx";
 import CreateTenantPage from "views/forms/CreateNewTenant.jsx";
@@ -13,6 +16,7 @@ import {Authorization} from "utils";
 import ScreeningRelatedEntityPage from "views/forms/ScreeningRelatedEntity.jsx";
 import ScreeningRelatedPersonPage from "views/forms/ScreeningRelatedPerson.jsx";
 import ScreeningPrimaryRequestEditPage from "views/screeningEditList/ScreeningPrimaryRequestEdit.jsx";
+import ScreeningLegalPrimaryEditPage from "views/screeningEditList/ScreeningLegalPrimaryEdit.jsx";
 import ScreeningRelatedPersonEditPage from "views/screeningEditList/ScreeningRelatedPersonEdit.jsx";
 import ScreeningRelatedEntityEditPage from "views/screeningEditList/ScreeningRelatedEntityEdit.jsx";
 import ScreeningDocumentsEditPage from "views/screeningEditList/ScreeningDocumentsEdit.jsx";
@@ -64,7 +68,18 @@ const userRoutes = [
     },{
         path: "/screeningRequest",
         component: ScreeningNaturalRequestPage
-    }, {
+    }, 
+    ,{
+        path: "/screeningLRequest",
+        component: ScreeningLegalPage
+    },{
+        path: "/screeningLegalRequest",
+        component: ScreeningLegalRequestPage
+    },
+    {
+        path: "/screeningLegalRequest",
+        component: ScreeningLegalRequestPage
+    },{
         path: "/addUserRequest",
         component: AddUserPage
     }, 
@@ -83,13 +98,21 @@ const userRoutes = [
     }, {
         path: "/screeningNaturalReview",
         component: ScreeningNaturalReviewPage
+    },
+    {
+        path: "/screeningLegalReview",
+        component: ScreeningLegalReviewPage
     }, {
         path: "/screeningDocuments",
         component: ScreeningDocumentsPage
     }, {
         path: "/screeningPrimaryRequestEdit",
         component: ScreeningPrimaryRequestEditPage
-    }, {
+    }, 
+    {
+        path: "/screeningLegalPrimaryEdit",
+        component: ScreeningLegalPrimaryEditPage
+    },{
         path: "/screeningRelatedPersonEdit",
         component: ScreeningRelatedPersonEditPage
     }, {

@@ -9,7 +9,7 @@ class ScreeningNotification extends React.Component {
     submitClick = (event) => {
         History.push("./screeningAction");
     };
-    fetchScreeningData = () => {
+    fetchScreeningNaturalData = () => {
 
         var data = [];
         var json = JSON.parse(localStorage.getItem("screeningNRequestList"));
@@ -28,12 +28,74 @@ class ScreeningNotification extends React.Component {
             }
         }
         return data;
+    }
+    fetchScreeningLegalData = () => {
+
+        var data = [];
+        var json = JSON.parse(localStorage.getItem("screeningLRequestList"));
+        for (var i = 0; i < json.length; i++) {
+            var screening_data = json[i].screening_l_request_data;
+            if (screening_data) {
+                var details = {
+                    id: json[i].id,
+                    purpose_of_screening: screening_data.purpose_of_screening,
+                    name_of_institution: screening_data.name_of_institution,
+                    date_of_establishment: screening_data.date_of_establishment,
+                    registration_no: screening_data.registration_no,
+                    country_of_issue: screening_data.country_of_issue,
+                    type_of_industry: screening_data.type_of_industry,
+                    date: ''
+                }
+                data.push(details);
+            }
+        }
+        return data;
 
     }
     render() {
 
-        const data = this.fetchScreeningData();
-        const columns = [
+        const dataNatural = this.fetchScreeningNaturalData();
+        const dataLegal = this.fetchScreeningLegalData();
+        const columnsLegal = [
+            {
+                Header: 'ID',
+                accessor: 'id'
+            }, {
+                Header: 'Purpose of screening',
+                accessor: 'purpose_of_screening'
+            }, {
+                Header: 'Name',
+                accessor: 'name_of_institution'
+            }, {
+                Header: 'Date of establishment',
+                accessor: 'date_of_establishment'
+            }, {
+                Header: 'Registration Number',
+                accessor: 'registration_no'
+            }, {
+                Header: 'Country of issue',
+                accessor: 'country_of_issue'
+            }, {
+                Header: 'Type of industry',
+                accessor: 'type_of_industry'
+            },  {
+                Header: 'Screening request date',
+                accessor: 'date'
+            }, {
+                Header: 'Screening request time',
+                accessor: 'time'
+            }, {
+                Header: 'Details',
+                width: 125,
+                accessor: 'tender_list',
+                style: {
+                    cursor: 'pointer'
+                },
+                Cell: props => <button onClick={() => this.submitClick(props.value)}>Review
+                    </button>
+            }
+        ]
+        const columnsNatural = [
             {
                 Header: 'ID',
                 accessor: 'id'
@@ -87,16 +149,16 @@ class ScreeningNotification extends React.Component {
             <div>
                 <Navbar/>
                 <div style={divStyle}>
-                    <h2
+                    <h3
                         style={{
                         color: 'lightBlue',
                         textAlign: 'center'
                     }}>
-                        <span>Review Screening Checker!!!</span>
-                    </h2>
+                        <span>Review Screening Natural!!!</span>
+                    </h3>
                     <ReactTable
-                        data={data}
-                        columns={columns}
+                        data={dataNatural}
+                        columns={columnsNatural}
                         defaultPageSize={9}
                         pageSizeOptions={[6, 10, 18]}
                         getTdProps={(state, row, rowInfo, column, instance) => {
@@ -105,6 +167,30 @@ class ScreeningNotification extends React.Component {
                                 console.log(row.index);
                                 localStorage.removeItem("screening_n_notification_index");
                                 localStorage.setItem("screening_n_notification_index", row.index);
+                                if (handleOriginal) {
+                                    handleOriginal();
+                                }
+                            }
+                        }
+                    }}/>
+                       <h3
+                        style={{
+                        color: 'lightBlue',
+                        textAlign: 'center'
+                    }}>
+                        <span>Review Screening Legal!!!</span>
+                    </h3>
+                    <ReactTable
+                        data={dataLegal}
+                        columns={columnsLegal}
+                        defaultPageSize={9}
+                        pageSizeOptions={[6, 10, 18]}
+                        getTdProps={(state, row, rowInfo, column, instance) => {
+                        return {
+                            onClick: (e, handleOriginal) => {
+                                console.log(row.index);
+                                localStorage.removeItem("screening_l_notification_index");
+                                localStorage.setItem("screening_l_notification_index", row.index);
                                 if (handleOriginal) {
                                     handleOriginal();
                                 }

@@ -13,7 +13,6 @@ let Auth = {
        
         localStorage.removeItem('access_token');
         localStorage.removeItem('tenant');
-        localStorage.removeItem('username');
         localStorage.removeItem('expires_at');
         localStorage.removeItem('roles');
     },
@@ -21,7 +20,6 @@ let Auth = {
         // Set the time that the access token will expire at
         let expiresAt = JSON.stringify((authResult["expires_in"] * 1000) + new Date().getTime());
         localStorage.setItem('access_token', authResult["access_token"]);
-        localStorage.setItem('username', authResult["username"]);
         localStorage.setItem('scope', authResult["scope"]);
         localStorage.setItem('roles', authResult["roles"][0].role);
         localStorage.setItem('expires_at', expiresAt);

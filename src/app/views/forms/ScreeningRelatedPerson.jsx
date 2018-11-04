@@ -75,7 +75,11 @@ class ScreeningRelatedPerson extends Component {
         screening_n_related_person.push(this.state);
       
         localStorage.setItem("screening_n_related_person", JSON.stringify(screening_n_related_person));
-        History.push("/screeningNaturalReview")
+        if (localStorage.getItem("screening") == "natural") {
+            History.push("/screeningNaturalReview");
+        } else {
+            History.push("/screeningLegalReview");
+        }
     };
     blackColor = {
         color: "black"
