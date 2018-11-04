@@ -51,6 +51,21 @@ let UserActionCreators = {
                 });
         }
     },
+    addScreeningLegal(values) {
+        return (dispatch) => {
+
+            dispatch({type: constants.ADD_SCREENING_REQUEST});
+            UserAPI
+                .addScreeningLegal(values)
+                .then((response) => {
+                    alert(JSON.stringify(response["message"]));
+                    dispatch({type: constants.ADD_SCREENING_SUCCESS, success: true, response});
+                }, (error) => {
+                    console.log(error);
+                    dispatch({type: constants.ADD_SCREENING_FAILURE, success: false});
+                });
+        }
+    },
     updateUser(response) {
         return (dispatch) => {
             dispatch({type: constants.UPDATE_SCREENING_SUCCESS, response});
@@ -90,6 +105,23 @@ let UserActionCreators = {
                         // alert(JSON.stringify(response["screeningNRequestList"]));
                         localStorage.removeItem("screeningNRequestList");
                         localStorage.setItem("screeningNRequestList", JSON.stringify(response["screeningNRequestList"]));
+                        window.location.reload(true); var json =
+                        dispatch({type: constants.FETCH_USER_SUCCESS, success: true, response});
+                    }, (error) => {
+                        console.log(error);
+                        dispatch({type: constants.FETCH_USER_FAILURE, success: false});
+                    });
+            }
+        },
+        fetchScreeningLegal() {
+            return (dispatch) => {
+                dispatch({type: constants.FETCH_USER_REQUEST});
+                UserAPI
+                    .fetchScreeningsLegal()
+                    .then((response) => {
+                        alert(JSON.stringify(response["screeningLRequestList"]));
+                        localStorage.removeItem("screeningLRequestList");
+                        localStorage.setItem("screeningLRequestList", JSON.stringify(response["screeningLRequestList"]));
                         window.location.reload(true); var json =
                         dispatch({type: constants.FETCH_USER_SUCCESS, success: true, response});
                     }, (error) => {

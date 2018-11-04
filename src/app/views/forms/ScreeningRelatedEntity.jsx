@@ -82,7 +82,11 @@ class ScreeningRelatedEntity extends Component {
         screening_n_related_entity.push(this.state);
 
         localStorage.setItem("screening_n_related_entity", JSON.stringify(screening_n_related_entity));
-        History.push("/screeningNaturalReview");
+        if (localStorage.getItem("screening") == "natural") {
+            History.push("/screeningNaturalReview");
+        } else {
+            History.push("/screeningLegalReview");
+        }
 
     }
     handleReset = () => {

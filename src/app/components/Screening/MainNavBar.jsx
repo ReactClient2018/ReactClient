@@ -5,6 +5,7 @@ import {MenuItem, Nav, Navbar, NavItem, NavDropdown} from "react-bootstrap";
 import { UserActionCreators } from "actions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Header from "../Header/Header.jsx"
 
 
 class MainNavBar extends React.Component {
@@ -13,13 +14,17 @@ class MainNavBar extends React.Component {
         localStorage.clear();
         localStorage.removeItem('access_token');
         localStorage.removeItem('tenant');
-        localStorage.removeItem('username');
         localStorage.removeItem('expires_at');
         localStorage.removeItem('roles');
         History.push("/login");
     }
     handleScreeningClick() {
+        localStorage.setItem("screening","natural"),
         History.push("/screeningPrimaryRequest");
+    }
+    handleScreeningLegalClick(){
+        localStorage.setItem("screening","legal"),
+        History.push("/screeningLegalRequest")
     }
     handleNotificationClick=(event) =>{
        
@@ -31,6 +36,7 @@ class MainNavBar extends React.Component {
 
         return (
             <div>
+                <Header/>
                 <Navbar>
                     <Nav pullLeft>
                         <NavDropdown eventKey={1} title="Screening" id="basic-nav-dropdown">
@@ -42,8 +48,7 @@ class MainNavBar extends React.Component {
                             <MenuItem eventKey={1.2}>
                                 {" "}
                                 <button
-                                    className="content-links"
-                                    href="${pageContext.request.contextPath}/screeningl/requestForm">
+                                    className="content-links" onClick={this.handleScreeningLegalClick}>
                                     <b>Send Request (Legal person)</b>
                                 </button>
                             </MenuItem>

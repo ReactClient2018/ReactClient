@@ -42,7 +42,7 @@ class Templates extends React.Component{
                         </div>
                         <div className="clearfix"></div>
                         <div className="col-xs-12 hover-group review-group">
-                            <label className="control-label col-xs-4 review-key">PURPOSE OF SCREENING N
+                            <label className="control-label col-xs-4 review-key">PURPOSE OF SCREENING
                             </label>
                             <div className="col-xs-8 review-value">
                                 <label className="">{dat.purpose_of_screening_n}</label>

@@ -2,7 +2,7 @@ import React from "react";
 import ScreeningPrimaryRequest from "../screeningnatural/ScreeningTabTitle.jsx";
 import ScreeningTabTitle from '../screeningnatural/ScreeningTabTitle.jsx';
 import NavBar from "../../components/Screening/MainNavBar.jsx";
-import { History } from 'utils';
+import {History} from 'utils';
 // import './css/screeningDocuments.css';
 
 class ScreeningDocuments extends React.Component {
@@ -24,12 +24,18 @@ class ScreeningDocuments extends React.Component {
     handleProceed = () => {
         alert(JSON.stringify(this.state));
         var screening_n_attachment = localStorage.getItem("screening_n_attachment");
-        screening_n_attachment = screening_n_attachment ? JSON.parse(screening_n_attachment) : [];
+        screening_n_attachment = screening_n_attachment
+            ? JSON.parse(screening_n_attachment)
+            : [];
         // alert(screening_n_related_person.length);
         screening_n_attachment.push(this.state);
 
         localStorage.setItem("screening_n_attachment", JSON.stringify(screening_n_attachment));
-        History.push("/screeningNaturalReview")
+        if (localStorage.getItem("screening") == "natural") {
+            History.push("/screeningNaturalReview");
+        } else {
+            History.push("/screeningLegalReview");
+        }
     }
 
     handleFileChange = (e) => {
@@ -55,8 +61,8 @@ class ScreeningDocuments extends React.Component {
                     var binaryString = readerEvt.target.result;
                     var b64 = btoa(binaryString);
 
-                    this.setState({ scanned_content: b64 });
-                     console.log(this.state.scanned_content);
+                    this.setState({scanned_content: b64});
+                    console.log(this.state.scanned_content);
 
                 }
                 reader.readAsBinaryString(imgObj);
@@ -70,7 +76,7 @@ class ScreeningDocuments extends React.Component {
         return (
             <div>
                 <NavBar/>
-                <ScreeningTabTitle />
+                <ScreeningTabTitle/>
 
                 <div style={{
                     backgroundColor: 'white'
@@ -78,56 +84,58 @@ class ScreeningDocuments extends React.Component {
                     <form>
 
                         <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
-                            <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>
+                            <label
+                                className="control-label col-md-4 col-sm-4 col-xs-4"
+                                style={this.blackColor}>
                                 Attachment Type:
 
-                        </label>
-                           
+                            </label>
 
-
-                                <div class="col-md-8 col-sm-8 col-xs-8">
-                                    <select
-                                        name="scanned_document_type"
-                                        value={this.state.scanned_document_type}
-                                        onChange={this.handleChange}>
-                                        <option>Select action type.</option>
-                                        <option value='citizenship'>citizenship</option>
-                                        <option value='passport'>passport</option>
-                                        <option value='others'>others</option>
-                                    </select>
-                                </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <select
+                                    name="scanned_document_type"
+                                    value={this.state.scanned_document_type}
+                                    onChange={this.handleChange}>
+                                    <option>Select action type.</option>
+                                    <option value='citizenship'>citizenship</option>
+                                    <option value='passport'>passport</option>
+                                    <option value='others'>others</option>
+                                </select>
                             </div>
+                        </div>
 
-                            <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
-                                <label className="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>Attachment</label>
-                                <div className="col-md-8 col-sm-8 col-xs-8">
-                                    <input name='file' type='file' onChange={this.handleFileChange}></input>
-                                </div>
+                        <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
+                            <label
+                                className="control-label col-md-4 col-sm-4 col-xs-4"
+                                style={this.blackColor}>Attachment</label>
+                            <div className="col-md-8 col-sm-8 col-xs-8">
+                                <input name='file' type='file' onChange={this.handleFileChange}></input>
                             </div>
+                        </div>
 
-                            <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
-                                <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>notes</label>
-                                <div class="col-md-8 col-sm-8 col-xs-8">
-                                    <textarea
-                                        name="notes"
-                                        required
-                                        onChange={this.handleChange}
-                                        value={this.state.notes}></textarea>
+                        <div class="col-md-4 col-sm-6 col-xs-12 item form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-4" style={this.blackColor}>notes</label>
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <textarea
+                                    name="notes"
+                                    required
+                                    onChange={this.handleChange}
+                                    value={this.state.notes}></textarea>
 
-                                </div>
                             </div>
-                            <div>
-                                {/* <button>Add Attachment</button>
+                        </div>
+                        <div>
+                            {/* <button>Add Attachment</button>
                             <button>Remove Attachment</button> */}
-                            </div>
-                            <div>
-                                <button onClick={this.handleProceed}>Proceed</button>
-                            </div>
+                        </div>
+                        <div>
+                            <button onClick={this.handleProceed}>Proceed</button>
+                        </div>
 
                     </form>
                 </div>
-                </div>
-                );
-            }
-        }
-        export default ScreeningDocuments;
+            </div>
+        );
+    }
+}
+export default ScreeningDocuments;

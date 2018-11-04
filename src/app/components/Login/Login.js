@@ -121,9 +121,6 @@ class Login extends React.Component {
                                         />
                                     <input type="submit" disabled={this.validate()} />
                                 </form>
-
-
-
                                 <br />
 
                             </div>
