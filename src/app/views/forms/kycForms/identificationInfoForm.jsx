@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Field, reduxForm, formValueSelector } from 'redux-form'
+import { Field, reduxForm } from "redux-form";
 import NavBar from "../../../components/Screening/MainNavBar.jsx";
 import SideNavPage from "../viewKYCRequests.jsx";
 const renderField = ({
@@ -27,7 +27,7 @@ const renderField = ({
 const handleSubmitClick = () => {
     alert("Hi");
 }
-const PersonalInfoForm = props => {
+const IdentificationInfoForm = props => {
     const { handleSubmit, pristine, reset, submitting } = props
     return (
         <div>
@@ -37,7 +37,7 @@ const PersonalInfoForm = props => {
             <div className="col-md-10 content">
     
                 <div className="row">
-                <div><h2>Personal information<small>&nbsp;(please fill the personal information)</small></h2></div>
+                <div><h2>Identification information<small>&nbsp;(please fill the identification info form)</small></h2></div>
         <form onSubmit={handleSubmit(handleSubmitClick)}>
             <div className="col-md-6 col-sm-6 col-xs-12 item form-group"></div>
             <Field
@@ -669,25 +669,5 @@ const PersonalInfoForm = props => {
     )
 }
 export default reduxForm({
-    form: 'personalInfoForm'
-})(PersonalInfoForm);
-
-
-
-{/* const selector = formValueSelector('selectingFormValues') // <-- same as form name
-SelectingFormValuesForm = connect(
-  state => {
-    // can select values individually
-    const hasEmailValue = selector(state, 'hasEmail')
-    const favoriteColorValue = selector(state, 'favoriteColor')
-    // or together as a group
-    const { firstName, lastName } = selector(state, 'firstName', 'lastName')
-    return {
-      hasEmailValue,
-      favoriteColorValue,
-      fullName: `${firstName || ''} ${lastName || ''}`
-    }
-  }
-)(SelectingFormValuesForm)
-
-export default SelectingFormValuesForm */}
+    form: 'identificationInfoForm'
+})(IdentificationInfoForm);

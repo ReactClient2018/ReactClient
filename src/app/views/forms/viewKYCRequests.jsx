@@ -22,9 +22,9 @@ class SideNavPage extends React.Component {
   // componentWillMount(){
   //   History.push("/personalInfoForm");
   // }
-  handlePersonalInfo = () => {
-
-    History.push("/personalInfoForm");
+  handleClickInfo = (e) => {
+    // alert(e.target.name);
+    History.push("/"+e.target.name);
 
   }
   render() {
@@ -40,43 +40,45 @@ class SideNavPage extends React.Component {
     return (
       <div>
         <NavBar />
-        <div class="col-md-2 sidebar">
+        <div className="col-md-2 sidebar">
 
-          <div class="row">
+          <div className="row">
 
-            <div class="absolute-wrapper"> </div>
+            <div className="absolute-wrapper"> </div>
 
-            <div class="side-menu">
-              <nav class="navbar navbar-default" role="navigation">
+            <div className="side-menu">
+              <nav className="navbar navbar-default" role="navigation">
 
-                <div class="side-menu-container">
+                <div className="side-menu-container">
 
-                  <ul class="nav" >
-                    <li class="nav-item" onClick={this.handlePersonalInfo}><button>Personal Info</button></li>
+                  <ul className="nav" >
+                    <li className="nav-item"   onClick={this.handleClickInfo}  onClick={this.handleClickInfo}><button  name="personalInfoForm">Personal Info</button></li>
                     <hr />
-                    <li class="nav-item"><button>Address Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} onClick={this.handleClickInfo}><button  name="identificationInfoForm">Identification Info</button></li>
+                    <hr/>
+                    <li className="nav-item"   onClick={this.handleClickInfo} onClick={this.handleClickInfo}><button  name="addressInfoForm">Address Info</button></li>
                     <hr />
-                    <li class="nav-item" ><button>Relation Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="relationInfoForm" name="relationInfoForm">Relation Info</button></li>
                     <hr />
-                    <li class="nav-item" ><button>Related Person Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="relatedPersonInfoForm">Related Person Info</button></li>
                     <hr />
-                    <li class="nav-item" ><button>Related Entity Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="relatedEntityInfoForm">Related Entity Info</button></li>
                     <hr />
-                    <li class="nav-item" ><button>Education Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="educationInfoForm">Education Info</button></li>
                     <hr />
-                    <li class="nav-item" ><button>Involvement Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="involvementInfoForm">Involvement Info</button></li>
                     <hr />
-                    <li class="nav-item" ><button>Accounts Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="accountsInfoForm">Accounts Info</button></li>
                     <hr />
-                    <li class="nav-item" ><button>Internal Observation Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="internalObservationInfoForm">Internal Observation Info</button></li>
                     <hr />
-                    <li class="nav-item" ><button>Comments</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="commentsForm">Comments</button></li>
                     <hr />
-                    <li class="nav-item" ><button>AML info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="amlInfoForm">AML info</button></li>
                     <hr />
-                    <li class="nav-item" ><button>Documents Status Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="documentsStatusInfoForm">Documents Status Info</button></li>
                     <hr />
-                    <li class="nav-item" ><button>Customer Review Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="customerReviewInfoForm">Customer Review Info</button></li>
                   </ul>
                 </div>
               </nav>

@@ -24,6 +24,8 @@ import ScreeningNotificationPage from "views/screeningnatural/ScreeningNotificat
 import viewKYCRequestsPage from "views/forms/viewKYCRequests.jsx";
 import ScreeningActionPage from "components/Screening/ScreeningAction.jsx";
 import PersonalInfoForm from "views/forms/kycForms/personalInfoForm.jsx";
+import AddressInfoForm from "views/forms/kycForms/addressInfoForm.jsx";
+import IdentificationInfoForm from "views/forms/kycForms/identificationInfoForm.jsx";
 import { Login } from 'components';
 
 import { Dashboard, Person, ContentPaste } from 'material-ui-icons';
@@ -137,6 +139,14 @@ const userRoutes = [
     {
         path: "/personalInfoForm",
         component: PersonalInfoForm
+    },
+    {
+        path: "/identificationInfoForm",
+        component: IdentificationInfoForm
+    },
+    {
+        path: "/addressInfoForm",
+        component: AddressInfoForm
     },
     {
         redirect: true,
