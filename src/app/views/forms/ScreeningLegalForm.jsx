@@ -1,10 +1,6 @@
 import React from "react";
-import {UserActionCreators} from "actions";
 import PropTypes from "prop-types";
 import {History}  from 'utils';
-import {connect} from "react-redux";
-import { reduxForm, Field } from 'redux-form';
-import {ConnectedCreateUserForm} from "../forms/UserForm";
 
 
 class ScreeningLegalForm extends React.Component {
@@ -360,16 +356,6 @@ class ScreeningLegalForm extends React.Component {
     }
 }
 
-ScreeningLegalForm.propTypes = {
-    added: PropTypes.bool,
-    onSubmitScreening: PropTypes.func.isRequired
-};
 
-const mapStateToProps = state => ({screening: state.screening});
-
-const mapDispatchToProps = dispatch => ({
-    onSubmitScreening: values => dispatch(UserActionCreators.addUser(values)),
-    onClose: () => dispatch(UserActionCreators.close())
-});
-export default connect(mapStateToProps, mapDispatchToProps)(ScreeningLegalForm);
+export default ScreeningLegalForm;
 

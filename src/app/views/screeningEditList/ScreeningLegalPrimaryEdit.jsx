@@ -339,16 +339,6 @@ class ScreeningLegalPrimaryEdit extends React.Component {
     }
 }
 
-ScreeningLegalPrimaryEdit.propTypes = {
-    added: PropTypes.bool,
-    onSubmitScreening: PropTypes.func.isRequired
-};
 
-const mapStateToProps = state => ({screening: state.screening});
-
-const mapDispatchToProps = dispatch => ({
-    onSubmitScreening: values => dispatch(UserActionCreators.addUser(values)),
-    onClose: () => dispatch(UserActionCreators.close())
-});
-export default connect(mapStateToProps, mapDispatchToProps)(ScreeningLegalPrimaryEdit);
+export default ScreeningLegalPrimaryEdit;
 

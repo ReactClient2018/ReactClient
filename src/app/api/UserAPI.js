@@ -32,49 +32,7 @@ let UserAPI = {
        );
     },
 
-    addScreeningNatural(values) {  
-        var url = 'http://192.168.110.12:8080/multi-ds/api/screening_n/create?access_token='+ localStorage.getItem('access_token');
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type':'application/json' ,
-            'X-TENANT-ID': localStorage.getItem('tenant')},
-            body: values
-        }
-        return fetch(url, requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                return Promise.reject(response.statusText);
-            }
-            return response.json();
-        }).then(response => {
-            return response;
-        }).catch((error) =>{
-             console.log(error); 
-        }
-        );
-    },
-
-    addScreeningLegal(values) {  
-        var url = 'http://192.168.110.12:8080/multi-ds/api/screening_l/create?access_token='+ localStorage.getItem('access_token');
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type':'application/json' ,
-            'X-TENANT-ID': localStorage.getItem('tenant')},
-            body: values
-        }
-        return fetch(url, requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                return Promise.reject(response.statusText);
-            }
-            return response.json();
-        }).then(response => {
-            return response;
-        }).catch((error) =>{
-             console.log(error); 
-        }
-        );
-    },
+   
     addUser(values) {  
         var url = 'http://192.168.110.12:8080/multi-ds/api/create?access_token='+ localStorage.getItem('access_token');
         const requestOptions = {
@@ -120,36 +78,13 @@ let UserAPI = {
         }
         );
     },
-    updateScreeningNatural(values,id) {  
-        var url = 'http://192.168.110.12:8080/multi-ds/api/screening_n/action/?id='+id+ '&access_token='+ localStorage.getItem('access_token');
-        const requestOptions = {
-            method: 'PUT',
-            headers: {'Content-Type':'application/json' ,
-            'X-TENANT-ID': localStorage.getItem('tenant')},
-            body: values
-        }
-        return fetch(url, requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                return Promise.reject(response.statusText);
-            }
-            return response.json();
-        }).then(response => {
-            return response;
-        }).catch((error) =>{
-            // alert("big error");
-            // alert(error);
-        
-        }
-        );
-    },
 
-    fetchScreenings(){
+    fetchUsers(){
         const requestOptions = {
             method: 'GET',
             headers: Auth.fetchToken()
         }
-        return fetch('http://192.168.110.12:8080/multi-ds/api/screening_n/fetch_by_action?access_token='+ localStorage.getItem('access_token'), requestOptions)
+        return fetch('http://192.168.110.12:8080/multi-ds/api/users?access_token='+ localStorage.getItem('access_token'), requestOptions)
             .then(response => {
                  if (!response.ok) {
                     return Promise.reject(response.statusText);
@@ -160,13 +95,12 @@ let UserAPI = {
                 return response;
             });
     },
-
-    fetchScreeningsLegal(){
+    fetchTenants(){
         const requestOptions = {
             method: 'GET',
-            headers: Auth.fetchToken()
+            headers: Auth.fetchTokenT()
         }
-        return fetch('http://192.168.110.12:8080/multi-ds/api/screening_l/fetch_by_action?access_token='+ localStorage.getItem('access_token'), requestOptions)
+        return fetch('http://192.168.110.12:8080/multi-ds/api/tenants?access_token='+ localStorage.getItem('access_token'), requestOptions)
             .then(response => {
                  if (!response.ok) {
                     return Promise.reject(response.statusText);
@@ -176,7 +110,8 @@ let UserAPI = {
             .then(response => {
                 return response;
             });
-    }
+    },
+   
 }
 
 export default UserAPI;

@@ -2,7 +2,7 @@ import React from 'react';
 import {Auth, History} from "utils";
 import {Router, Switch, Route} from "react-router-dom";
 import {MenuItem, Nav, Navbar, NavItem, NavDropdown} from "react-bootstrap";
-import { UserActionCreators } from "actions";
+import { ScreeningActionCreators } from "actions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Header from "../Header/CheckerHeader.jsx"
@@ -222,8 +222,8 @@ CheckerNavBar.propTypes = {
 const mapStateToProps = state => ({ notification: state.notification });
 
 const mapDispatchToProps = dispatch => ({
-    onNotification: values => dispatch(UserActionCreators.fetchScreening()),
-    onFetchLegal: values => dispatch(UserActionCreators.fetchScreeningLegal()),
-    onClose: () => dispatch(UserActionCreators.close())
+    onNotification: values => dispatch(ScreeningActionCreators.fetchScreening()),
+    onFetchLegal: values => dispatch(ScreeningActionCreators.fetchScreeningLegal()),
+    onClose: () => dispatch(ScreeningActionCreators.close())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(CheckerNavBar);

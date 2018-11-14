@@ -1,6 +1,6 @@
 import React from "react";
 import ScreeningTabTitle from "./ScreeningTabTitle.jsx";
-import { UserActionCreators } from "actions";
+import { ScreeningActionCreators } from "actions";
 import PropTypes from "prop-types";
 import { History } from 'utils';
 import { connect } from "react-redux";
@@ -127,7 +127,7 @@ ScreeningNaturalReview.propTypes = {
 const mapStateToProps = state => ({ screening: state.screening });
 
 const mapDispatchToProps = dispatch => ({
-    onSubmitScreening: values => dispatch(UserActionCreators.addScreeningNatural(values)),
-    onClose: () => dispatch(UserActionCreators.close())
+    onSubmitScreening: values => dispatch(ScreeningActionCreators.addScreeningNatural(values)),
+    onClose: () => dispatch(ScreeningActionCreators.close())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ScreeningNaturalReview);

@@ -5,20 +5,19 @@ import {History} from 'utils';
 import {connect} from "react-redux";
 import {reduxForm, Field} from 'redux-form';
 import {ConnectedCreateUserForm} from "../forms/UserForm";
-import Nav from "../../components/Screening/AdminNavBar.jsx";
+import Nav from "../../components/Screening/MainAdminNavBar.jsx";
 
-class AddUserRequest extends React.Component {
+class CreateTenantAdmin extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            enabled: "",
             username: "",
             password: "",
             first_name: "",
             middle_name: "",
             last_name: "",
-            tenant: localStorage.getItem('tenant'),
+            tenant: "",
             branch_sol_id: "",
             date_of_expiry: "",
             designation: "",
@@ -27,7 +26,7 @@ class AddUserRequest extends React.Component {
             mobile_contact_no: "",
             office_contact_no: "",
             user_scope: "",
-            user_role:"",
+            user_role:"ROLE_ADMIN",
             roles:[]
             
         };
@@ -82,7 +81,7 @@ class AddUserRequest extends React.Component {
                 <Nav/>
                 <hr/>
                 <div>
-                    <h6>To add a new user, please enter following details and click Submit.</h6>
+                    <h6>To create a new tenant admin, please enter following details and click Submit.</h6>
                 </div>
                 <hr/>
 
@@ -91,66 +90,7 @@ class AddUserRequest extends React.Component {
                     .handleSubmit
                     .bind(this)}>
                     <hr/>
-                    <div
-                        className='row'
-                        style={{
-                        padding: '5px'
-                    }}>
-                        <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
-                            <label
-                                className="control-label col-md-4 col-sm-4 col-xs-4"
-                                style={this.blackColor}>
-                                Branch Code*
-                            </label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <select
-                                    name="branch_sol_id"
-                                    value={this.state.branch_sol_id}
-                                    onChange={this.handleChange}>
-                                    <option>select sol-id</option>
-                                    <option value="Thapathali branch">Thapathali branch</option>
-                                    <option value="koteshwor">Koteshowr branch</option>
-                                    <option value="Lagakhel regional">Lagankhel regional</option>
-                                    <option value="Naxal branch">Naxal branch</option>
-                                    <option value="Others">Others</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
-                            <label
-                                className="control-label col-md-4 col-md-4 col-xs-4"
-                                style={this.blackColor}>
-                                User Scope*
-                            </label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <select
-                                    name="user_scope"
-                                    value={this.state.user_scope}
-                                    onChange={this.handleChange}>
-                                    <option>select user scope</option>
-                                    <option value="branch">Branch</option>
-                                    <option value="regional">Regional</option>
-                                    <option value="central">Central</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="col-md-4 col-sm-6 col-xs-12 item form-group">
-                            <label
-                                className="control-label col-md-4 col-md-4 col-xs-4"
-                                style={this.blackColor}>
-                                User Role*
-                            </label>
-                            <div className="col-md-8 col-sm-8 col-xs-8">
-                                <select name="user_role" value={this.state.user_role} onChange={this.handleChange}>
-                                    <option>select user role</option>
-                                    <option value="ADMIN">Checker</option>
-                                    <option value="USER">Maker</option>
-                                    <option value="manager">Manager</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <hr/>
 
                     <div className="clearfix"/>
@@ -301,37 +241,26 @@ class AddUserRequest extends React.Component {
                                 onChange={this.handleChange}/>
                         </div>
                         <div className="clearfix"/>
+                        <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
+                            <label
+                                className="control-label col-md-4 col-sm-4 col-xs-4"
+                                style={this.blackColor}>
+                                Tenant Id:
+                            </label>
+                            <input
+                                type="text"
+                                name="tenant"
+                                value={this.state.tenant}
+                                onChange={this.handleChange}/>
+                        </div>
+                        <div className="clearfix"/>
                         
 
                     </div>
                     <hr/>
 
-                    <div className="clearfix"/>
-                    <div className="col-md-12 col-sm-12 col-xs-12 item form-group">
-                        <label
-                            className="control-label col-md-2 col-sm-2 col-xs-2"
-                            style={this.blackColor}>User status</label>
-                        <div className="col-md-10 col-sm-10 col-xs-10">
-                            <select name="user_status" value={this.state.user_status} onChange={this.handleChange}>
-                                <option>select user status</option>
-                                <option value="checker">Enabled</option>
-                                <option value="maker">Disabled</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
-                            <label
-                                className="control-label col-md-4 col-sm-4 col-xs-4"
-                                style={this.blackColor}>
-                                Date of Expiry:
-                            </label>
-                            <input
-                                type="date"
-                                name="date_of_expiry"
-                                value={this.state.date_of_expiry}
-                                onChange={this.handleDateChange}/>
-                        </div>
-
+                    
+                    
                     <div className="clearfix"></div>
                     <hr/>
 
@@ -344,7 +273,7 @@ class AddUserRequest extends React.Component {
     }
 }
 
-AddUserRequest.propTypes = {
+CreateTenantAdmin.propTypes = {
     added: PropTypes.bool,
     onSubmitUser: PropTypes.func.isRequired
 };
@@ -355,4 +284,4 @@ const mapDispatchToProps = dispatch => ({
     onSubmitUser: values => dispatch(UserActionCreators.addUser(values)),
     onClose: () => dispatch(UserActionCreators.close())
 });
-export default connect(mapStateToProps, mapDispatchToProps)(AddUserRequest);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTenantAdmin);
