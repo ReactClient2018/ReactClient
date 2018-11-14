@@ -16,7 +16,7 @@ import CreateTenantAdminPage from "views/forms/CreateTenantAdmin.jsx";
 
 import CreateTenantPage from "views/forms/CreateNewTenant.jsx";
 import TableList from "views/TableList/TableList.jsx";
-import {Authorization} from "utils";
+import { Authorization } from "utils";
 import ScreeningRelatedEntityPage from "views/forms/ScreeningRelatedEntity.jsx";
 import ScreeningRelatedPersonPage from "views/forms/ScreeningRelatedPerson.jsx";
 import ScreeningPrimaryRequestEditPage from "views/screeningEditList/ScreeningPrimaryRequestEdit.jsx";
@@ -25,16 +25,21 @@ import ScreeningRelatedPersonEditPage from "views/screeningEditList/ScreeningRel
 import ScreeningRelatedEntityEditPage from "views/screeningEditList/ScreeningRelatedEntityEdit.jsx";
 import ScreeningDocumentsEditPage from "views/screeningEditList/ScreeningDocumentsEdit.jsx";
 import ScreeningNotificationPage from "views/screeningnatural/ScreeningNotification.jsx";
+import viewKYCRequestsPage from "views/forms/viewKYCRequests.jsx";
 import ScreeningActionPage from "components/Screening/ScreeningAction.jsx";
+
 import ScreeningNaturalReplyPage from "components/Screening/ScreeningNaturalReply.jsx";
 import ScreeningLegalReplyPage from "components/Screening/ScreeningLegalReply.jsx";
 import ScreeningActionLegalPage from "components/Screening/ScreeningActionLegal.jsx";
-import {Login} from 'components';
 
 import UsersPage from "components/User/Users.jsx";
 import TenantsPage from "components/User/Tenants.jsx";
 
-import {Dashboard, Person, ContentPaste} from 'material-ui-icons';
+import PersonalInfoForm from "views/forms/kycForms/personalInfoForm.jsx";
+import { Login } from 'components';
+
+import { Dashboard, Person, ContentPaste } from 'material-ui-icons';
+
 const ADMIN = ['ADMIN'];
 const Admin = Authorization(ADMIN);
 
@@ -70,14 +75,16 @@ const userRoutes = [
         path: "/adminDashBoard",
         icon: Dashboard,
         component: AdminDashboardPage
-    }, {
+    }, 
+    {
         path: "/mainAdminDashBoard",
         icon: Dashboard,
         component: MainAdminDashboardPage
     }, {
         path: "/screeningRequest",
         component: ScreeningNaturalRequestPage
-    },, {
+
+    },{
         path: "/screeningLRequest",
         component: ScreeningLegalPage
     }, {
@@ -89,6 +96,7 @@ const userRoutes = [
     }, {
         path: "/addUserRequest",
         component: AddUserPage
+
     }, {
         path: "/createTenantRequest",
         component: CreateTenantPage
@@ -96,7 +104,7 @@ const userRoutes = [
         path: "/createTenantAdmin",
         component: CreateTenantAdminPage
     },{
-        path: "/screeningPrimaryRequest",
+        path:"/screeningPrimaryRequest",
         component: ScreeningPrimaryRequestPage
     }, {
         path: "/screeningRelatedEntity",
@@ -116,6 +124,7 @@ const userRoutes = [
     }, {
         path: "/screeningPrimaryRequestEdit",
         component: ScreeningPrimaryRequestEditPage
+
     }, {
         path: "/screeningLegalPrimaryEdit",
         component: ScreeningLegalPrimaryEditPage
@@ -134,6 +143,7 @@ const userRoutes = [
     }, {
         path: "/screeningAction",
         component: ScreeningActionPage
+
     }, {
         path: "/screeningNaturalReply",
         component: ScreeningNaturalReplyPage
@@ -157,7 +167,16 @@ const userRoutes = [
     {
         path: "/viewTenants",
         component: TenantsPage
-    },{
+    },
+    {
+        path: "/viewKYCRequests",
+        component: viewKYCRequestsPage
+    },
+    {
+        path: "/personalInfoForm",
+        component: PersonalInfoForm
+    },
+    {
         redirect: true,
         path: "/",
         to: "/makerDashBoard",

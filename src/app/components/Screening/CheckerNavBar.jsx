@@ -60,8 +60,7 @@ class CheckerNavBar extends React.Component {
                             </MenuItem>
                             <MenuItem eventKey={1.3}>
                                 <button
-                                    className="content-links"
-                                    href="${pageContext.request.contextPath}/screening/migratedKYCListForm">
+                                    className="content-links" >
                                     <b>View Completed Request Reviews</b>
                                 </button>
                             </MenuItem>
@@ -73,7 +72,7 @@ class CheckerNavBar extends React.Component {
                             <MenuItem eventKey={2.1}>
                                 <button
                                     className="content-links"
-                                    href="${pageContext.request.contextPath}/kyc/requestListForm">
+                                    onClick={this.handleKYC}>
                                     <b>View KYC Requests</b>
                                 </button>
                             </MenuItem>

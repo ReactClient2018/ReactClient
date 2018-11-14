@@ -26,7 +26,7 @@ let LoginActionCreators = {
                                  History.push("/mainAdminDashBoard");
                                  break;
                             default:
-                                 History.push('/dashboard');
+                                 History.push('/makerDashBoard');
                         }
                        
                 },
