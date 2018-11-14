@@ -47,7 +47,7 @@ const CreateNewTenant = props => {
           type="text"
           component={renderField}
           label="Username"
-          validate={[required, maxLength30, minLength10]}
+          validate={[required,]}
           // warn={}
 
         />
@@ -95,7 +95,7 @@ const CreateNewTenant = props => {
 // }
 
 export default reduxForm({
-  form: 'submitValidation' // a unique identifier for this form
+  form: 'submitTenantForm' // a unique identifier for this form
 })(CreateNewTenant)
 
 
@@ -104,25 +104,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 function submit(values) {
   return sleep(1).then(() => {
-    // simulate server latency
-    // if (!['john', 'paul', 'george', 'ringo'].includes(values.username)) {
-    //   throw new SubmissionError({
-    //     username: 'User does not exist',
-    //     _error: 'Login failed!'
-    //   })
-    // } else if (values.password !== 'redux-form') {
-    //   throw new SubmissionError({
-    //     password: 'Wrong password',
-    //     _error: 'Login failed!'
-    //   })
-    // } else 
-    let driverName = "org.postgresql.Driver";
-    // data=values.concat(driverName);
-    console.log(values);
-    //let data=JSON.parse(values);
-    // console.log(data);
     values.driverName = "org.postgresql.Driver";
-
     window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
 
   })

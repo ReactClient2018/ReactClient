@@ -22,6 +22,10 @@ class MainNavBar extends React.Component {
         localStorage.setItem("screening","natural"),
         History.push("/screeningPrimaryRequest");
     }
+    handleKYCRequest() {
+        //localStorage.setItem("screening","natural"),
+        History.push("/viewKYCRequests");
+    }
     handleScreeningLegalClick(){
         localStorage.setItem("screening","legal"),
         History.push("/screeningLegalRequest")
@@ -114,7 +118,7 @@ class MainNavBar extends React.Component {
                             <MenuItem eventKey={2.1}>
                                 <button
                                     className="content-links"
-                                    href="${pageContext.request.contextPath}/kyc/requestListForm">
+                                   onClick={this.handleKYCRequest}>
                                     <b>View KYC Requests</b>
                                 </button>
                             </MenuItem>

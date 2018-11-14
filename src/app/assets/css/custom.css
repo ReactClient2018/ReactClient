@@ -492,7 +492,7 @@ table.no-margin .progress {
 	}
 }
 
-@media ( min-width : 1200px) {
+@media ( min-width : 1500px) {
 	.col-md-55 {
 		width: 20%;
 	}
