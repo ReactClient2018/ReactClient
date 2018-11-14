@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {History} from "utils";
 import {ScreeningActionCreators} from "actions";
 import NavBar from "./CheckerNavBar.jsx"
-class ScreeningAction extends React.Component {
+class ScreeningActionLegal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,7 +12,7 @@ class ScreeningAction extends React.Component {
             checker: "",
             reason: "",
             reply_date: "",
-            reply_time:""
+            reply_time: ""
         }
     }
     handleReview = event =>{
@@ -25,9 +25,8 @@ class ScreeningAction extends React.Component {
         var tempDate = new Date();
         this.state.reply_date = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate();
         this.state.reply_time = tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
-
         var sr = JSON.stringify(this.state);
-        var id = JSON.parse(localStorage.getItem("screeningNRequestList"))[localStorage.getItem('screening_n_notification_index')].id;
+        var id = JSON.parse(localStorage.getItem("screeningLRequestList"))[localStorage.getItem('screening_l_notification_index')].id;
         this.props.onSubmitScreening(sr, id);
         this.props.onReview();
         History.push("/screeningNotification");
@@ -39,8 +38,8 @@ class ScreeningAction extends React.Component {
         })
     };
     render() {
-        var json = JSON.parse(localStorage.getItem("screeningNRequestList"));
-        var screening_data = json[localStorage.getItem('screening_n_notification_index')].screening_n_request_data;
+        var json = JSON.parse(localStorage.getItem("screeningLRequestList"));
+        var screening_data = json[localStorage.getItem('screening_l_notification_index')].screening_l_request_data;
         return (
             <div>
                 <NavBar/>
@@ -62,14 +61,14 @@ class ScreeningAction extends React.Component {
                         <label className="control-label col-xs-4 review-key">ID
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">{json[localStorage.getItem('screening_n_notification_index')].id}</label>
+                            <label className="">{json[localStorage.getItem('screening_l_notification_index')].id}</label>
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
-                        <label className="control-label col-xs-4 review-key">PURPOSE OF SCREENING N
+                        <label className="control-label col-xs-4 review-key">PURPOSE OF SCREENING L
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">{screening_data.purpose_of_screening_n}</label>
+                            <label className="">{screening_data.purpose_of_screening}</label>
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
@@ -87,17 +86,17 @@ class ScreeningAction extends React.Component {
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
-                        <label className="control-label col-xs-4 review-key">FIRST NAME
+                        <label className="control-label col-xs-4 review-key">NAME OF INSTITUTION
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">{screening_data.first_name}</label>
+                            <label className="">{screening_data.name_of_institution}</label>
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
-                        <label className="control-label col-xs-4 review-key">LAST NAME
+                        <label className="control-label col-xs-4 review-key">TYPE OF INDUSTRY
                         </label>
                         <div className="col-xs-8 review-value">
-                            <label className="">{screening_data.last_name}</label>
+                            <label className="">{screening_data.type_of_industry}</label>
                         </div>
                     </div>
                     <div className="col-xs-12 hover-group review-group">
@@ -185,7 +184,7 @@ class ScreeningAction extends React.Component {
         )
     }
 }
-ScreeningAction.propTypes = {
+ScreeningActionLegal.propTypes = {
     added: PropTypes.bool,
     onSubmitScreening: PropTypes.func.isRequired,
     onReview: PropTypes.func.isRequired
@@ -194,10 +193,8 @@ ScreeningAction.propTypes = {
 const mapStateToProps = state => ({screening: state.screening});
 
 const mapDispatchToProps = dispatch => ({
-    onSubmitScreening: (values, id) => dispatch(ScreeningActionCreators.updateScreeningNatural(values, id)),
-    onReview:values => dispatch(ScreeningActionCreators.fetchScreening())
+    onSubmitScreening: (values, id) => dispatch(ScreeningActionCreators.updateScreeningLegal(values, id)),
+    onReview:values => dispatch(ScreeningActionCreators.fetchScreeningLegal())
     
 });
-export default connect(mapStateToProps, mapDispatchToProps)(ScreeningAction);
-
-// export default ScreeningAction;
+export default connect(mapStateToProps, mapDispatchToProps)(ScreeningActionLegal);

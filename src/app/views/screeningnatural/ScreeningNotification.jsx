@@ -9,22 +9,28 @@ class ScreeningNotification extends React.Component {
     submitClick = (event) => {
         History.push("./screeningAction");
     };
+    submitClickLegal = (event) => {
+        History.push("./screeningActionLegal");
+    };
     fetchScreeningNaturalData = () => {
 
         var data = [];
-        var json = JSON.parse(localStorage.getItem("screeningNRequestList"));
-        for (var i = 0; i < json.length; i++) {
-            var screening_data = json[i].screening_n_request_data;
-            if (screening_data) {
-                var details = {
-                    id: json[i].id,
-                    purpose_of_screening: screening_data.purpose_of_screening_n,
-                    first_name: screening_data.first_name,
-                    middle_name: screening_data.middle_name,
-                    last_name: screening_data.last_name,
-                    date: ''
+        var json = localStorage.getItem("screeningNRequestList");
+        if (json) {
+            json = JSON.parse(json);
+            for (var i = 0; i < json.length; i++) {
+                var screening_data = json[i].screening_n_request_data;
+                if (screening_data) {
+                    var details = {
+                        id: json[i].id,
+                        purpose_of_screening: screening_data.purpose_of_screening_n,
+                        first_name: screening_data.first_name,
+                        middle_name: screening_data.middle_name,
+                        last_name: screening_data.last_name,
+                        date: ''
+                    }
+                    data.push(details);
                 }
-                data.push(details);
             }
         }
         return data;
@@ -32,21 +38,24 @@ class ScreeningNotification extends React.Component {
     fetchScreeningLegalData = () => {
 
         var data = [];
-        var json = JSON.parse(localStorage.getItem("screeningLRequestList"));
-        for (var i = 0; i < json.length; i++) {
-            var screening_data = json[i].screening_l_request_data;
-            if (screening_data) {
-                var details = {
-                    id: json[i].id,
-                    purpose_of_screening: screening_data.purpose_of_screening,
-                    name_of_institution: screening_data.name_of_institution,
-                    date_of_establishment: screening_data.date_of_establishment,
-                    registration_no: screening_data.registration_no,
-                    country_of_issue: screening_data.country_of_issue,
-                    type_of_industry: screening_data.type_of_industry,
-                    date: ''
+        var json = localStorage.getItem("screeningLRequestList");
+        if (json) {
+            json = JSON.parse(json);
+            for (var i = 0; i < json.length; i++) {
+                var screening_data = json[i].screening_l_request_data;
+                if (screening_data) {
+                    var details = {
+                        id: json[i].id,
+                        purpose_of_screening: screening_data.purpose_of_screening,
+                        name_of_institution: screening_data.name_of_institution,
+                        date_of_establishment: screening_data.date_of_establishment,
+                        registration_no: screening_data.registration_no,
+                        country_of_issue: screening_data.country_of_issue,
+                        type_of_industry: screening_data.type_of_industry,
+                        date: ''
+                    }
+                    data.push(details);
                 }
-                data.push(details);
             }
         }
         return data;
@@ -78,7 +87,7 @@ class ScreeningNotification extends React.Component {
             }, {
                 Header: 'Type of industry',
                 accessor: 'type_of_industry'
-            },  {
+            }, {
                 Header: 'Screening request date',
                 accessor: 'date'
             }, {
@@ -91,7 +100,7 @@ class ScreeningNotification extends React.Component {
                 style: {
                     cursor: 'pointer'
                 },
-                Cell: props => <button onClick={() => this.submitClick(props.value)}>Review
+                Cell: props => <button onClick={() => this.submitClickLegal(props.value)}>Review
                     </button>
             }
         ]
@@ -173,7 +182,7 @@ class ScreeningNotification extends React.Component {
                             }
                         }
                     }}/>
-                       <h3
+                    <h3
                         style={{
                         color: 'lightBlue',
                         textAlign: 'center'

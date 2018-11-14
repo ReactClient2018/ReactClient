@@ -6,6 +6,7 @@ import {UserActionCreators} from "actions";
 import PropTypes from "prop-types";
 import logo from '../../assets/img/logo.png';
 import bankLogo from "../../assets/img/bfi-logo.png";
+import {connect} from "react-redux";
 
 class AdminHeader extends React.Component {
 
@@ -40,12 +41,17 @@ class AdminHeader extends React.Component {
     }
 }
 class AdminNavBar extends React.Component {
+ 
     handleLogout() {
         localStorage.clear();
         History.push("/login");
     }
     handleAdminClick() {
         History.push("/addUserRequest");
+    }
+    handleAllClick=(event) =>{
+        this.props.onClickAllUser();
+        History.push("/viewTenantUsers")
     }
     render() {
         return (
@@ -63,7 +69,7 @@ class AdminNavBar extends React.Component {
                                 {" "}
                                 <button
                                     className="content-links"
-                                    href="${pageContext.request.contextPath}/screeningl/requestForm">
+                                   onClick={this.handleAllClick}>
                                     <b>All User</b>
                                 </button>
                             </MenuItem>
@@ -165,4 +171,16 @@ class AdminNavBar extends React.Component {
         );
     }
 }
-export default AdminNavBar;
+AdminNavBar.propTypes = {
+    added: PropTypes.bool,
+    onClickAllUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({user: state.user});
+
+const mapDispatchToProps = dispatch => ({
+    onClickAllUser: () => dispatch(UserActionCreators.fetchUsers()),
+    onClose: () => dispatch(UserActionCreators.close())
+    
+});
+export default connect(mapStateToProps, mapDispatchToProps)(AdminNavBar);

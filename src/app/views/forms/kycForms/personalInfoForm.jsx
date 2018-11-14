@@ -7,7 +7,7 @@ const renderField = ({
     label,
     type,
     meta: { touched, error, warning }
-}) => (
+      }) => (
         <div className="x_content">
         
             <div className="col-md-6 col-sm-6 col-xs-12 item form-group">

@@ -33,6 +33,15 @@ let Auth = {
         } else {
             return {};
         }
+    },
+    fetchTokenT(){
+        let token = localStorage.getItem('access_token');
+    
+        if (token) {
+            return { 'Authorization': 'Bearer ' + token,'Content-Type':'application/json' };
+        } else {
+            return {};
+        }
     }
 }
 

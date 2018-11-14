@@ -62,12 +62,6 @@ class ScreeningNaturalForm extends React.Component {
 
         screening_n_request_data.push(this.state);
         localStorage.setItem("screening_n_request_data", JSON.stringify(screening_n_request_data));  
-        // var json = {
-        //     screening_n_request_data: this.state
-        // };
-        // const screening_json = JSON.stringify(json);
-        // alert(JSON.stringify(screening_json));
-        // this.props.onSubmitScreening(screening_json);
         History.push("./screeningRequest")
     };
     blackColor = {
@@ -430,16 +424,5 @@ class ScreeningNaturalForm extends React.Component {
     }
 }
 
-ScreeningNaturalForm.propTypes = {
-    added: PropTypes.bool,
-    onSubmitScreening: PropTypes.func.isRequired
-};
-
-const mapStateToProps = state => ({screening: state.screening});
-
-const mapDispatchToProps = dispatch => ({
-    onSubmitScreening: values => dispatch(UserActionCreators.addUser(values)),
-    onClose: () => dispatch(UserActionCreators.close())
-});
-export default connect(mapStateToProps, mapDispatchToProps)(ScreeningNaturalForm);
+export default ScreeningNaturalForm;
 

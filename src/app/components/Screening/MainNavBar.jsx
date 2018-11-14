@@ -2,7 +2,7 @@ import React from 'react';
 import {Auth, History} from "utils";
 import {Router, Switch, Route} from "react-router-dom";
 import {MenuItem, Nav, Navbar, NavItem, NavDropdown} from "react-bootstrap";
-import { UserActionCreators } from "actions";
+import { ScreeningActionCreators } from "actions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Header from "../Header/Header.jsx"
@@ -34,6 +34,14 @@ class MainNavBar extends React.Component {
        
         // this.props.onNotification();
         // History.push("/screeningNotification");
+    }
+    handleViewNatural=()=>{
+        this.props.onViewNatural();
+        History.push("/screeningNaturalResponse");
+    }
+    handleViewLegal=()=>{
+        this.props.onViewLegal();
+        History.push("/screeningLegalResponse");
     }
 
     render() {
@@ -79,7 +87,7 @@ class MainNavBar extends React.Component {
                                 {" "}
                                 <button
                                     className="content-links"
-                                    href="${pageContext.request.contextPath}/screening/replyListForm">
+                                    onClick={this.handleViewNatural}>
                                     <b>View Replies - Natural</b>
                                 </button>
                             </MenuItem>
@@ -87,7 +95,7 @@ class MainNavBar extends React.Component {
                                 {" "}
                                 <button
                                     className="content-links"
-                                    href="${pageContext.request.contextPath}/screeningl/replyListForm">
+                                    onClick={this.handleViewLegal}>
                                     <b>View Replies - Legal</b>
                                 </button>
                             </MenuItem>
@@ -260,16 +268,22 @@ class MainNavBar extends React.Component {
 }
 MainNavBar.propTypes = {
     added: PropTypes.bool,
-    onNotification: PropTypes.func.isRequired
+    onNotification: PropTypes.func.isRequired,
+    onViewNatural: PropTypes.func.isRequired,
+    onViewLegal: PropTypes.func.isRequired
+
 };
 
 const mapStateToProps = state => ({ notification: state.notification });
 
 const mapDispatchToProps = dispatch => ({
-    onNotification: values => dispatch(UserActionCreators.fetchScreening()),
-    onClose: () => dispatch(UserActionCreators.close())
+    onNotification: values => dispatch(ScreeningActionCreators.fetchScreening()),
+    onViewNatural: values => dispatch(ScreeningActionCreators.fetchScreeningReplies()),
+    onViewLegal: values => dispatch(ScreeningActionCreators.fetchScreeningLegalReplies()),
+    onClose: () => dispatch(ScreeningActionCreators.close())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(MainNavBar);
+
 class GreetingAndDateNavBar extends React.Component {
     constructor(props) {
         super(props);

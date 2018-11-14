@@ -4,12 +4,16 @@ import AdminDashboardPage from "views/Dashboard/AdminDashBoard.jsx";
 import MainAdminDashboardPage from "views/Dashboard/MainAdminDashboard.jsx";
 import ScreeningPrimaryRequestPage from "views/screeningnatural/ScreeningPrimaryRequest.jsx";
 import ScreeningNaturalRequestPage from "views/screeningnatural/ScreeningNaturalRequest.jsx";
+import ScreeningNaturalResponsePage from "views/screeningnatural/ScreeningNaturalResponse.jsx";
+import ScreeningLegalResponsePage from "views/screeninglegal/ScreeningLegalResponse.jsx";
 import ScreeningLegalRequestPage from "views/screeninglegal/ScreeningLegalRequest.jsx";
 import ScreeningLegalPage from "views/screeninglegal/ScreeningLegal.jsx";
 import ScreeningNaturalReviewPage from "views/screeningnatural/ScreeningNaturalReview.jsx";
 import ScreeningLegalReviewPage from "views/screeninglegal/ScreeningLegalReview.jsx";
 import ScreeningDocumentsPage from "views/forms/ScreeningDocuments.jsx";
 import AddUserPage from "views/forms/AddUserRequest.jsx";
+import CreateTenantAdminPage from "views/forms/CreateTenantAdmin.jsx";
+
 import CreateTenantPage from "views/forms/CreateNewTenant.jsx";
 import TableList from "views/TableList/TableList.jsx";
 import { Authorization } from "utils";
@@ -23,12 +27,21 @@ import ScreeningDocumentsEditPage from "views/screeningEditList/ScreeningDocumen
 import ScreeningNotificationPage from "views/screeningnatural/ScreeningNotification.jsx";
 import viewKYCRequestsPage from "views/forms/viewKYCRequests.jsx";
 import ScreeningActionPage from "components/Screening/ScreeningAction.jsx";
+
+import ScreeningNaturalReplyPage from "components/Screening/ScreeningNaturalReply.jsx";
+import ScreeningLegalReplyPage from "components/Screening/ScreeningLegalReply.jsx";
+import ScreeningActionLegalPage from "components/Screening/ScreeningActionLegal.jsx";
+
+import UsersPage from "components/User/Users.jsx";
+import TenantsPage from "components/User/Tenants.jsx";
+
 import PersonalInfoForm from "views/forms/kycForms/personalInfoForm.jsx";
 import AddressInfoForm from "views/forms/kycForms/addressInfoForm.jsx";
 import IdentificationInfoForm from "views/forms/kycForms/identificationInfoForm.jsx";
 import { Login } from 'components';
 
 import { Dashboard, Person, ContentPaste } from 'material-ui-icons';
+
 const ADMIN = ['ADMIN'];
 const Admin = Authorization(ADMIN);
 
@@ -64,7 +77,7 @@ const userRoutes = [
         path: "/adminDashBoard",
         icon: Dashboard,
         component: AdminDashboardPage
-    },
+    }, 
     {
         path: "/mainAdminDashBoard",
         icon: Dashboard,
@@ -72,26 +85,28 @@ const userRoutes = [
     }, {
         path: "/screeningRequest",
         component: ScreeningNaturalRequestPage
-    },
-    , {
+
+    },{
         path: "/screeningLRequest",
         component: ScreeningLegalPage
     }, {
         path: "/screeningLegalRequest",
         component: ScreeningLegalRequestPage
-    },
-    {
+    }, {
         path: "/screeningLegalRequest",
         component: ScreeningLegalRequestPage
     }, {
         path: "/addUserRequest",
         component: AddUserPage
-    },
-    {
+
+    }, {
         path: "/createTenantRequest",
         component: CreateTenantPage
     }, {
-        path: "/screeningPrimaryRequest",
+        path: "/createTenantAdmin",
+        component: CreateTenantAdminPage
+    },{
+        path:"/screeningPrimaryRequest",
         component: ScreeningPrimaryRequestPage
     }, {
         path: "/screeningRelatedEntity",
@@ -102,8 +117,7 @@ const userRoutes = [
     }, {
         path: "/screeningNaturalReview",
         component: ScreeningNaturalReviewPage
-    },
-    {
+    }, {
         path: "/screeningLegalReview",
         component: ScreeningLegalReviewPage
     }, {
@@ -112,8 +126,8 @@ const userRoutes = [
     }, {
         path: "/screeningPrimaryRequestEdit",
         component: ScreeningPrimaryRequestEditPage
-    },
-    {
+
+    }, {
         path: "/screeningLegalPrimaryEdit",
         component: ScreeningLegalPrimaryEditPage
     }, {
@@ -131,6 +145,30 @@ const userRoutes = [
     }, {
         path: "/screeningAction",
         component: ScreeningActionPage
+
+    }, {
+        path: "/screeningNaturalReply",
+        component: ScreeningNaturalReplyPage
+    },{
+        path: "/screeningLegalReply",
+        component: ScreeningLegalReplyPage
+    },  {
+        path: "/screeningActionLegal",
+        component: ScreeningActionLegalPage
+    },
+     {
+        path: "/screeningNaturalResponse",
+        component: ScreeningNaturalResponsePage
+    },{
+        path: "/screeningLegalResponse",
+        component: ScreeningLegalResponsePage
+    }, {
+        path: "/viewTenantUsers",
+        component: UsersPage
+    }, 
+    {
+        path: "/viewTenants",
+        component: TenantsPage
     },
     {
         path: "/viewKYCRequests",

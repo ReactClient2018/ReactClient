@@ -6,6 +6,7 @@ import {UserActionCreators} from "actions";
 import PropTypes from "prop-types";
 import logo from '../../assets/img/logo.png';
 import bankLogo from "../../assets/img/bfi-logo.png";
+import {connect} from "react-redux";
 
 class AdminHeader extends React.Component {
 
@@ -47,6 +48,13 @@ class MainAdminNavBar extends React.Component {
     handleAdminClick() {
         History.push("/createTenantRequest");
     }
+    handleTenantsClick = () => {
+        this.props.onClickAllTenant();
+        History.push("/viewTenants");
+    }
+    createTenantAdmin() {
+        History.push("/createTenantAdmin");
+    }
     render() {
         return (
             <div>
@@ -61,13 +69,17 @@ class MainAdminNavBar extends React.Component {
                             </MenuItem>
                             <MenuItem eventKey={1.2}>
                                 {" "}
-                                <button
-                                    className="content-links"
-                                    href="${pageContext.request.contextPath}/screeningl/requestForm">
+                                <button className="content-links" onClick={this.handleTenantsClick}>
                                     <b>All Tenants</b>
                                 </button>
                             </MenuItem>
                             <MenuItem eventKey={1.3}>
+                                {" "}
+                                <button className="content-links" onClick={this.createTenantAdmin}>
+                                    <b>Create admin for tenant</b>
+                                </button>
+                            </MenuItem>
+                            <MenuItem eventKey={1.4}>
                                 {" "}
                                 <button
                                     className="content-links"
@@ -135,9 +147,9 @@ class MainAdminNavBar extends React.Component {
                                     <b>Change Password</b>
                                 </button>
                             </MenuItem>
-                            
+
                         </NavDropdown>
-                        
+
                     </Nav>
                     <Nav pullRight>
                         <NavItem eventKey={7}>
@@ -165,4 +177,16 @@ class MainAdminNavBar extends React.Component {
         );
     }
 }
-export default MainAdminNavBar;
+MainAdminNavBar.propTypes = {
+    added: PropTypes.bool,
+    onClickAllTenant: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({tenant: state.tenant});
+
+const mapDispatchToProps = dispatch => ({
+    onClickAllTenant: () => dispatch(UserActionCreators.fetchTenants()),
+    onClose: () => dispatch(UserActionCreators.close())
+
+});
+export default connect(mapStateToProps, mapDispatchToProps)(MainAdminNavBar);

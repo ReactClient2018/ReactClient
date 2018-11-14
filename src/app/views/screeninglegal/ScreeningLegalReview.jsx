@@ -1,11 +1,9 @@
 import React from "react";
 import ScreeningTabTitle from "./ScreeningTabTitle.jsx";
-import { UserActionCreators } from "actions";
+import { ScreeningActionCreators } from "actions";
 import PropTypes from "prop-types";
 import { History } from 'utils';
 import { connect } from "react-redux";
-// import {formValueSelector} from "redux-form";
-import { ConnectedEditUserForm } from "../forms/UserForm";
 import ScreeningPrimaryRequestTable from '../screeningTableList/ScreeningLegalPrimaryTable.jsx';
 import ScreeningRelatedPersonTable from '../screeningTableList/ScreeningRelatedPersonTable.jsx';
 import ScreeningRelatedEntityTable from '../screeningTableList/ScreeningRelatedEntityTable.jsx';
@@ -127,7 +125,7 @@ ScreeningLegalReview.propTypes = {
 const mapStateToProps = state => ({ screening: state.screening });
 
 const mapDispatchToProps = dispatch => ({
-    onSubmitScreening: values => dispatch(UserActionCreators.addScreeningLegal(values)),
-    onClose: () => dispatch(UserActionCreators.close())
+    onSubmitScreening: values => dispatch(ScreeningActionCreators.addScreeningLegal(values)),
+    onClose: () => dispatch(ScreeningActionCreators.close())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ScreeningLegalReview);

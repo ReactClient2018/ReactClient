@@ -89,42 +89,6 @@ class ScreeningPrimaryTab extends React.Component {
                         <i className="fa fa-file-text  "></i>
                         Review screening request</button>
                 </div>
-
-              {/* <div className="x_content">
-                <div className="" role="tabpanel" data-example-id="togglable-tabs">
-                    <ul
-                        id="screeningnTabs"
-                        className="col-md-2  nav nav-tabs tabs-left no-print"
-                        role="tablist">
-                        <li role="presentation" className="">
-                            <a
-                                href="#screening-n-request-review-content"
-                                role="tab"
-                                id="screening-n-request-review-tab"
-                                data-toggle="tab"
-                                aria-expanded="false"
-                                style={{display: "none"}}>Review</a>
-                        </li>
-                        <li role="presentation" className="">
-                            <a
-                                href="#screening-request-content"
-                                id="screening-request-tab"
-                                role="tab"
-                                data-toggle="tab"
-                                aria-expanded="true">Primary customer</a>
-                        </li>
-                        <li role="presentation" className="">
-                            <a
-                                href="#screening-request-attachments"
-                                id="screening-attachments-tab"
-                                role="tab"
-                                data-toggle="tab"
-                                aria-expanded="true">Attachments</a>
-                        </li>
-                    </ul>
-
-                </div> 
-                </div> */}
   
             </div>
         );
