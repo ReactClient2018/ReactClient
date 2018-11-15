@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Field, reduxForm, formValueSelector } from 'redux-form'
+import { Field, reduxForm, formValueSelector,getFormValues } from 'redux-form'
 import NavBar from "../../../components/Screening/MainNavBar.jsx";
 import SideNavPage from "../viewKYCRequests.jsx";
+import { connect } from 'react-redux'
 const renderField = ({
     input,
     label,
     type,
+   
     meta: { touched, error, warning }
       }) => (
         <div className="x_content">
@@ -15,6 +17,7 @@ const renderField = ({
                 <div>
                     <input {...input}
                         type={type}
+                        
                     ></input>
                     {touched &&
                         ((error && <span>{error}</span>) ||
@@ -27,8 +30,8 @@ const renderField = ({
 const handleSubmitClick = () => {
     alert("Hi");
 }
-const PersonalInfoForm = props => {
-    const { handleSubmit, pristine, reset, submitting } = props
+let PersonalInfoForm = props => {
+    const { handleSubmit, pristine, reset, submitting, id} = props
     return (
         <div>
        
@@ -38,7 +41,7 @@ const PersonalInfoForm = props => {
     
                 <div className="row">
                 <div><h2>Personal information<small>&nbsp;(please fill the personal information)</small></h2></div>
-        <form onSubmit={handleSubmit(handleSubmitClick)}>
+        <form onSubmit={handleSubmit}>
             <div className="col-md-6 col-sm-6 col-xs-12 item form-group"></div>
             <Field
                 name="primary_sol_id"
@@ -72,13 +75,10 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="Cust ID"
-                input={{
-
-                    placeholder: 'custId',
-                }}
+                
             />
             <Field
-                name="cust_id"
+                name="CBScust_id"
                 type="text"
                 component={renderField}
                 label="Customer ID"
@@ -128,10 +128,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="First Name"
-                input={{
-
-                    placeholder: 'first name',
-                }}
+                
             />
             <Field
                 name="customer__first_name"
@@ -148,10 +145,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="Middle Name"
-                input={{
-
-                    placeholder: 'middleName',
-                }}
+                
             />
             <Field
                 name="customer_middle_name"
@@ -168,10 +162,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="Last Name"
-                input={{
-
-                    placeholder: 'lastName',
-                }}
+                
             />
             <Field
                 name="customer_last_name"
@@ -188,10 +179,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="सम्बोधन"
-                input={{
-
-                    placeholder: 'सम्बोधन',
-                }}
+                
             />
             <Field
                 name="native_lang_title_code"
@@ -208,10 +196,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="नाम"
-                input={{
-
-                    placeholder: 'नाम',
-                }}
+               
             />
             <Field
                 name="native_lang_name"
@@ -228,10 +213,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="बीचको नाम"
-                input={{
-
-                    placeholder: 'बीचको नाम',
-                }}
+                
             />
             <div className="clearfix"></div>
             <Field
@@ -239,10 +221,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="थर"
-                input={{
-
-                    placeholder: 'थर',
-                }}
+                
             />
             <hr></hr>
             <div className="clearfix"></div>
@@ -251,10 +230,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="second Name"
-                input={{
-
-                    placeholder: "seceond name",
-                }}
+               
             />
             <hr></hr>
             <Field
@@ -273,10 +249,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="Previous Name"
-                input={{
-
-                    placeholder: "previous name",
-                }}
+                
             />
             <div className="clearfix"></div>
             <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
@@ -322,10 +295,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="Date of Birth(AD)"
-                input={{
-                    
-                    placeholder: "Date of birth(AD)",
-                }}
+               
             />
             <Field
                 name="date_of_birth"
@@ -342,10 +312,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="Date of Birth(BS)"
-                input={{
-                    
-                    placeholder: "Date of birth(BS)",
-                }}
+               
             />
             <Field
                 name="date_of_birth"
@@ -362,10 +329,7 @@ const PersonalInfoForm = props => {
                 type="text"
                 component={renderField}
                 label="Age"
-                input={{
-                    // value:"18",
-                    placeholder: "age",
-                }}
+                
             />
             <div className="clearfix"></div>
              <Field
@@ -491,10 +455,7 @@ const PersonalInfoForm = props => {
             type="text"
             component={renderField}
             label="Customer group"
-            input={{
-                placeholder:'',
-                
-            }}/>
+           />
             <div className="clearfix"></div>
             <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
 											<label id="lab-customer-constitution" className="control-label col-md-4 col-sm-4 col-xs-4" for="customer-constitution">Customer constitution </label>
@@ -535,11 +496,7 @@ const PersonalInfoForm = props => {
             type="text"
             component={renderField}
             label="Customer community"
-            input={{
-                placeholder:'customer community',
-                
-                
-            }}/>
+            />
             <Field
             name="customer_community_code"
             type="text"
@@ -556,11 +513,7 @@ const PersonalInfoForm = props => {
             type="text"
             component={renderField}
             label="Customer religion"
-            input={{
-                placeholder:'customer religion',
-                
-                
-            }}/>
+            />
             <Field
             name="customer_caste_Code"
             type="text"
@@ -577,11 +530,7 @@ const PersonalInfoForm = props => {
             type="text"
             component={renderField}
             label="Customer employee ID"
-            input={{
-                placeholder:'customer employee Id',
-                
-                
-            }}/>
+            />
             <Field
             name="customer_employee_id"
             type="text"
@@ -634,10 +583,7 @@ const PersonalInfoForm = props => {
             type="date"
             component={renderField}
             label="Customer open date"
-            input={{
-               
-              
-            }}/>
+            />
              <Field
             name="customer_open_date"
             type="text"
@@ -652,11 +598,7 @@ const PersonalInfoForm = props => {
             type="text"
             component={renderField}
             label="Record Created by"
-            input={{
-                placeholder:'',
-                
-                
-            }}/>
+           />
             <div className="clearfix"></div>
             <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
             <button className="control-label col-md-4 col-sm-4 col-xs-4" style={{backgroundColor:'lightblue'}} type="submit">Proceed</button>
@@ -668,26 +610,29 @@ const PersonalInfoForm = props => {
         </div>
     )
 }
-export default reduxForm({
-    form: 'personalInfoForm'
-})(PersonalInfoForm);
 
 
 
-{/* const selector = formValueSelector('selectingFormValues') // <-- same as form name
-SelectingFormValuesForm = connect(
+PersonalInfoForm = reduxForm({
+  form: 'personalInfoForm'  // a unique identifier for this form
+})(PersonalInfoForm)
+
+// Decorate with connect to read form values
+const selector = formValueSelector('personalInfoForm') // <-- same as form name
+PersonalInfoForm = connect(
   state => {
-    // can select values individually
-    const hasEmailValue = selector(state, 'hasEmail')
-    const favoriteColorValue = selector(state, 'favoriteColor')
-    // or together as a group
-    const { firstName, lastName } = selector(state, 'firstName', 'lastName')
-    return {
-      hasEmailValue,
-      favoriteColorValue,
-      fullName: `${firstName || ''} ${lastName || ''}`
+   
+    const values=getFormValues("personalInfoForm")(state)
+    console.log(values);
+    if(values!==null){
+      //  alert(JSON.stringify(values))
+      console.log(JSON.stringify(values));
     }
+    return {
+        
+    }
+   
   }
-)(SelectingFormValuesForm)
+)(PersonalInfoForm)
 
-export default SelectingFormValuesForm */}
+export default PersonalInfoForm

@@ -23,7 +23,7 @@ class SideNavPage extends React.Component {
   //   History.push("/personalInfoForm");
   // }
   handleClickInfo = (e) => {
-    // alert(e.target.name);
+     alert(e.target.name);
     History.push("/"+e.target.name);
 
   }
@@ -76,7 +76,7 @@ class SideNavPage extends React.Component {
                     <hr />
                     <li className="nav-item"   onClick={this.handleClickInfo} ><button name="amlInfoForm">AML info</button></li>
                     <hr />
-                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="documentsStatusInfoForm">Documents Status Info</button></li>
+                    <li className="nav-item"   onClick={this.handleClickInfo} ><button name="documentStatusInfoForm">Documents Status Info</button></li>
                     <hr />
                     <li className="nav-item"   onClick={this.handleClickInfo} ><button name="customerReviewInfoForm">Customer Review Info</button></li>
                   </ul>

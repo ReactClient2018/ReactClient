@@ -24,7 +24,7 @@ const renderMembers = ({ fields, meta: { error, submitFailed } }) =>
 
 
     <button type="button" onClick={() => fields.push({})}>
-      Add Related Person Info
+      Add Relation Info
       </button>
     {submitFailed &&
       error &&
@@ -40,37 +40,53 @@ const renderMembers = ({ fields, meta: { error, submitFailed } }) =>
         <li key={index}>
 
           <h4>
-            Related Person Infoormation #{index + 1}
+            Relation Info #{index + 1}
             <span>&nbsp;&nbsp;<button
               type="button"
               title="Remove Relation Information"
               onClick={() => fields.remove(index)}
               style={{ color: 'red' }}
-            >Remove </button></span>
+            >Remove Relation Info</button></span>
           </h4>
           <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
-            <label className="control-label col-md-4 col-sm-4 col-xs-4">Related Person Type</label>
+            <label className="control-label col-md-4 col-sm-4 col-xs-4">Relation Type</label>
 
-            <Field name={member + '.related_person_type'} component="select">
+            <Field name={member + '.relation_type'} component="select">
               <option />
               <option value="Father">father</option>
               <option value="Mother">Mother</option>
               <option value="Daughter">Daughter</option>
             </Field>
           </div>
-          
           <Field
-            name={member + '.related_person_cust_id'}
+            name={member + '.customer_relation_Code'}
             type="text"
             component={renderField}
-            label="Related Person Customer ID"
+            label="customer relation code"
+            input={{
+              disabled: 'true',
+            }}
           />
-         
           <Field
-            name={member + '.related_person_kyc_id'}
+            name={member + '.relation_cust_id'}
             type="text"
             component={renderField}
-            label="Related Person KYC ID"
+            label="Relation Customer ID"
+          />
+          <Field
+            name={member + '.person_relation_cust_id'}
+            type="text"
+            component={renderField}
+            label="person Relation Customer ID"
+            input={{
+              disabled: 'true',
+            }}
+          />
+          <Field
+            name={member + '.relation_kyc_id'}
+            type="text"
+            component={renderField}
+            label="Relation KYC ID"
           />
           <div className="clearfix"></div>
           <div className="col-md-6 col-sm-6 col-xs-12 item form-group">
@@ -90,7 +106,15 @@ const renderMembers = ({ fields, meta: { error, submitFailed } }) =>
             component={renderField}
             label="First Name"
           />
-          
+          <Field
+            name={member + '.person_relation_name'}
+            type="text"
+            component={renderField}
+            label="Person relation name"
+            input={{
+              disabled: 'true',
+            }}
+          />
           <Field
             name={member + '.middle_name'}
             type="text"
@@ -141,7 +165,7 @@ const renderMembers = ({ fields, meta: { error, submitFailed } }) =>
             name={member + ".called_by_name"}
             type="text"
             component={renderField}
-            label="called by Name"
+            label="second Name"
 
           />
           <div className="clearfix"></div>
@@ -226,7 +250,7 @@ const renderMembers = ({ fields, meta: { error, submitFailed } }) =>
 const handleProceed = () => {
   alert("hi");
 }
-const RelatedPersonInfoForm = props => {
+const RelationInfoForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <div className="container-fluid main-container">
@@ -259,8 +283,8 @@ const RelatedPersonInfoForm = props => {
 }
 
 export default reduxForm({
-  form: 'relatedPersonInfoForm', // a unique identifier for this form
+  form: 'relationInfoForm', // a unique identifier for this form
   //   validate
-})(RelatedPersonInfoForm)
+})(RelationInfoForm)
 // export default RelationInfoForm
 

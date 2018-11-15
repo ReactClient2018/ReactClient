@@ -38,6 +38,17 @@ import TenantsPage from "components/User/Tenants.jsx";
 import PersonalInfoForm from "views/forms/kycForms/personalInfoForm.jsx";
 import AddressInfoForm from "views/forms/kycForms/addressInfoForm.jsx";
 import IdentificationInfoForm from "views/forms/kycForms/identificationInfoForm.jsx";
+import RelationInfoForm from "views/forms/kycForms/relationInfoForm.jsx";
+import RelatedPersonInfoForm from "views/forms/kycForms/relatedPersonInfoForm.jsx";
+import RelatedEntityInfoForm from "views/forms/kycForms/relatedEntityInfoForm.jsx";
+import EducationInfoForm from "views/forms/kycForms/educationInfoForm.jsx";
+import InvolvementInfoForm from "views/forms/kycForms/involvementInfoForm.jsx";
+import AccountsInfoForm from "views/forms/kycForms/accountsInfoForm.jsx";
+import InternalObservationInfoForm from "views/forms/kycForms/internalObservationInfoForm.jsx";
+import CommentsForm from "views/forms/kycForms/commentsForm.jsx";
+import AMLInfoForm from "views/forms/kycForms/amlInfoForm.jsx";
+import DocumentStatusInfoForm from "views/forms/kycForms/documentStatusInfoForm.jsx";
+import CustomerReviewPage from "views/forms/kycForms/customerReviewPage.jsx";
 import { Login } from 'components';
 
 import { Dashboard, Person, ContentPaste } from 'material-ui-icons';
@@ -185,6 +196,50 @@ const userRoutes = [
     {
         path: "/addressInfoForm",
         component: AddressInfoForm
+    },
+    {
+        path: "/relationInfoForm",
+        component: RelationInfoForm
+    },
+    {
+        path: "/relatedPersonInfoForm",
+        component:  RelatedPersonInfoForm
+    },
+    {
+        path: "/relatedEntityInfoForm",
+        component:  RelatedEntityInfoForm
+    },
+    {
+        path: "/educationInfoForm",
+        component:  EducationInfoForm
+    },
+    {
+        path: "/involvementInfoForm",
+        component:  InvolvementInfoForm
+    },
+    {
+        path: "/accountsInfoForm",
+        component:  AccountsInfoForm
+    },
+    {
+        path: "/internalObservationInfoForm",
+        component:  InternalObservationInfoForm
+    },
+    {
+        path: "/commentsForm",
+        component:  CommentsForm
+    },
+    {
+        path: "/amlInfoForm",
+        component:  AMLInfoForm
+    },
+    {
+        path: "/documentStatusInfoForm",
+        component: DocumentStatusInfoForm
+    },
+    {
+        path: "/customerReviewPage",
+        component:  CustomerReviewPage,
     },
     {
         redirect: true,
